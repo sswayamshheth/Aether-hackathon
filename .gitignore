@@ -30,3 +30,11 @@ models/Ultralytics/
 models/kernel.errors.txt
 models/*.torchscript
 docs/results/bench_*.json.tmp
+
+# downloaded model folders and tool settings
+models/siglip/
+models/violence_vit/
+models/**/.cache/
+Ultralytics/
+# small models trained here are committed so a fresh clone has them
+!models/crowd_tcn.pt

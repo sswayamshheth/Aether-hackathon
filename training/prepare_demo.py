@@ -33,6 +33,9 @@ CACHE = config.DEMO / "cache"
 ACCIDENT_CLIP = os.environ.get("DEMO_ACCIDENT_CLIP", "RoadAccidents010_x264.mp4")
 BAGGAGE_CLIP = os.environ.get("DEMO_BAGGAGE_CLIP", "aboda_video9.mp4")
 UMN_SCENE = 4
+# (clip, start s, length s): UCF-Crime clips held out of verifier training (train_verifiers.HOLDOUT)
+FIGHT = ("Fighting033_x264.mp4", 4.0, 33.0)
+FIRE = ("Arson010_x264.mp4", 14.5, 45.0)
 
 
 def ff(*args: str) -> None:
@@ -54,6 +57,9 @@ def build_clips() -> None:
     ff("-ss", f"{s['start'] / fps:.3f}", "-i", str(BENCH / "crowd" / "umn_all.avi"),
        "-t", f"{(s['end'] - s['start']) / fps:.3f}", "-vf", "drawbox=x=0:y=0:w=iw:h=24:color=black:t=fill",
        *enc, str(CLIPS / "cam4.mp4"))
+    for cam, (name, start, length) in (("cam5", FIGHT), ("cam6", FIRE)):
+        ff("-ss", f"{start}", "-i", str(ROOT / "data" / "bench" / "_raw" / "ucf_more" / name), "-t", f"{length}",
+           *enc, str(CLIPS / f"{cam}.mp4"))
 
 
 def build_cache() -> None:

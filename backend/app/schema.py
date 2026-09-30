@@ -39,7 +39,7 @@ class Frame:
     image: np.ndarray
     tracks: list[Track]
     fresh: bool  # detector ran on this frame (tracks are not carried over)
-    accident_dets: list[dict] | None = None  # None when the accident model did not run
+    aux: dict[str, dict] | None = None  # outputs of the auxiliary models that ran on this frame
     zones: list[dict] = field(default_factory=list)
 
     @property

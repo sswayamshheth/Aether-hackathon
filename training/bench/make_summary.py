@@ -172,8 +172,48 @@ def saadkhan_section() -> dict | None:
                     "imageio is imported but missing from its requirements.txt."}
 
 
+def verifier_sections() -> list[dict]:
+    v = load("verifiers")
+    if not v:
+        return []
+    rows = []
+    for typ, info in sorted(v["types"].items()):
+        ver, rule = info.get("verifier_out_of_fold") or {}, info.get("rule_gate") or {}
+        rows.append({
+            "type": typ, "clips": info.get("clips"),
+            "events": f"{info.get('positive_events')} real / {info.get('negative_events')} not",
+            "trained": "yes" if info.get("trained") else f"no: {info.get('why')}",
+            "auc": info.get("snapshot_auc_out_of_fold"),
+            "ml": (f"{ver.get('true_alarms')} caught, {ver.get('false_alarms')} false, {ver.get('missed')} missed"
+                   if ver else None),
+            "rule": (f"{rule.get('true_alarms')} caught, {rule.get('false_alarms')} false, {rule.get('missed')} missed"
+                     if rule else None),
+            "thr": info.get("threshold")})
+    feats = []
+    for typ, info in sorted(v["types"].items()):
+        for f in (info.get("strongest_features") or [])[:4]:
+            feats.append({"type": typ, "feature": f["feature"], "weight": f["weight"]})
+    cls = ", ".join(f"{k} {n}" for k, n in sorted(v["clips_by_class"].items()))
+    return [
+        {"title": "ML verifier on top of the rules, per incident type", "meta": v["dataset"],
+         "columns": [col("type", "Type"), col("clips", "Clips", True), col("events", "Events (groups)"),
+                     col("trained", "Trained"), col("auc", "AUC (out of fold)", True),
+                     col("ml", "ML verifier, out of fold"), col("rule", "Rule gate alone, same events"),
+                     col("thr", "Threshold", True)],
+         "rows": rows,
+         "note": f"Clips by class: {cls}. {v['method']}. An event is one candidate group (one ongoing thing on one "
+                 "camera). Both columns score the same events; the rule gate is the fixed confidence threshold used "
+                 "before the verifier. Held out entirely and used as demo cameras 5 and 6: "
+                 + ", ".join(v.get("held_out_for_demo", [])) + "."},
+        {"title": "What each verifier learned", "meta": "largest weights (standardised features, log-odds)",
+         "columns": [col("type", "Type"), col("feature", "Feature"), col("weight", "Weight", True)],
+         "rows": feats,
+         "note": "Positive weight pushes towards 'real'. These are the same contributions the incident page shows."},
+    ]
+
+
 def ours_sections() -> list[dict]:
-    out = []
+    out = verifier_sections()
     c = load("crowd_model")
     if c:
         out.append({"title": "Our crowd model (temporal CNN)", "meta": c["dataset"],

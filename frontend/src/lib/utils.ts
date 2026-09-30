@@ -17,13 +17,49 @@ const TYPE_TITLE: Record<string, string> = {
   accident: 'Traffic accident',
   crowd: 'Crowd anomaly',
   baggage: 'Unattended baggage',
+  fire: 'Fire',
+  weapon: 'Weapon seen',
+  violence: 'Fight or assault',
+  medical: 'Person down',
+  hazard: 'Hazard',
+  security: 'Security alert',
+}
+
+const SUBTYPE_TITLE: Record<string, string> = {
+  abandoned: 'Abandoned baggage',
+  overcrowding: 'Overcrowding',
+  smoke: 'Smoke',
+  explosion: 'Explosion',
+  pistol: 'Gun seen',
+  knife: 'Knife seen',
+  robbery: 'Robbery',
+  fight: 'Fight or assault',
+  fall: 'Person fallen',
+  collapse: 'Person collapsed',
+  flood: 'Flooding',
+  vandalism: 'Vandalism',
+  animal: 'Animal on the road',
+  intrusion: 'Intrusion',
+  loitering: 'Loitering',
+  'wrong-way driving': 'Wrong-way driving',
+  'stalled vehicle': 'Stalled vehicle',
+  'pedestrian on road': 'Pedestrian on the road',
 }
 
 export function titleOf(inc: Pick<Incident, 'type' | 'subtype'>) {
-  if (inc.type === 'baggage') return inc.subtype === 'abandoned' ? 'Abandoned baggage' : 'Unattended baggage'
-  if (inc.type === 'crowd') return inc.subtype === 'overcrowding' ? 'Overcrowding' : 'Crowd anomaly'
-  return TYPE_TITLE[inc.type] ?? inc.type
+  if (inc.subtype === 'abandoned' && inc.type !== 'baggage') return TYPE_TITLE[inc.type] ?? inc.type
+  return SUBTYPE_TITLE[inc.subtype] ?? TYPE_TITLE[inc.type] ?? inc.type
 }
+
+/** Incident types grouped into five families for charts (colours validated for the dark
+ *  surface with the dataviz palette checker, in this order). */
+export const FAMILIES = [
+  { key: 'fire', label: 'Fire & hazards', types: ['fire', 'hazard'], color: '#c98500' },
+  { key: 'people', label: 'Crowd & medical', types: ['crowd', 'medical'], color: '#199e70' },
+  { key: 'traffic', label: 'Traffic', types: ['accident'], color: '#3987e5' },
+  { key: 'violence', label: 'Violence & weapons', types: ['violence', 'weapon'], color: '#d55181' },
+  { key: 'security', label: 'Security & objects', types: ['security', 'baggage'], color: '#9085e9' },
+] as const
 
 export function relTime(ts: number, now: number) {
   const s = Math.max(0, Math.round(now - ts))

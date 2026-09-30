@@ -8,11 +8,11 @@ import { cn } from '@/lib/utils'
 
 type Profile = Camera['profile']
 const PROFILES: { value: Profile; label: string }[] = [
-  { value: 'mixed', label: 'Mixed: accident, crowd, baggage' },
-  { value: 'traffic', label: 'Traffic: accident' },
-  { value: 'public', label: 'Public space: crowd, baggage' },
+  { value: 'all', label: 'Everything: all detectors' },
+  { value: 'traffic', label: 'Road only: accident, fire, person down, hazards' },
+  { value: 'public', label: 'Public space: all except accident' },
 ]
-const PROFILE_SHORT: Record<Profile, string> = { mixed: 'Mixed', traffic: 'Traffic', public: 'Public space' }
+const PROFILE_SHORT: Record<Profile, string> = { all: 'All detectors', mixed: 'All detectors', traffic: 'Road', public: 'Public space' }
 
 function AddCamera() {
   const qc = useQueryClient()
@@ -20,7 +20,7 @@ function AddCamera() {
   const [name, setName] = useState('')
   const [area, setArea] = useState('')
   const [url, setUrl] = useState('')
-  const [profile, setProfile] = useState<Profile>('mixed')
+  const [profile, setProfile] = useState<Profile>('all')
   const [file, setFile] = useState<File | null>(null)
   const [progress, setProgress] = useState<number | null>(null)
   const [over, setOver] = useState(false)

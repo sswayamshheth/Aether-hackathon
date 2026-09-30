@@ -25,10 +25,13 @@ import numpy as np  # noqa: E402
 
 from . import config, verify  # noqa: E402
 from .db import Store  # noqa: E402
-from .detector import Tracker, get_accident_model, get_accident_service, get_detector  # noqa: E402
+from .aux_models import get_models, get_scheduler  # noqa: E402
+from .detector import Tracker, get_detector  # noqa: E402
 from .engines.accident import AccidentEngine  # noqa: E402
 from .engines.baggage import BaggageEngine  # noqa: E402
 from .engines.crowd import CrowdEngine  # noqa: E402
+from .engines.extra import (FireEngine, HazardEngine, MedicalEngine, SecurityEngine,  # noqa: E402
+                            ViolenceEngine, WeaponEngine)
 from .intel.filter import FalseAlarmFilter  # noqa: E402
 from .intel.incidents import IncidentManager  # noqa: E402
 from .schema import Candidate, Frame, Track  # noqa: E402
@@ -40,8 +43,18 @@ RED = (68, 68, 239)
 ZONE_COLORS = {"lane": (160, 160, 160), "restricted": (68, 68, 239), "crowd": (214, 160, 84),
                "ignore": (110, 110, 110)}
 BAG_IDS = [k for k, v in config.COCO.items() if v in config.BAGS]
-PROFILES = {"traffic": ("accident",), "public": ("crowd", "baggage"),
-            "mixed": ("accident", "crowd", "baggage")}
+ALL_TYPES = ("accident", "crowd", "baggage", "fire", "weapon", "violence", "medical", "hazard", "security")
+# "all" is the default: every engine on every camera. The narrower profiles remain for
+# machines that cannot afford all models on every stream.
+PROFILES = {"all": ALL_TYPES, "mixed": ALL_TYPES,
+            "traffic": ("accident", "fire", "medical", "hazard", "security"),
+            "public": ("crowd", "baggage", "fire", "weapon", "violence", "medical", "hazard", "security")}
+ENGINES = {"accident": AccidentEngine, "crowd": CrowdEngine, "baggage": BaggageEngine, "fire": FireEngine,
+           "weapon": WeaponEngine, "violence": ViolenceEngine, "medical": MedicalEngine,
+           "hazard": HazardEngine, "security": SecurityEngine}
+# which auxiliary model each incident type needs
+NEEDS = {"accident": {"accident"}, "fire": {"fire", "scene"}, "weapon": {"weapon", "violence", "scene"},
+         "violence": {"violence", "scene", "weapon"}, "medical": {"fall", "scene"}, "hazard": {"scene"}}
 
 
 class Runtime:
@@ -99,11 +112,13 @@ class Pipeline:
                  cache: dict | None = None, record: bool = False):
         self.cam, self.rt, self.fps = cam, rt, fps
         self.id = cam["id"]
-        self.kinds = PROFILES.get(cam.get("profile", "mixed"), PROFILES["mixed"])
-        self.cache = cache  # demo replay: frame index -> cached tracks and accident detections
+        self.kinds = PROFILES.get(cam.get("profile", "all"), PROFILES["all"])
+        self.cache = cache  # demo replay: frame index -> cached tracks and model outputs
         self.record: dict[str, dict] | None = {} if record else None
         self.detector = get_detector() if (cache is None and rt.use_models) else None
-        self.accident_model = get_accident_model() if (cache is None and rt.use_models) else None
+        needed = set().union(*(NEEDS.get(k, set()) for k in self.kinds))
+        models = get_models() if (cache is None and rt.use_models) else {}
+        self.aux = {k: m for k, m in models.items() if k in needed and m.available}
         self.ring: deque = deque()
         self.want_evidence: list[tuple[int, float]] = []
         self._clips_due: list[tuple[int, float]] = []
@@ -118,28 +133,28 @@ class Pipeline:
         self.n = 0
         self.tracks: list[Track] = []
         self.tracker = Tracker(self.fps / config.DETECT_EVERY) if self.cache is None and self.rt.use_models else None
-        model_ok = bool(self.cache is not None or (self.accident_model and self.accident_model.available))
         self.engines = []
-        if "accident" in self.kinds:
-            self.engines.append(AccidentEngine(self.id, model_ok))
-        if "crowd" in self.kinds:
-            self.engines.append(CrowdEngine(self.id))
-        if "baggage" in self.kinds:
-            self.engines.append(BaggageEngine(self.id))
-        self.last_acc = -1e9
+        for k in self.kinds:
+            if k == "accident":
+                self.engines.append(AccidentEngine(self.id, self.cache is not None or "accident" in self.aux))
+            else:
+                self.engines.append(ENGINES[k](self.id))
+        self.last_aux: dict[str, float] = {}
         self.active_boxes: list[tuple] = []
 
     def process(self, image: np.ndarray, ts: float, frame_idx: int | None = None) -> bytes:
         self.n += 1
         fresh = False
-        acc = None
+        aux: dict[str, dict] = {}
         if self.cache is not None:
             rec = self.cache.get(str(frame_idx))
             if rec is not None:
                 fresh = rec["fresh"]
                 if fresh:
                     self.tracks = [Track(t[0], t[1], tuple(t[2:6]), t[6]) for t in rec["tracks"]]
-                acc = rec.get("acc")
+                aux = dict(rec.get("aux") or {})
+                if rec.get("acc") is not None:  # caches written before the extra models existed
+                    aux["accident"] = {"dets": rec["acc"]}
         else:
             fresh = self.n % config.DETECT_EVERY == 1 or config.DETECT_EVERY == 1
             if fresh:
@@ -151,26 +166,23 @@ class Pipeline:
                 bags = [Track(0, config.COCO[int(c)], tuple(float(v) for v in b), float(p))
                         for b, c, p in zip(boxes.xyxy[is_bag], boxes.cls[is_bag], boxes.conf[is_bag])]
                 self.tracks = [t for t in moving if t.cls not in config.BAGS] + bags
-            if "accident" in self.kinds and self.accident_model and self.accident_model.available:
-                due = ts - self.last_acc >= config.ACCIDENT_EVERY_S
-                if self.rt.live:  # off the frame loop; the answer arrives a little later
-                    svc = get_accident_service()
-                    done = svc.poll(self.id)
-                    if done:
-                        acc = done[0]
-                    if due and not svc.busy(self.id):
-                        self.last_acc = ts
-                        svc.submit(self.id, image, ts)
-                elif due:
-                    self.last_acc = ts
-                    acc = self.accident_model.detect(image)
+            if self.aux:
+                if self.rt.live:  # off the frame loop: results arrive a little later
+                    sched = get_scheduler()
+                    sched.offer(self.id, image, ts)
+                    aux = {k: v for k, v in sched.take(self.id).items() if k in self.aux}
+                else:  # offline: call each model directly at its cadence
+                    for name, m in self.aux.items():
+                        if ts - self.last_aux.get(name, -1e9) >= m.every_s:
+                            self.last_aux[name] = ts
+                            aux[name] = m.run(image)
             if self.record is not None and frame_idx is not None:
                 self.record[str(frame_idx)] = {
-                    "fresh": fresh, "acc": acc,
+                    "fresh": fresh, "aux": aux or None,
                     "tracks": [[t.id, t.cls, *[round(v, 1) for v in t.box], round(t.conf, 3)]
                                for t in self.tracks] if fresh else []}
 
-        frame = Frame(self.id, ts, image, self.tracks, fresh, acc, self.rt.zones(self.id))
+        frame = Frame(self.id, ts, image, self.tracks, fresh, aux, self.rt.zones(self.id))
         cands: list[Candidate] = []
         for e in self.engines:
             cands += e.process(frame)

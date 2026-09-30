@@ -171,7 +171,10 @@ class CrowdEngine:
                 out.append(Candidate(
                     type="crowd", camera_id=self.camera_id, key="panic", conf=self.p_smooth,
                     ts=f.ts, box=_union(persons), subtype="sudden dispersal",
-                    details={"people": crowd_size, "source": source,
+                    details={"features": {"crowd_p": round(self.p_smooth, 4), "people": crowd_size,
+                                          "speed_max": round(float(x[6]), 3), "flow_mean": round(float(x[2]), 4),
+                                          "moving_frac": round(float(x[1]), 4)},
+                             "people": crowd_size, "source": source,
                              "motion_ratio": round(ratio, 1) if ratio else None,
                              "speed_max": round(float(x[6]), 2)}))
         limit = config.CROWD_LIMIT

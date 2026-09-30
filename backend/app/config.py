@@ -32,7 +32,17 @@ MEDIA = DATA / "media"
 UPLOADS = DATA / "uploads"
 DEMO = DATA / "demo"
 DB_PATH = Path(os.environ.get("DRISHTI_DB", DATA / "drishti.db"))
-FFMPEG = ROOT / "tools" / "ffmpeg" / "bin" / "ffmpeg.exe"
+def _ffmpeg() -> Path:
+    """Portable build in tools/ on Windows; on macOS / Linux, tools/ffmpeg/ffmpeg or the one on PATH."""
+    import shutil
+
+    for p in (ROOT / "tools" / "ffmpeg" / "bin" / "ffmpeg.exe", ROOT / "tools" / "ffmpeg" / "ffmpeg"):
+        if p.exists():
+            return p
+    return Path(shutil.which("ffmpeg") or "ffmpeg")
+
+
+FFMPEG = _ffmpeg()
 FRONTEND_DIST = ROOT / "frontend" / "dist"
 
 for _p in (MEDIA / "keyframes", MEDIA / "clips", UPLOADS, DEMO, MODELS):
@@ -55,6 +65,16 @@ ACCIDENT_EVERY_S = float(os.environ.get("DRISHTI_ACCIDENT_EVERY_S", 1.0))
 ACCIDENT_IMGSZ = int(os.environ.get("DRISHTI_ACCIDENT_IMGSZ", 640))
 CROWD_MODEL = MODELS / "crowd_tcn.pt"
 
+# auxiliary models: seconds between calls per camera (a single-stream Mac can go faster)
+EVERY_S = {name: float(os.environ.get(f"DRISHTI_EVERY_{name.upper()}", default)) for name, default in
+           {"accident": 1.0, "fire": 1.0, "weapon": 0.5, "fall": 1.0, "violence": 1.0, "scene": 2.0}.items()}
+ENABLED_AUX = set(os.environ.get("DRISHTI_AUX", "accident,fire,weapon,fall,violence,scene").split(","))
+COLLAPSE_S = float(os.environ.get("DRISHTI_COLLAPSE_S", 10))  # lying still this long = collapse
+LOITER_S = float(os.environ.get("DRISHTI_LOITER_S", 60))
+STALLED_S = float(os.environ.get("DRISHTI_STALLED_S", 30))
+HAZARD_MARGIN = float(os.environ.get("DRISHTI_HAZARD_MARGIN", 0.3))  # scene-model margin over "normal"
+VIOLENCE_INDEX = 1  # which output of the violence classifier means "violent"; checked in BENCH.md
+
 COCO = {0: "person", 1: "bicycle", 2: "car", 3: "motorcycle", 5: "bus", 7: "truck",
         24: "backpack", 26: "handbag", 28: "suitcase"}
 VEHICLES = {"car", "motorcycle", "bus", "truck", "bicycle"}
@@ -66,9 +86,13 @@ BAG_ABANDONED_S = float(os.environ.get("DRISHTI_BAG_ABANDONED_S", 30))
 CROWD_LIMIT = int(os.environ.get("DRISHTI_CROWD_LIMIT", 25))
 
 # ---- false-alarm filter: base confidence gate and persistence per incident type
-GATE = {"accident": 0.45, "crowd": 0.60, "baggage": 0.18}
-PERSIST_S = {"accident": 1.0, "crowd": 1.0, "baggage": 0.0}
-MIN_HITS = {"accident": 2, "crowd": 4, "baggage": 1}
+# (used as-is where no trained verifier exists; see app/intel/verifier.py)
+GATE = {"accident": 0.45, "crowd": 0.60, "baggage": 0.18, "fire": 0.35, "weapon": 0.45, "violence": 0.75,
+        "medical": 0.40, "hazard": 0.60, "security": 0.50}
+PERSIST_S = {"accident": 1.0, "crowd": 1.0, "baggage": 0.0, "fire": 2.0, "weapon": 1.0, "violence": 2.0,
+             "medical": 2.0, "hazard": 4.0, "security": 2.0}
+MIN_HITS = {"accident": 2, "crowd": 4, "baggage": 1, "fire": 2, "weapon": 2, "violence": 3, "medical": 2,
+            "hazard": 2, "security": 3}
 GROUP_GAP_S = 6.0
 MERGE_WINDOW_S = 30.0  # cross-camera merge, and how long an event may pause and still be the same one
 REOPEN_WINDOW_S = 600.0  # an unhandled incident seen again on the same camera is updated, not duplicated

@@ -15,6 +15,7 @@ from typing import Callable
 
 from .. import config
 from ..schema import Candidate, Frame, zone_at
+from .verifier import get_verifier, readable, summarise
 
 
 @dataclass
@@ -29,6 +30,9 @@ class Group:
     last: Candidate | None = None
     raw_counted: bool = False
     confs: list[float] = field(default_factory=list)
+    feats: list[dict] = field(default_factory=list)
+    p: float | None = None  # latest verifier probability
+    verdict: dict | None = None  # verifier result at the moment it confirmed the event
 
     @property
     def mean_conf(self) -> float:
@@ -39,8 +43,11 @@ class Group:
 class FalseAlarmFilter:
     def __init__(self, threshold_adj: Callable[[str, str], float],
                  on_suppressed: Callable[[dict], None],
-                 area_active: Callable[[str, str, float], bool] | None = None):
+                 area_active: Callable[[str, str, float], bool] | None = None,
+                 observer: Callable[[tuple, "Group", dict], None] | None = None):
         self.groups: dict[tuple[str, str, str], Group] = {}
+        self.verifier = get_verifier()
+        self.observer = observer  # training: sees every group snapshot the verifier would score
         self.threshold_adj = threshold_adj
         self.on_suppressed = on_suppressed
         self.area_active = area_active or (lambda cam, typ, ts: False)
@@ -61,6 +68,8 @@ class FalseAlarmFilter:
             g.hits += 1
             g.confs.append(c.conf)
             g.max_conf = max(g.max_conf, c.conf)
+            if c.details.get("features"):
+                g.feats.append(c.details["features"])
             if not g.raw_counted:
                 g.raw_counted = True
                 self.raw_alarms += 1
@@ -77,10 +86,27 @@ class FalseAlarmFilter:
             gate = self.gate(c.camera_id, c.type) - (0.10 if agree else 0.0)
             persist = config.PERSIST_S[c.type] * (0.5 if agree else 1.0)
             hits = max(1, config.MIN_HITS[c.type] - (1 if agree else 0))
-            if g.confirmed or (g.mean_conf >= gate and g.hits >= hits
-                               and c.ts - g.first_ts >= persist):
+            ready = g.hits >= hits and c.ts - g.first_ts >= persist
+            if not g.confirmed and ready and g.feats:
+                summary = summarise(g.feats, c.ts - g.first_ts)
+                if self.observer:
+                    self.observer(k, g, summary)
+                if self.verifier.has(c.type):
+                    # the learned layer decides; the rule gate is only the fallback
+                    g.p, contrib = self.verifier.score(c.type, summary)
+                    thr = (self.verifier.threshold(c.type) + self.threshold_adj(c.camera_id, c.type)
+                           - (0.10 if agree else 0.0))
+                    if g.p < thr:
+                        continue
+                    g.confirmed = True
+                    g.verdict = {"p": round(g.p, 3), "threshold": round(thr, 2),
+                                 "top": [{"feature": readable(n), "effect": round(v, 2)} for n, v in contrib[:4]]}
+            if g.confirmed or (ready and g.mean_conf >= gate):
                 g.confirmed = True
-                c.details["gate"] = round(gate, 2)
+                if g.verdict:
+                    c.details["verifier"] = g.verdict
+                else:
+                    c.details.setdefault("gate", round(gate, 2))
                 out.append(c)
         self._expire(f.camera_id, f.ts)
         return out
@@ -95,6 +121,9 @@ class FalseAlarmFilter:
             typ = k[1]
             if g.masked:
                 reason = "inside an ignore zone"
+            elif g.p is not None:
+                reason = (f"ML verifier: {g.p:.0%} likely real, below its threshold of "
+                          f"{self.verifier.threshold(typ) + self.threshold_adj(camera_id, typ):.0%}")
             elif g.mean_conf < self.gate(camera_id, typ):
                 reason = f"confidence {g.mean_conf:.2f} below gate {self.gate(camera_id, typ):.2f}"
             else:

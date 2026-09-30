@@ -95,9 +95,9 @@ class AccidentEngine:
             for tid in [k for k in self.hist if k not in live and f.ts - self.hist[k][-1][0] > 3]:
                 del self.hist[tid]
 
-        model_ran = f.accident_dets is not None
+        model_ran = bool(f.aux) and "accident" in f.aux
         if model_ran:
-            hits = [d for d in f.accident_dets if is_accident_class(d["cls"])]
+            hits = [d for d in f.aux["accident"]["dets"] if is_accident_class(d["cls"])]
             if hits:
                 self.model_hit = max(hits, key=lambda d: d["conf"])
                 self.model_ts = f.ts
@@ -125,6 +125,9 @@ class AccidentEngine:
                      if box[0] - p.width <= p.center[0] <= box[2] + p.width and box[1] <= p.foot[1] <= box[3] + p.height)
         details = {"vehicles": len(inside), "people": people,
                    "sources": [s for s, on in (("accident model", bool(m)), ("trajectory rule", bool(rule))) if on]}
+        details["features"] = {"model_conf": round(m_conf, 3), "rule": float(bool(rule)),
+                               "vehicles": len(inside), "people": people,
+                               "vehicle_check": float(bool(inside)), "rule_conf": round(r_conf, 3)}
         if m:
             details.update(model_class=m["cls"], model_conf=round(m_conf, 2),
                            vehicle_check="passed" if inside else "no tracked vehicle in the box")

@@ -2,11 +2,17 @@
 
 Team HCQ_D36 · HackConquest, Aether 2026, TCET Mumbai · Problem statement PS 06
 
-Drishti watches simulated public CCTV feeds and raises three kinds of incident in real
-time: traffic accidents, crowd anomalies and unattended baggage. Every incident carries a
-severity score with the reasons spelled out, an evidence clip, and the cameras that saw it.
-An operator confirms or dismisses incidents from one dashboard, and those decisions tune
-the false-alarm filter.
+Drishti watches public CCTV feeds and raises incidents in real time across nine families:
+traffic accidents, fire and smoke (including explosions), weapons, fights and robberies,
+people who have fallen or collapsed, crowd anomalies, unattended baggage, hazards such as
+flooding, vandalism or animals on the road, and security events (intrusion, loitering,
+wrong-way driving, stalled vehicles, pedestrians on the road). Every camera runs every
+detector.
+
+Each incident carries a severity score with the reasons spelled out, an evidence clip, the
+cameras that saw it, and, where one is trained, the verdict of an ML verifier with the
+features that drove it. An operator confirms or dismisses incidents from one dashboard, and
+those decisions tune the thresholds.
 
 Status, run commands and known gaps for whoever picks this up next: **STATUS.md**.
 
@@ -15,45 +21,85 @@ Status, run commands and known gaps for whoever picks this up next: **STATUS.md*
 ```mermaid
 flowchart LR
   subgraph Sources
-    A[MediaMTX + ffmpeg<br/>rtsp://localhost:8554/cam1..4]
-    B[Uploaded video file]
+    A[MediaMTX + ffmpeg<br/>rtsp://localhost:8554/cam1..6]
+    B[Uploaded video or any RTSP URL]
   end
   A --> W[Camera worker<br/>one thread per camera<br/>~10 fps, 10 s ring buffer]
   B --> W
-  W --> D[YOLO11n COCO, OpenVINO<br/>every 2nd frame]
+  W --> D[YOLO11n COCO<br/>every 2nd frame]
   D --> T[ByteTrack<br/>per camera]
-  T --> E1[Accident engine<br/>YOLO11x accident model + vehicle check<br/>+ trajectory rule]
-  T --> E2[Crowd engine<br/>temporal CNN on flow and occupancy<br/>+ overcrowding limit]
-  T --> E3[Baggage engine<br/>bag memory, owner, owner-away timer]
-  E1 --> F[False-alarm filter<br/>persistence, confidence gate,<br/>ignore zones, camera agreement]
-  E2 --> F
-  E3 --> F
+  W --> X[Model scheduler<br/>accident, fire/smoke, weapon, fall,<br/>violence, scene model, each at its own rate]
+  T --> E[Rule engines, one per incident type<br/>propose candidates + features]
+  X --> E
+  E --> F[ML verifier per type<br/>logistic regression on the rule features<br/>rule gate as fallback]
   F --> M[Incident manager<br/>severity with reasons,<br/>cross-camera merge, SQLite]
   M --> H[Alerts<br/>WebSocket, optional Telegram]
   M --> V[Evidence<br/>keyframe + H.264 clip]
-  H --> UI[Dashboard<br/>command view, incident detail,<br/>cameras, zones, analytics, models]
+  H --> UI[Dashboard]
   UI -- Confirm / Dismiss --> F
 ```
 
-Learned models do the detecting: a COCO detector, a fine-tuned accident detector, and a
-crowd model we trained. Rules sit on top as the explainable layer (owner-away timing,
-persistence, severity) and as fallbacks when a model is missing.
+Three layers, on purpose:
+
+1. **Models detect.** COCO people/vehicles/bags, a YOLO11x accident detector, a fire and
+   smoke detector, a weapon detector, a fall detector, a violence classifier, a zero-shot
+   scene model (SigLIP) for the long tail, and a crowd model we trained.
+2. **Rules propose.** One engine per incident type turns detections into candidates with
+   readable logic (a weapon held by a person, a fight needs two people, a bag whose owner
+   walked away, a vehicle against the lane's usual direction) and records features.
+3. **An ML verifier decides.** Per incident type, a logistic regression trained on labelled
+   UCF-Crime footage takes the rule features and gives the probability the event is real.
+   Its per-feature contributions are shown on the incident page. Types without enough
+   labelled data fall back to the rule gate, and the incident page says so.
+
+## Incident types
+
+| Family | Subtypes | Detected by | Decided by |
+|---|---|---|---|
+| Traffic | accident / collision | YOLO11x accident model + vehicle check + trajectory rule | ML verifier where trained (Models page), else rule gate |
+| Fire & hazards | fire, smoke, explosion | fire/smoke YOLOv8n + scene model | ML verifier where trained, else rule gate |
+| | flooding, vandalism, animal on the road | scene model (zero-shot) | rule gate (vandalism verifier where trained) |
+| Violence & weapons | fight / assault, robbery | violence classifier + people rules + scene model | ML verifier where trained, else rule gate |
+| | gun, knife | weapon detector + "held by a person" rule | ML verifier where trained, else rule gate |
+| Crowd & medical | sudden dispersal, overcrowding | crowd temporal CNN + count rule | rule gate (the crowd detector is itself a trained model) |
+| | fall, collapse | fall detector + lying-still rule | rule gate (no labelled fall video) |
+| Security & objects | unattended / abandoned baggage | COCO bags + owner-away logic | rule gate |
+| | intrusion, loitering, wrong-way driving, stalled vehicle, pedestrian on road | tracks + zones drawn in the dashboard | rule gate |
 
 ## PS 06 requirement to component
 
 | PS 06 asks for | Where it lives |
 |---|---|
-| Simulated public CCTV feeds | `scripts/simulate_rtsp.ps1`: MediaMTX serves four looping clips as real RTSP streams |
+| Simulated public CCTV feeds | `scripts/simulate_rtsp.*`: MediaMTX serves six looping clips as real RTSP streams |
 | Detect traffic accidents | `backend/app/engines/accident.py` |
 | Detect crowd anomalies | `backend/app/engines/crowd.py`, model from `training/train_crowd.py` |
 | Detect unattended baggage | `backend/app/engines/baggage.py` |
-| Real time | per-camera workers in `backend/app/runtime.py`; measured FPS in BENCH.md and on the Analytics page |
+| (beyond PS 06) fire, weapons, violence, falls, hazards, security | `backend/app/engines/extra.py`, models in `backend/app/aux_models.py` |
+| Real time | per-camera workers and a model scheduler (`backend/app/runtime.py`, `backend/app/aux_models.py`) |
 | Multi-camera event tracking | cross-camera merge in `backend/app/intel/incidents.py`: same type, same area, within 30 s |
 | Severity-based classification | `backend/app/intel/severity.py`: Critical / High / Medium / Low with a reason for every point |
-| False-alarm reduction | `backend/app/intel/filter.py`; with-and-without numbers in BENCH.md |
+| False-alarm reduction | `backend/app/intel/filter.py` + `backend/app/intel/verifier.py`; numbers in BENCH.md |
 | Automated emergency alerts | WebSocket push to the dashboard, sound on Critical, optional Telegram (`backend/app/alerts.py`) |
 | Centralised dashboard, live visualisation | `frontend/`: camera wall with overlays, incident queue, incident detail |
 | Response prioritisation | queue sorted by severity score; J / K / C / D keyboard triage |
+
+## Run on macOS (Apple silicon, e.g. M5)
+
+Copy the whole project folder (including `models/` and `data/demo/`) to the Mac, then:
+
+```bash
+bash scripts/setup_mac.sh          # once: Python venv, ffmpeg, MediaMTX, dashboard build
+bash scripts/demo.sh               # demo mode: 6 cameras replayed from cache
+bash scripts/start.sh              # live: 1 simulated RTSP camera, every model, Apple GPU
+CAMS=6 bash scripts/start.sh       # live with all six simulated cameras
+bash scripts/stop.sh
+```
+
+On the Mac every model runs on the Apple GPU (PyTorch `mps`) automatically; set
+`DRISHTI_DEVICE=cpu` to force the CPU. If `models/` was not copied, `setup_mac.sh` downloads
+the public weights; the two models trained here (`crowd_tcn.pt`, `verifiers.json`) must be
+copied or retrained (`training/train_crowd.py`, `training/train_verifiers.py`).
+These scripts were written on Windows and have not been run on a Mac yet.
 
 ## Setup (Windows, PowerShell)
 
@@ -73,9 +119,11 @@ cd frontend; npm ci; npm run build; cd ..
 #    MediaMTX v1.21.1 windows -> tools\mediamtx\mediamtx.exe
 
 # 4. Models (not in git)
-#    models\accident.pt : weights\epoch61.pt from huggingface.co/Enos-123/traffic-accident-detection-yolo11x
-backend\.venv\Scripts\python training\export_models.py      # downloads YOLO11n, exports OpenVINO
+backend\.venv\Scripts\python training\get_models.py         # every public weight, pinned revisions
+backend\.venv\Scripts\python training\export_models.py      # YOLO11n to OpenVINO (faster on Intel CPUs)
 backend\.venv\Scripts\python training\train_crowd.py        # trains models\crowd_tcn.pt (needs data\bench\crowd)
+backend\.venv\Scripts\python training\extract_features.py   # runs every model over the labelled clips
+backend\.venv\Scripts\python training\train_verifiers.py    # trains models\verifiers.json
 
 # 5. Demo clips and cache (needs data\bench, see BENCH.md for the sources)
 backend\.venv\Scripts\python training\prepare_demo.py
@@ -83,13 +131,13 @@ backend\.venv\Scripts\python training\prepare_demo.py
 
 On the machine this was built on, all five steps are already done.
 
-## Run
+## Run (Windows)
 
 ```powershell
-# Live: RTSP simulation + real inference + dashboard in Chrome
+# Live: RTSP simulation + every model + dashboard in Chrome (-Cams 6 for all six cameras)
 powershell -ExecutionPolicy Bypass -File scripts\start.ps1
 
-# Demo mode: cached detections, no YOLO inference, no network
+# Demo mode: cached detections, no model inference, no network
 powershell -ExecutionPolicy Bypass -File scripts\demo.ps1
 
 # Stop either

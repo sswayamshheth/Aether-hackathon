@@ -5,15 +5,12 @@ import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Too
 import { useNow } from '@/components/Shell'
 import { Button, EmptyState, Panel, PanelHeader, Segmented, Skeleton, StatusDot } from '@/components/ui'
 import { api, type Analytics as Data } from '@/lib/api'
-import { clock, relTime } from '@/lib/utils'
+import { clock, FAMILIES, relTime } from '@/lib/utils'
 
-// Series colours for incident TYPE. Checked with the dataviz palette validator against the
-// dark surface in this order. Severity colours (red / orange / amber) are never used here.
-const SERIES = [
-  { key: 'accident', label: 'Accident', color: '#3987e5' },
-  { key: 'crowd', label: 'Crowd', color: '#199e70' },
-  { key: 'baggage', label: 'Baggage', color: '#9085e9' },
-] as const
+// Nine incident types are grouped into five families so the chart stays readable. Family
+// colours were checked with the dataviz palette validator against the dark surface, in
+// this order; severity colours (red / orange / amber) are never used for series.
+const SERIES = FAMILIES
 const NEUTRAL = '#5d6878'
 const AXIS = { fontSize: 11, fill: '#5d6878', fontFamily: 'JetBrains Mono Variable, monospace' }
 
@@ -137,7 +134,12 @@ export function Analytics() {
   const raised = d.incidents + d.suppressed
   const online = d.cameras.filter((c) => c.status === 'online')
   const fpsAvg = online.length ? online.reduce((s, c) => s + c.fps, 0) / online.length : 0
-  const hasSeries = d.series.some((s) => s.accident + s.crowd + s.baggage + s.suppressed > 0)
+  const series = d.series.map((row) => ({
+    t: row.t,
+    ...Object.fromEntries(SERIES.map((f) => [f.key, f.types.reduce((n, t) => n + (row[t] ?? 0), 0)])),
+  }))
+  const byFamily = Object.fromEntries(SERIES.map((f) => [f.key, f.types.reduce((n, t) => n + (d.by_type[t] ?? 0), 0)]))
+  const hasSeries = series.some((row) => SERIES.some((f) => (row as Record<string, number>)[f.key] > 0))
   const tick = (t: number) => clock(t).slice(0, 5)
 
   return (
@@ -156,11 +158,11 @@ export function Analytics() {
 
       <div className="grid grid-cols-[minmax(0,1fr)_340px] gap-3">
         <Panel>
-          <PanelHeader title="Incidents over time" meta={`per ${d.bucket_s / 60} min, by type`}><Legend items={SERIES.map((s) => ({ label: s.label, color: s.color }))} /></PanelHeader>
+          <PanelHeader title="Incidents over time" meta={`per ${d.bucket_s / 60} min, by family`}><Legend items={SERIES.map((s) => ({ label: s.label, color: s.color }))} /></PanelHeader>
           {hasSeries ? (
             <div className="h-60 px-2 pb-2 pt-4">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={d.series} barCategoryGap={2}>
+                <BarChart data={series} barCategoryGap={2}>
                   <CartesianGrid stroke="#1e2631" vertical={false} />
                   <XAxis dataKey="t" tickFormatter={tick} tick={AXIS} axisLine={{ stroke: '#1e2631' }} tickLine={false} minTickGap={40} />
                   <YAxis allowDecimals={false} tick={AXIS} axisLine={false} tickLine={false} width={28} />
@@ -183,10 +185,10 @@ export function Analytics() {
                 <li key={s.key}>
                   <div className="mb-1 flex items-baseline justify-between text-[12px]">
                     <span className="flex items-center gap-1.5 text-muted"><span className="h-2 w-2 rounded-[2px]" style={{ background: s.color }} />{s.label}</span>
-                    <span className="num text-fg">{d.by_type[s.key] ?? 0}</span>
+                    <span className="num text-fg">{byFamily[s.key] ?? 0}</span>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-raised">
-                    <div className="h-full rounded-full" style={{ width: `${((d.by_type[s.key] ?? 0) / d.incidents) * 100}%`, background: s.color }} />
+                    <div className="h-full rounded-full" style={{ width: `${((byFamily[s.key] ?? 0) / d.incidents) * 100}%`, background: s.color }} />
                   </div>
                 </li>
               ))}

@@ -17,7 +17,7 @@ IMG = np.zeros((480, 640, 3), dtype=np.uint8)
 
 
 def frame(ts, tracks, cam="c1", acc=None, zones=None):
-    return Frame(cam, ts, IMG, tracks, True, acc, zones or [])
+    return Frame(cam, ts, IMG, tracks, True, {"accident": {"dets": acc}} if acc is not None else None, zones or [])
 
 
 def person(tid, x, y=200):

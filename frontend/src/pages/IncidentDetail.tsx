@@ -27,7 +27,55 @@ const DETAIL_LABELS: Record<string, string> = {
   limit: 'Occupancy limit',
   zone: 'Zone',
   zone_kind: 'Zone type',
-  gate: 'Confidence gate applied',
+  gate: 'Rule confidence gate applied',
+  area_pct: 'Fire or smoke, % of view',
+  held_by_person: 'Held by a person',
+  weapon_seen: 'Weapon seen during it',
+  lying_still_s: 'Lying still (s)',
+  scene_margin: 'Scene model margin',
+  present_s: 'Present for (s)',
+  stopped_s: 'Stopped for (s)',
+}
+
+interface Verdict { p: number; threshold: number; top: { feature: string; effect: number }[] }
+
+/** The learned layer's decision: probability the event is real, and which features pushed
+ *  that probability up or down (logistic-regression contributions, in log-odds). */
+function VerifierPanel({ verdict }: { verdict?: Verdict }) {
+  if (!verdict) {
+    return (
+      <Panel>
+        <PanelHeader title="ML verifier" />
+        <p className="px-3 py-3 text-[12px] leading-relaxed text-muted">
+          No trained verifier for this incident type yet, so the rule gate decided (confidence and persistence). See the Models page.
+        </p>
+      </Panel>
+    )
+  }
+  const max = Math.max(...verdict.top.map((t) => Math.abs(t.effect)), 0.01)
+  return (
+    <Panel>
+      <PanelHeader title="ML verifier" meta={`passes at ${pct(verdict.threshold)}`} />
+      <div className="flex items-baseline justify-between px-3 pt-3">
+        <span className="text-[12px] text-muted">Likely real</span>
+        <span className="num text-[18px] font-semibold text-fg">{pct(verdict.p)}</span>
+      </div>
+      <ul className="space-y-2 px-3 pb-3 pt-2">
+        {verdict.top.map((t) => (
+          <li key={t.feature} className="text-[12px]">
+            <div className="mb-1 flex justify-between gap-3">
+              <span className="text-muted">{t.feature}</span>
+              <span className="num text-fg">{t.effect > 0 ? '+' : ''}{t.effect.toFixed(2)}</span>
+            </div>
+            <div className="h-1 overflow-hidden rounded-full bg-raised">
+              <div className="h-full rounded-full" style={{ width: `${(Math.abs(t.effect) / max) * 100}%`, background: t.effect > 0 ? 'var(--color-accent)' : 'var(--color-low)' }} />
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p className="border-t border-line px-3 py-2 text-[12px] text-faint">Blue pushed towards "real", grey pushed against. Units are log-odds.</p>
+    </Panel>
+  )
 }
 
 function fmt(v: unknown): string {
@@ -171,6 +219,8 @@ export function IncidentDetail() {
             </ul>
             {inc.cameras.length > 1 && <p className="border-t border-line px-3 py-2 text-[12px] text-muted">Merged: same incident type in the same area within 30 s. Combined confidence rises with each camera.</p>}
           </Panel>
+
+          <VerifierPanel verdict={inc.details?.verifier as Verdict | undefined} />
 
           <Panel>
             <PanelHeader title="Details" />

@@ -20,7 +20,7 @@ from pydantic import BaseModel
 
 from . import alerts, config
 from .db import Store
-from .runtime import Runtime, Worker, load_cache
+from .runtime import ALL_TYPES, Runtime, Worker, load_cache
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(message)s", datefmt="%H:%M:%S")
 log = logging.getLogger("drishti.api")
@@ -79,7 +79,7 @@ async def lifespan(app: FastAPI):
     if seed_mode in {"file", "rtsp"}:
         # the four simulated cameras from scripts/cameras.json; cameras added in the UI are kept
         seed = json.loads((config.ROOT / "scripts" / "cameras.json").read_text())
-        for c in seed["cameras"]:
+        for c in seed["cameras"][: int(os.environ.get("DRISHTI_SEED_COUNT", 6))]:
             S.store.add_camera({"id": c["id"], "name": c["name"], "kind": seed_mode, "area": c["area"],
                                 "profile": c["profile"],
                                 "source": c["rtsp"] if seed_mode == "rtsp" else str(config.ROOT / c["clip"])})
@@ -130,7 +130,7 @@ class CameraIn(BaseModel):
     name: str
     source: str
     area: str = ""
-    profile: str = "mixed"
+    profile: str = "all"
 
 
 @app.get("/api/cameras")
@@ -139,8 +139,8 @@ def cameras() -> list[dict]:
 
 
 def _add(name: str, source: str, kind: str, area: str, profile: str) -> dict:
-    if profile not in {"traffic", "public", "mixed"}:
-        raise HTTPException(422, "profile must be traffic, public or mixed")
+    if profile not in {"all", "traffic", "public", "mixed"}:
+        raise HTTPException(422, "profile must be all, traffic or public")
     cam = {"id": "cam-" + uuid.uuid4().hex[:6], "name": name.strip() or "Camera", "source": source,
            "kind": kind, "area": area.strip() or name.strip() or "Unassigned", "profile": profile}
     S.store.add_camera(cam)
@@ -158,7 +158,7 @@ def add_camera(body: CameraIn) -> dict:
 
 @app.post("/api/cameras/upload")
 async def upload_camera(file: UploadFile = File(...), name: str = Form(""), area: str = Form(""),
-                        profile: str = Form("mixed")) -> dict:
+                        profile: str = Form("all")) -> dict:
     ext = Path(file.filename or "video.mp4").suffix.lower()
     if ext not in {".mp4", ".avi", ".mov", ".mkv", ".webm"}:
         raise HTTPException(422, "upload an mp4, avi, mov, mkv or webm file")
@@ -274,7 +274,7 @@ def analytics(minutes: int = 60) -> dict:
     inc = S.store.q("SELECT type, severity, status, first_ts FROM incidents WHERE first_ts>=?", (since,))
     sup = S.store.q("SELECT type, reason, ts, camera_id FROM suppressed WHERE ts>=?", (since,))
     n_b = int(minutes * 60 / bucket)
-    series = [{"t": since + i * bucket, "accident": 0, "crowd": 0, "baggage": 0, "suppressed": 0}
+    series = [{"t": since + i * bucket, "suppressed": 0, **{t: 0 for t in ALL_TYPES}}
               for i in range(n_b)]
     for r in inc:
         i = min(n_b - 1, int((r["first_ts"] - since) / bucket))

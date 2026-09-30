@@ -1,5 +1,5 @@
 export type Severity = 'Critical' | 'High' | 'Medium' | 'Low'
-export type IncidentType = 'accident' | 'crowd' | 'baggage'
+export type IncidentType = 'accident' | 'crowd' | 'baggage' | 'fire' | 'weapon' | 'violence' | 'medical' | 'hazard' | 'security'
 export type IncidentStatus = 'new' | 'confirmed' | 'dismissed'
 
 export interface Reason { text: string; points: number }
@@ -33,7 +33,7 @@ export interface Camera {
   source_label: string
   kind: 'rtsp' | 'file'
   area: string
-  profile: 'traffic' | 'public' | 'mixed'
+  profile: 'all' | 'traffic' | 'public' | 'mixed'
   status: 'online' | 'connecting' | 'reconnecting' | 'offline' | 'stopped'
   fps: number
   latency_ms: number
@@ -60,7 +60,7 @@ export interface SuppressedRow { id: number; ts: number; camera_id: string; type
 
 export interface Analytics {
   bucket_s: number
-  series: { t: number; accident: number; crowd: number; baggage: number; suppressed: number }[]
+  series: ({ t: number; suppressed: number } & Record<IncidentType, number>)[]
   by_type: Record<string, number>
   by_severity: Record<string, number>
   by_status: Record<string, number>
