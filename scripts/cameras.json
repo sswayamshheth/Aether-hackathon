@@ -1,53 +1,29 @@
 {
-  "note": "The four simulated cameras. Used by simulate_rtsp.ps1 (what to publish), by start.ps1 (what to seed) and by demo mode (what to replay). cam2 is a mirrored, cropped copy of cam1's clip standing in for a second viewpoint of the same junction. Every camera runs every detector (profile 'all'). cam5 (a fight) and cam6 (arson) are UCF-Crime clips held out of verifier training.",
+  "note": "Configured to use the 3 local dataset videos.",
   "cameras": [
     {
       "id": "cam1",
-      "name": "Junction North A",
+      "name": "Dataset Video 1",
       "area": "Junction North",
       "profile": "all",
-      "clip": "data/demo/clips/cam1.mp4",
+      "clip": "dataset/-qmYW4S3Xxo_00.mp4",
       "rtsp": "rtsp://localhost:8554/cam1"
     },
     {
       "id": "cam2",
-      "name": "Junction North B",
-      "area": "Junction North",
+      "name": "Dataset Video 2",
+      "area": "Concourse",
       "profile": "all",
-      "clip": "data/demo/clips/cam2.mp4",
+      "clip": "dataset/-yLuZ5wxAsc_00.mp4",
       "rtsp": "rtsp://localhost:8554/cam2"
     },
     {
       "id": "cam3",
-      "name": "Concourse",
-      "area": "Concourse",
-      "profile": "all",
-      "clip": "data/demo/clips/cam3.mp4",
-      "rtsp": "rtsp://localhost:8554/cam3"
-    },
-    {
-      "id": "cam4",
-      "name": "Entrance Hall",
-      "area": "Entrance Hall",
-      "profile": "all",
-      "clip": "data/demo/clips/cam4.mp4",
-      "rtsp": "rtsp://localhost:8554/cam4"
-    },
-    {
-      "id": "cam5",
-      "name": "Market Street",
+      "name": "Dataset Video 3",
       "area": "Market Street",
       "profile": "all",
-      "clip": "data/demo/clips/cam5.mp4",
-      "rtsp": "rtsp://localhost:8554/cam5"
-    },
-    {
-      "id": "cam6",
-      "name": "Warehouse Yard",
-      "area": "Warehouse Yard",
-      "profile": "all",
-      "clip": "data/demo/clips/cam6.mp4",
-      "rtsp": "rtsp://localhost:8554/cam6"
+      "clip": "dataset/-RE3XseZINA_00.mp4",
+      "rtsp": "rtsp://localhost:8554/cam3"
     }
   ]
 }

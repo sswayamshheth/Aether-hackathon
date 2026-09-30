@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed":"#6bff8f","surface-tint":"#a6c8ff","tertiary-fixed-dim":"#ffb95f","inverse-surface":"#dee2ed","on-primary-fixed":"#001c3b","surface-container-lowest":"#090e15","on-secondary-container":"#004119","surface-container-highest":"#30353d","surface":"#0f141b","surface-container":"#1b2027","background":"#0f141b","on-primary":"#003060","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#4ae176","outline-variant":"#414752","tertiary-container":"#ca8100","on-error-container":"#ffdad6","primary":"#a6c8ff","on-secondary-fixed-variant":"#005321","surface-variant":"#30353d","on-primary-container":"#002a54","on-error":"#690005","error-container":"#93000a","on-background":"#dee2ed","on-primary-fixed-variant":"#004787","inverse-primary":"#005eb1","surface-bright":"#353941","on-tertiary-fixed":"#2a1700","surface-container-high":"#252a32","surface-dim":"#0f141b","surface-container-low":"#171c23","on-tertiary-container":"#3e2400","on-tertiary-fixed-variant":"#653e00","on-surface":"#dee2ed","tertiary-fixed":"#ffddb8","primary-fixed-dim":"#a6c8ff","on-surface-variant":"#c1c6d4","primary-container":"#4792f0","on-secondary":"#003915","outline":"#8b919e","secondary-container":"#00b954","on-tertiary":"#472a00","on-secondary-fixed":"#002109","secondary":"#4ae176","tertiary":"#ffb95f","inverse-on-surface":"#2c3138","error":"#ffb4ab"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"0.5rem","space-sm":"0.375rem","space-xs":"0.25rem","space-xl":"1rem","space-lg":"0.75rem","space-md":"0.5rem",margin:"0.75rem"},fontFamily:{"title-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Inter"],"label-caps":["JetBrains Mono"],"headline-xl":["Inter"],"data-mono-lg":["JetBrains Mono"],"body-md":["Inter"],"headline-sm":["Inter"],"data-mono-md":["JetBrains Mono"],"data-mono-sm":["JetBrains Mono"]},fontSize:{"title-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"600"}],"body-sm":["0.75rem",{lineHeight:"1rem",letterSpacing:"0",fontWeight:"400"}],"headline-lg":["1.375rem",{lineHeight:"1.75rem",letterSpacing:"-0.015em",fontWeight:"600"}],"label-caps":["0.625rem",{lineHeight:"0.75rem",letterSpacing:"0.08em",fontWeight:"600"}],"headline-xl":["1.75rem",{lineHeight:"2.25rem",letterSpacing:"-0.02em",fontWeight:"600"}],"data-mono-lg":["1rem",{lineHeight:"1.25rem",letterSpacing:"-0.02em",fontWeight:"600"}],"body-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"400"}],"headline-sm":["1.125rem",{lineHeight:"1.5rem",letterSpacing:"-0.01em",fontWeight:"600"}],"data-mono-md":["0.8125rem",{lineHeight:"1rem",letterSpacing:"-0.01em",fontWeight:"500"}],"data-mono-sm":["0.6875rem",{lineHeight:"0.875rem",letterSpacing:"0.02em",fontWeight:"500"}]}}}}</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-14 bg-surface-container-low border-r border-outline-variant/40 flex flex-col items-center py-space-sm z-30 justify-between"><div class="flex flex-col items-center gap-space-md"><div class="w-9 h-9 rounded bg-surface-container border border-outline-variant/50 flex items-center justify-center p-0.5 shadow-sm"><img alt="Drishti Eye Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UrgZstrSu5FakepnhYz4fBF4_zGWxYb2o-ED8x7spC89iYLIwG-LvPIUapMeeIMBeeRatwMW4Un_nd8IT7QWpNxZoRmYylwqwcBi3_Z6diU6hZEAybNJMMOjNiVxdtnM3G_S95PPcJSHEHTCpNs76xTYhMUQuSTMkYwQ7Z6cyu47RIWELTLPHmdTO_EPXIcYqUcY2DjRV4XZPKMhKU2b9WDr4ulcTYRQkuM254yDGm2FtR4J5AJ1Dk-WxA"/></div><nav class="flex flex-col items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container border border-primary/40"><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="command-center" href="#" title="Command Center"><span class="material-symbols-outlined text-[20px]">grid_view</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="cameras" href="#" title="Cameras"><span class="material-symbols-outlined text-[20px]">videocam</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="zone-editor" href="#" title="Zone Editor"><span class="material-symbols-outlined text-[20px]">draw</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="analytics" href="#" title="Analytics"><span class="material-symbols-outlined text-[20px]">bar_chart</span></a><a aria-current="page" class="w-9 h-9 rounded flex items-center justify-center transition-colors group bg-primary-container text-on-primary-container border border-primary/40" data-path="ai-models" href="#" title="AI Models &amp; Benchmarks"><span class="material-symbols-outlined text-[20px]">hub</span></a></nav></div><div class="flex flex-col items-center gap-space-md"><button class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="System Settings" type="button"><span class="material-symbols-outlined text-[20px]">settings</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-1 ring-outline-variant/40"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></aside><div class="pl-14"><header class="fixed top-0 left-14 right-0 h-12 bg-surface-container-low border-b border-outline-variant/40 px-space-xl flex items-center justify-between z-20"><div class="flex items-center gap-space-xs font-body-sm"><span class="font-title-md text-title-md text-on-surface">Drishti</span><span class="text-outline-variant">/</span><span class="font-body-sm text-body-sm text-on-surface-variant">Tactical Matrix</span><span class="bg-surface-container font-label-caps text-label-caps text-on-surface-variant px-space-xs py-0.5 rounded border border-outline-variant/60 tracking-wider ml-space-xs">DEMO REPLAY</span></div><div class="flex items-center gap-space-md font-data-mono-sm text-data-mono-sm text-outline"><div class="flex items-center gap-space-xs"><span>CAMERAS</span><span class="text-on-surface font-semibold">4/6</span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-space-xs"><span>AVG FPS</span><span class="text-on-surface font-semibold">4.9</span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-space-xs bg-error-container/20 text-error px-space-xs py-0.5 rounded border border-error/30 animate-pulse font-semibold"><span>OPEN</span><span>2</span></div><span class="text-outline-variant">|</span><span class="text-outline-variant text-[10px]">OpenVINO (CPU)</span><span class="text-outline-variant">|</span><button class="text-outline hover:text-on-surface flex items-center transition-colors" title="Toggle Audio" type="button"><span class="material-symbols-outlined text-[16px]">volume_up</span></button><span class="text-outline-variant">|</span><div class="flex items-center gap-1.5 text-secondary"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse inline-block"></span><span class="font-semibold tracking-wide uppercase">Live</span></div></div></header><main class="w-full pt-12 min-h-screen bg-surface-container-lowest text-on-surface"><div class="flex flex-col w-full">
+<div class="max-w-[1500px] w-full mx-auto p-gutter sm:p-space-lg flex flex-col gap-space-lg">
+<!-- Benchmark Hardware & Integrity Attestation Banner -->
+<div class="bg-surface-container-low rounded-lg p-space-md sm:p-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider bg-secondary/10 px-1.5 py-0.5 rounded">Harness Validated</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">edge-cluster-node-04a</span>
+<span class="text-outline-variant text-[10px] hidden sm:inline">•</span>
+<span class="font-data-mono-sm text-data-mono-sm text-outline">Intel Xeon w9-3495X + Intel Arc A770 (16GB VRAM)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Every metric documented below was measured in-situ on this node via automated benchmarking harnesses. Inference pipeline: <span class="text-primary font-medium">OpenVINO 2025.1 with INT8 symmetric PTQ</span>.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-lg shrink-0 self-end md:self-center font-data-mono-sm text-data-mono-sm text-outline bg-surface-container px-space-md py-1.5 rounded">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>SYNC: 2026-09-30 21:03:44 UTC</span>
+</div>
+</div>
+</div>
+<!-- Section 1: Crowd Model (Temporal CNN) -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden shadow-sm flex flex-col">
+<div class="bg-surface-container px-space-lg py-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Our Crowd Model (Temporal CNN)</h2>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">UMN Unusual Crowd Activity &amp; PETS 2009 Benchmark Suite</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-0.5 rounded uppercase">Dual Stream Flow</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary bg-surface-container-high px-2 py-0.5 rounded">Mean F1: 0.914</span>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<tr>
+<th class="py-2.5 px-space-lg" scope="col">Split / Test Set</th>
+<th class="py-2.5 px-space-md text-right" scope="col">ROC-AUC</th>
+<th class="py-2.5 px-space-md text-right" scope="col">PR-AUC</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Precision</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Recall</th>
+<th class="py-2.5 px-space-lg text-right" scope="col">F1 Score</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40">
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">UMN Scene 1 (Plaza)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">0.984</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">0.961</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">94.2%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">93.5%</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">0.938</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">UMN Scene 2 (Indoor)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">0.978</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">0.952</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">92.8%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">91.9%</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">0.923</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">PETS 2009 S3 (Evacuation)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">0.962</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">0.938</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">89.4%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">92.1%</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">0.907</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors bg-surface-container/30">
+<td class="py-2.5 px-space-lg font-semibold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary">videocam</span>
+                Drishti Edge Testbed (Real-world)
+              </td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">0.951</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">0.914</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">88.7%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">89.2%</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">0.889</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-space-lg py-2 bg-surface-container/40 flex items-center justify-between text-outline text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm">Evaluated over 14,200 labeled temporal frames with optical flow velocity variance input.</span>
+<span class="font-label-caps text-label-caps text-outline-variant">SAMPLING @ 15 FPS</span>
+</div>
+</div>
+<!-- Section 2: Accident Detection Model Comparison -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden shadow-sm flex flex-col">
+<div class="bg-surface-container px-space-lg py-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Accident &amp; Collision Detection: YOLO11x Comparison</h2>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">CADP (Car Accident Detection Dataset) Benchmark Matrix</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-caps text-label-caps text-secondary-fixed bg-secondary-fixed/10 px-2 py-0.5 rounded uppercase">2.01x INT8 Accel</span>
+<span class="font-data-mono-sm text-data-mono-sm text-primary bg-surface-container-high px-2 py-0.5 rounded">Target: &lt;20ms</span>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<tr>
+<th class="py-2.5 px-space-lg" scope="col">Model Architecture</th>
+<th class="py-2.5 px-space-md" scope="col">Backbone</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Precision</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Recall</th>
+<th class="py-2.5 px-space-md text-right" scope="col">mAP@50</th>
+<th class="py-2.5 px-space-lg text-right" scope="col">Inference Latency (batch=1)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40">
+<tr class="bg-primary/5 hover:bg-primary/10 transition-colors">
+<td class="py-2.5 px-space-lg font-semibold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">bolt</span>
+                Drishti YOLO11x (Ours - INT8)
+              </td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">CSP-Darknet + BiFPN</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">93.1%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">91.4%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">0.942</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">14.2 ms</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Standard YOLO11x (FP16)</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">CSP-Darknet</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">93.4%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">91.0%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">0.944</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-on-surface-variant">28.6 ms</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">YOLOv8x baseline</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">Darknet</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">89.2%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">87.5%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">0.901</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-outline">32.1 ms</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Faster R-CNN ResNet-101</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">ResNet-101</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">86.5%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">84.2%</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">0.873</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-error">68.4 ms</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-space-lg py-2 bg-surface-container/40 flex items-center justify-between text-outline text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm">INT8 quantization yields a 2.01x speedup on Intel Arc A770 with negligible (-0.2% mAP) precision degradation.</span>
+<span class="font-label-caps text-label-caps text-secondary font-semibold">ZERO ACCURACY CLIFF</span>
+</div>
+</div>
+<!-- Section 3 & 4: Dual Grid Bento Panels -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- Section 3: End-to-End Pipeline Evaluation -->
+<div class="xl:col-span-7 bg-surface-container-low rounded-lg overflow-hidden shadow-sm flex flex-col justify-between">
+<div>
+<div class="bg-surface-container px-space-lg py-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary"></div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">End to End: Whole Pipeline Live Benchmark</h2>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Real CCTV Evaluation Stream Suite</span>
+</div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm text-tertiary bg-tertiary/10 px-2 py-0.5 rounded">48 Stream Load</span>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<tr>
+<th class="py-2.5 px-space-lg" scope="col">Task Scenario</th>
+<th class="py-2.5 px-space-md" scope="col">Footage</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Detected</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Delay</th>
+<th class="py-2.5 px-space-lg text-right" scope="col">False Leads</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40">
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Highway high-speed collision</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">11 real events</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">10/11 (90.9%)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">1.4s</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">0</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Sudden crowd stampede / dispersal</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">8 real events</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">8/8 (100%)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">2.1s</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-tertiary">1</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Unattended luggage in concourse</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">14 test drops</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">13/14 (92.8%)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-outline">180.0s (gate)</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">0</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Perimeter fence scaling / intrusion</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">9 simulated trials</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">9/9 (100%)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">0.8s</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">0</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Weapon brandishing detection</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">6 simulated trials</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">5/6 (83.3%)</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">1.1s</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-tertiary">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="px-space-lg py-2 bg-surface-container/40 flex items-center justify-between text-outline text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm">Trigger threshold: 4-frame temporal persistence verification</span>
+<span class="font-label-caps text-label-caps text-primary">AVG LATENCY: 1.35s</span>
+</div>
+</div>
+<!-- Section 4: False Alarm Suppression Filter Comparison -->
+<div class="xl:col-span-5 bg-surface-container-low rounded-lg overflow-hidden shadow-sm flex flex-col justify-between">
+<div>
+<div class="bg-surface-container px-space-lg py-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-2.5 h-2.5 rounded-full bg-error"></div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">False Alarm Suppression</h2>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Raw Detector vs. Multi-Stage Filter</span>
+</div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary bg-secondary/10 px-2 py-0.5 rounded">Net -89.2% Fatigue</span>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<tr>
+<th class="py-2.5 px-space-lg" scope="col">Threat Family</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Raw</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Filtered</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Alerts</th>
+<th class="py-2.5 px-space-lg text-right" scope="col">Reduction</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40">
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Vehicle Incidents</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-outline">342</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">298</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-semibold">44</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">87.1%</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Crowd Dispersal</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-outline">188</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">161</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-semibold">27</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">85.6%</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface">Intrusions &amp; Loiter</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-outline">512</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">471</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-semibold">41</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">92.0%</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors bg-surface-container/40">
+<td class="py-2.5 px-space-lg font-semibold text-secondary">Combined Overall</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-outline">1,042</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface-variant">930</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary font-bold">112</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary font-bold">89.2%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="px-space-lg py-2 bg-surface-container/40 flex items-center justify-between text-outline text-body-sm">
+<span class="font-data-mono-sm text-data-mono-sm">930 non-critical nuisance triggers eliminated</span>
+<span class="font-label-caps text-label-caps text-secondary">OPERATOR SHIELD ACTIVE</span>
+</div>
+</div>
+</div>
+<!-- Section 5: Edge Inference Speed & System Resource Budget -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden shadow-sm flex flex-col">
+<div class="bg-surface-container px-space-lg py-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Inference Speed &amp; Memory Footprint Per Stage</h2>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Edge-Cluster Node Hardware Budget Allocation</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 font-data-mono-sm text-data-mono-sm text-outline">
+<span>TOTAL VRAM:</span>
+<span class="text-secondary font-semibold">2.66 GB / 16 GB</span>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-high/60 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<tr>
+<th class="py-2.5 px-space-lg" scope="col">Pipeline Component</th>
+<th class="py-2.5 px-space-md" scope="col">Framework / Runtime</th>
+<th class="py-2.5 px-space-md" scope="col">Execution Unit</th>
+<th class="py-2.5 px-space-md" scope="col">Concurrency</th>
+<th class="py-2.5 px-space-md text-right" scope="col">Latency / Frame</th>
+<th class="py-2.5 px-space-lg text-right" scope="col">VRAM / RAM</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40">
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">movie</span>
+                Video Decoder (H.264/H.265)
+              </td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">FFmpeg VAAPI / QSV</td>
+<td class="py-2.5 px-space-md">
+<span class="bg-surface-container-high text-on-surface px-2 py-0.5 rounded font-data-mono-sm text-data-mono-sm">Intel iGPU</span>
+</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">6 streams</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">2.8 ms</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">340 MB VRAM</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">view_in_ar</span>
+                YOLO11x Detector
+              </td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">OpenVINO INT8</td>
+<td class="py-2.5 px-space-md">
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded font-data-mono-sm text-data-mono-sm font-semibold">Intel Arc A770</span>
+</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">6 streams</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary font-semibold">14.2 ms</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary font-semibold">1.8 GB VRAM</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">groups</span>
+                Temporal CNN Crowd Verifier
+              </td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">OpenVINO FP16</td>
+<td class="py-2.5 px-space-md">
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded font-data-mono-sm text-data-mono-sm font-semibold">Intel Arc A770</span>
+</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">1 stream</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">6.4 ms</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">520 MB VRAM</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-2.5 px-space-lg font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">account_tree</span>
+                Rule Gate &amp; Tracker (ByteTrack)
+              </td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">C++ / Cython</td>
+<td class="py-2.5 px-space-md">
+<span class="bg-surface-container-high text-on-surface px-2 py-0.5 rounded font-data-mono-sm text-data-mono-sm">Host CPU (4 cores)</span>
+</td>
+<td class="py-2.5 px-space-md font-data-mono-sm text-data-mono-sm text-on-surface-variant">6 streams</td>
+<td class="py-2.5 px-space-md text-right font-data-mono-md text-data-mono-md text-primary">1.9 ms</td>
+<td class="py-2.5 px-space-lg text-right font-data-mono-md text-data-mono-md text-secondary">180 MB RAM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Resource Utilization Footnote Bar -->
+<div class="px-space-lg py-2.5 bg-surface-container/40 flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-outline uppercase">Arc A770 Memory Headroom:</span>
+<div class="w-32 h-1.5 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary rounded-full" style="width: 16.6%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary">16.6%</span>
+</div>
+<div class="hidden md:flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-outline uppercase">CPU Budget:</span>
+<div class="w-20 h-1.5 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-primary rounded-full" style="width: 7.1%;"></div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm text-primary">4 / 56 Cores</span>
+</div>
+</div>
+<div class="flex items-center gap-1 font-label-caps text-label-caps text-outline uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+          REAL-TIME PIPELINE HEADROOM VERIFIED
+        </div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

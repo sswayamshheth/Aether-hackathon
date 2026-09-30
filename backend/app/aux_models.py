@@ -74,7 +74,6 @@ class AuxModel:
     def __init__(self) -> None:
         self.available = False
         self.backend = ""
-        self._lock = threading.Lock()
 
     def run(self, image: np.ndarray) -> dict:
         raise NotImplementedError
@@ -96,7 +95,7 @@ class YoloAux(AuxModel):
         self.available = True
 
     def run(self, image: np.ndarray) -> dict:
-        with self._lock:
+        with config.INFER_LOCK:
             r = self.model.predict(image, imgsz=self.imgsz, conf=self.conf, device=self.dev, verbose=False)[0]
         return {"dets": [{"cls": self.names[int(c)], "conf": round(float(p), 3),
                           "box": [round(float(v), 1) for v in b]}
@@ -134,7 +133,7 @@ class ViolenceAux(AuxModel):
         rgb = cv2.cvtColor(cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2RGB)
         x = (rgb.astype(np.float32) / 255.0 - 0.5) / 0.5
         t = self.torch.from_numpy(x.transpose(2, 0, 1)[None]).to(self.dev)
-        with self._lock, self.torch.no_grad():
+        with config.INFER_LOCK, self.torch.no_grad():
             p = self.torch.softmax(self.model(t), -1)[0].float().cpu().numpy()
         return {"p": round(float(p[self.violent_index]), 4)}
 
@@ -172,7 +171,7 @@ class SceneAux(AuxModel):
         import cv2
 
         rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        with self._lock, self.torch.no_grad():
+        with config.INFER_LOCK, self.torch.no_grad():
             px = self.proc(images=rgb, return_tensors="pt")["pixel_values"].to(self.dev, self.dtype)
             ie = self.model.get_image_features(pixel_values=px)
             ie = ie / ie.norm(dim=-1, keepdim=True)

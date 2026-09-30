@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed":"#6bff8f","surface-tint":"#a6c8ff","tertiary-fixed-dim":"#ffb95f","inverse-surface":"#dee2ed","on-primary-fixed":"#001c3b","surface-container-lowest":"#090e15","on-secondary-container":"#004119","surface-container-highest":"#30353d","surface":"#0f141b","surface-container":"#1b2027","background":"#0f141b","on-primary":"#003060","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#4ae176","outline-variant":"#414752","tertiary-container":"#ca8100","on-error-container":"#ffdad6","primary":"#a6c8ff","on-secondary-fixed-variant":"#005321","surface-variant":"#30353d","on-primary-container":"#002a54","on-error":"#690005","error-container":"#93000a","on-background":"#dee2ed","on-primary-fixed-variant":"#004787","inverse-primary":"#005eb1","surface-bright":"#353941","on-tertiary-fixed":"#2a1700","surface-container-high":"#252a32","surface-dim":"#0f141b","surface-container-low":"#171c23","on-tertiary-container":"#3e2400","on-tertiary-fixed-variant":"#653e00","on-surface":"#dee2ed","tertiary-fixed":"#ffddb8","primary-fixed-dim":"#a6c8ff","on-surface-variant":"#c1c6d4","primary-container":"#4792f0","on-secondary":"#003915","outline":"#8b919e","secondary-container":"#00b954","on-tertiary":"#472a00","on-secondary-fixed":"#002109","secondary":"#4ae176","tertiary":"#ffb95f","inverse-on-surface":"#2c3138","error":"#ffb4ab"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"0.5rem","space-sm":"0.375rem","space-xs":"0.25rem","space-xl":"1rem","space-lg":"0.75rem","space-md":"0.5rem",margin:"0.75rem"},fontFamily:{"title-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Inter"],"label-caps":["JetBrains Mono"],"headline-xl":["Inter"],"data-mono-lg":["JetBrains Mono"],"body-md":["Inter"],"headline-sm":["Inter"],"data-mono-md":["JetBrains Mono"],"data-mono-sm":["JetBrains Mono"]},fontSize:{"title-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"600"}],"body-sm":["0.75rem",{lineHeight:"1rem",letterSpacing:"0",fontWeight:"400"}],"headline-lg":["1.375rem",{lineHeight:"1.75rem",letterSpacing:"-0.015em",fontWeight:"600"}],"label-caps":["0.625rem",{lineHeight:"0.75rem",letterSpacing:"0.08em",fontWeight:"600"}],"headline-xl":["1.75rem",{lineHeight:"2.25rem",letterSpacing:"-0.02em",fontWeight:"600"}],"data-mono-lg":["1rem",{lineHeight:"1.25rem",letterSpacing:"-0.02em",fontWeight:"600"}],"body-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"400"}],"headline-sm":["1.125rem",{lineHeight:"1.5rem",letterSpacing:"-0.01em",fontWeight:"600"}],"data-mono-md":["0.8125rem",{lineHeight:"1rem",letterSpacing:"-0.01em",fontWeight:"500"}],"data-mono-sm":["0.6875rem",{lineHeight:"0.875rem",letterSpacing:"0.02em",fontWeight:"500"}]}}}}</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-14 bg-surface-container-low border-r border-outline-variant/40 flex flex-col items-center py-space-sm z-30 justify-between"><div class="flex flex-col items-center gap-space-md"><div class="w-9 h-9 rounded bg-surface-container border border-outline-variant/50 flex items-center justify-center p-0.5 shadow-sm"><img alt="Drishti Eye Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UrgZstrSu5FakepnhYz4fBF4_zGWxYb2o-ED8x7spC89iYLIwG-LvPIUapMeeIMBeeRatwMW4Un_nd8IT7QWpNxZoRmYylwqwcBi3_Z6diU6hZEAybNJMMOjNiVxdtnM3G_S95PPcJSHEHTCpNs76xTYhMUQuSTMkYwQ7Z6cyu47RIWELTLPHmdTO_EPXIcYqUcY2DjRV4XZPKMhKU2b9WDr4ulcTYRQkuM254yDGm2FtR4J5AJ1Dk-WxA"/></div><nav class="flex flex-col items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container border border-primary/40"><a aria-current="page" class="w-9 h-9 rounded flex items-center justify-center transition-colors group bg-primary-container text-on-primary-container border border-primary/40" data-path="command-center" href="#" title="Command Center"><span class="material-symbols-outlined text-[20px]">grid_view</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="cameras" href="#" title="Cameras"><span class="material-symbols-outlined text-[20px]">videocam</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="zone-editor" href="#" title="Zone Editor"><span class="material-symbols-outlined text-[20px]">draw</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="analytics" href="#" title="Analytics"><span class="material-symbols-outlined text-[20px]">bar_chart</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="ai-models" href="#" title="AI Models &amp; Benchmarks"><span class="material-symbols-outlined text-[20px]">hub</span></a></nav></div><div class="flex flex-col items-center gap-space-md"><button class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="System Settings" type="button"><span class="material-symbols-outlined text-[20px]">settings</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-1 ring-outline-variant/40"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></aside><div class="pl-14"><header class="fixed top-0 left-14 right-0 h-12 bg-surface-container-low border-b border-outline-variant/40 px-space-xl flex items-center justify-between z-20"><div class="flex items-center gap-space-xs font-body-sm"><span class="font-title-md text-title-md text-on-surface">Drishti</span><span class="text-outline-variant">/</span><span class="font-body-sm text-body-sm text-on-surface-variant">Tactical Matrix</span><span class="bg-surface-container font-label-caps text-label-caps text-on-surface-variant px-space-xs py-0.5 rounded border border-outline-variant/60 tracking-wider ml-space-xs">DEMO REPLAY</span></div><div class="flex items-center gap-space-md font-data-mono-sm text-data-mono-sm text-outline"><div class="flex items-center gap-space-xs"><span>CAMERAS</span><span class="text-on-surface font-semibold">4/6</span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-space-xs"><span>AVG FPS</span><span class="text-on-surface font-semibold">4.9</span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-space-xs bg-error-container/20 text-error px-space-xs py-0.5 rounded border border-error/30 animate-pulse font-semibold"><span>OPEN</span><span>2</span></div><span class="text-outline-variant">|</span><span class="text-outline-variant text-[10px]">OpenVINO (CPU)</span><span class="text-outline-variant">|</span><button class="text-outline hover:text-on-surface flex items-center transition-colors" title="Toggle Audio" type="button"><span class="material-symbols-outlined text-[16px]">volume_up</span></button><span class="text-outline-variant">|</span><div class="flex items-center gap-1.5 text-secondary"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse inline-block"></span><span class="font-semibold tracking-wide uppercase">Live</span></div></div></header><main class="w-full pt-12 min-h-screen bg-surface-container-lowest text-on-surface"><div class="flex flex-col w-full">
+<div class="flex h-[calc(100vh-48px)] w-full overflow-hidden bg-surface-container-lowest">
+<!-- LEFT SECTION: TACTICAL VIDEO MATRIX -->
+<section aria-label="Live Video Matrix Panel" class="flex flex-1 flex-col p-space-md overflow-hidden bg-surface-container-lowest min-w-0">
+<!-- Top Sub-Bar -->
+<div class="flex items-center justify-between pb-space-xs mb-space-sm bg-surface-container-low px-space-md py-space-xs rounded shadow-sm">
+<!-- Left: Stream metadata & wall toggle -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Live Video Matrix</span>
+<span class="font-data-mono-sm text-data-mono-sm bg-surface-container-highest/80 text-on-surface-variant px-space-xs py-0.5 rounded">4 FEEDS ACTIVE</span>
+</div>
+<span class="text-outline-variant/60">/</span>
+<div class="flex items-center gap-1.5 bg-secondary/10 px-space-xs py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-secondary font-bold tracking-wider">ACTIVE RECOG: ON</span>
+</div>
+<button class="flex items-center gap-1 bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface px-space-xs py-0.5 rounded transition-colors text-body-sm font-body-sm" id="viewGridBtn" type="button">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span class="font-label-caps text-label-caps uppercase">Wall [Esc]</span>
+</button>
+</div>
+<!-- Right: Quick stream filter pills -->
+<div aria-label="Camera location filters" class="flex items-center gap-space-xs" role="tablist">
+<button class="stream-filter-btn px-space-md py-0.5 rounded bg-primary text-on-primary font-body-sm text-body-sm transition-all shadow-sm" data-filter="all" type="button">All Cameras</button>
+<button class="stream-filter-btn px-space-md py-0.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-body-sm text-body-sm transition-all" data-filter="t1" type="button">Terminal 1</button>
+<button class="stream-filter-btn px-space-md py-0.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-body-sm text-body-sm transition-all" data-filter="perimeter" type="button">Perimeter Gate</button>
+<button class="stream-filter-btn px-space-md py-0.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-body-sm text-body-sm transition-all" data-filter="nexus" type="button">Traffic Nexus</button>
+</div>
+</div>
+<!-- CAMERA GRID: 2x2 Tactical Grid -->
+<div class="grid grid-cols-2 grid-rows-2 gap-gutter flex-1 min-h-0 relative" id="videoGridStage">
+<!-- FEED 1: Concourse Anomaly -->
+<div class="relative group rounded overflow-hidden bg-surface-container flex flex-col shadow-md">
+<!-- Feed Header HUD -->
+<div class="h-7 px-space-sm bg-surface-container-low/95 backdrop-blur flex items-center justify-between z-10 font-data-mono-sm text-data-mono-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span class="text-on-surface font-semibold">CAM-01-G1E</span>
+<span class="text-outline-variant">·</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate max-w-[140px]">Gate 1 East - Concourse</span>
+</div>
+<div class="flex items-center gap-space-md text-outline">
+<span>1080p</span>
+<span class="text-on-surface font-semibold">5.1 FPS</span>
+<button class="text-outline hover:text-on-surface transition-colors" title="Maximize View" type="button">
+<span class="material-symbols-outlined text-[16px]">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Video Surface with Generated Content & Overlays -->
+<div class="relative flex-1 bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover opacity-85" data-alt="High angle surveillance CCTV shot of an ultra-modern concrete airport concourse with scattered travelers, cold blue-gray security color temperature, harsh fluorescent ceiling luminaires, dark slate floor, hyper-realistic surveillance footage perspective." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLWx4NKOujT696NAVTzfgFrbAVhW-7fm2EEmpXBrMD78TUiWZVIf7oqhTlHUK5Aql6D9RWwfV57MxWavV4taOsNHMJX2ctvbt5B2VqzI7bD62so03XkztYCsjptq8v6ZGrLhLkM14wSFhh4-8XEtxoIIHrDG6kCwPsI5h-I5a3TV-0CmX99p_gl-CmBCdzSFKb0HZyulD1og5caOQIUOyAsgNmsfnxZpqSnVAVC0C8nBfSxmACnr2bsg"/>
+<!-- Real-time Tactical Overlays -->
+<div class="absolute inset-0 pointer-events-none p-space-md flex flex-col justify-between">
+<!-- Top Left Timestamp -->
+<div class="font-data-mono-sm text-data-mono-sm bg-surface-container-lowest/80 text-on-surface-variant px-space-xs py-0.5 rounded self-start">
+                2026-09-30 21:04:12 UTC
+              </div>
+<!-- AI Bounding Box Anomaly Indicator -->
+<div class="absolute top-[38%] left-[44%] w-36 h-40 bg-error/15 rounded shadow-[0_0_15px_rgba(255,180,171,0.35)] animate-pulse">
+<!-- Reticle corners -->
+<div class="absolute -top-1 -left-1 w-2.5 h-2.5 bg-error"></div>
+<div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-error"></div>
+<div class="absolute -bottom-1 -left-1 w-2.5 h-2.5 bg-error"></div>
+<div class="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-error"></div>
+<!-- Box HUD Label -->
+<div class="absolute -top-5 left-0 bg-error text-on-error px-1 py-0.5 font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[11px]">warning</span>
+<span>UNATTENDED_BAG 0.94</span>
+</div>
+</div>
+<!-- Bottom Right Calibration Crosshair -->
+<div class="self-end font-data-mono-sm text-data-mono-sm text-outline-variant bg-surface-container-lowest/70 px-space-xs py-0.5 rounded">
+                GEO [28.5562° N, 77.1000° E] · PTZ: LOCK
+              </div>
+</div>
+</div>
+</div>
+<!-- FEED 2: Perimeter North - Arterial Collision (ACTIVE INCIDENT PRIMARY) -->
+<div class="relative group rounded overflow-hidden bg-surface-container flex flex-col shadow-lg shadow-error/10 ring-1 ring-error/50">
+<!-- Feed Header HUD -->
+<div class="h-7 px-space-sm bg-surface-container-low/95 backdrop-blur flex items-center justify-between z-10 font-data-mono-sm text-data-mono-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="text-error font-semibold">CAM-02-PNR</span>
+<span class="text-outline-variant">·</span>
+<span class="text-on-surface font-body-sm text-body-sm truncate max-w-[150px]">Perimeter North - Perimeter Rd</span>
+</div>
+<div class="flex items-center gap-space-md text-outline">
+<span class="bg-error/20 text-error px-1 rounded font-label-caps text-label-caps">INCIDENT #003</span>
+<span class="text-on-surface font-semibold">4.8 FPS</span>
+<button class="text-outline hover:text-on-surface transition-colors" title="Maximize View" type="button">
+<span class="material-symbols-outlined text-[16px]">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Video Surface with Road Collision Overlay -->
+<div class="relative flex-1 bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover opacity-90" data-alt="Overhead tactical telephoto CCTV camera footage of a four-lane perimeter asphalt roadway at dusk, two sedans involved in an angled fender collision causing lane blockade, wet road reflections, warning hazard lights, cold atmospheric tactical command color grade." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSsPpdW3w1cf7iN5SJCBVBXHGFVoZMJLxaoAO1-1Hhz2Uq0CSkx9T6R83e5--hEn1gV7EeC0KEt6cOO5c9QTkR8Ap4Q7Ia8pDEUtE5Ah6Wfkw60LbXPyQjkXP2bJlMM_QyVlxcbnqm5A81N3JXbCwrFtW3ppR_7eoi_kBweOqn163d4KnYt45_W9KTvQYw8tBSHiCRtHWadi31el_PiXOWLwXF36dW2LUwyuzeVwCNKLdEXTK23tGwbA"/>
+<!-- SVG Vector Lane Geometry & Tactical Overlay -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="rgba(166, 200, 255, 0.08)" points="40,240 220,110 330,110 180,240"></polygon>
+<polygon fill="rgba(255, 180, 171, 0.15)" points="190,240 340,110 460,110 320,240" stroke="rgba(255, 180, 171, 0.6)" stroke-dasharray="4 2"></polygon>
+</svg>
+<!-- Incident Halo Box -->
+<div class="absolute top-[28%] left-[34%] w-48 h-32 bg-error/15 rounded shadow-[0_0_24px_rgba(255,180,171,0.45)]">
+<div class="absolute -top-6 left-0 bg-error text-on-error font-label-caps text-label-caps px-space-xs py-0.5 rounded flex items-center gap-1 font-bold shadow-sm">
+<span class="material-symbols-outlined text-[12px]">car_crash</span>
+<span>ACCIDENT DETECTED (CONF: 0.98)</span>
+</div>
+<div class="absolute bottom-1 right-2 font-data-mono-sm text-data-mono-sm text-error bg-surface-container-lowest/80 px-1 rounded">
+                LANE 2/3 OBSTRUCTED
+              </div>
+</div>
+<!-- Bottom Left Telemetry -->
+<div class="absolute bottom-2 left-2 font-data-mono-sm text-data-mono-sm bg-surface-container-lowest/90 text-on-surface-variant px-space-xs py-0.5 rounded pointer-events-none">
+              SPEED: 0 KM/H [HALTED] · QUEUE DEPTH: +4 VEHICLES
+            </div>
+</div>
+</div>
+<!-- FEED 3: South Plaza - Fountain Quad -->
+<div class="relative group rounded overflow-hidden bg-surface-container flex flex-col shadow-md">
+<div class="h-7 px-space-sm bg-surface-container-low/95 backdrop-blur flex items-center justify-between z-10 font-data-mono-sm text-data-mono-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-on-surface font-semibold">CAM-03-SPF</span>
+<span class="text-outline-variant">·</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate max-w-[140px]">South Plaza - Fountain Quad</span>
+</div>
+<div class="flex items-center gap-space-md text-outline">
+<span class="text-secondary font-label-caps text-label-caps">HEATMAP ON</span>
+<span class="text-on-surface font-semibold">5.0 FPS</span>
+<button class="text-outline hover:text-on-surface transition-colors" title="Maximize View" type="button">
+<span class="material-symbols-outlined text-[16px]">fullscreen</span>
+</button>
+</div>
+</div>
+<div class="relative flex-1 bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover opacity-85" data-alt="Monochrome surveillance lens view of an urban outdoor civic plaza courtyard with decorative water fountain and disperse walking pedestrians, clean architectural concrete pavers, dusk ambient setting with crisp low-noise optical clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS3yOcW-iNMIIIxbHkOA2nVJZyPRgv93PlvsXjgWGNtJBJO1jKOvpmWciVjEa8KAXoPEG2xSh4BG8LDqvLIo0vvPjNbcynRmQQH1TB77Hhhrfgh8-uE5WSn5vI5-IRNek8G6eJm0E4aR7U-bd6yeQ6b5i67tEmKr-sv9yLFm-CeJlgJL1_I9yHUmP1sEAiH8hSmntFsEpLhU1x8k5wMANVzBGABBHAf9dh2pCClDUUadhYlGquex7Zzg"/>
+<!-- Heatmap Gradient Tint Overlay -->
+<div class="absolute inset-0 bg-gradient-to-tr from-secondary/15 via-tertiary/10 to-transparent pointer-events-none mix-blend-screen"></div>
+<div class="absolute bottom-2 left-2 font-data-mono-sm text-data-mono-sm bg-surface-container-lowest/80 text-on-surface-variant px-space-xs py-0.5 rounded pointer-events-none flex items-center gap-2">
+<span class="text-secondary">DENSITY: NOMINAL (22 PAX)</span>
+<span class="text-outline-variant">|</span>
+<span>FLOW VECTOR: SW 1.2M/S</span>
+</div>
+</div>
+</div>
+<!-- FEED 4: Cargo Gate 3 - Logistics Bay -->
+<div class="relative group rounded overflow-hidden bg-surface-container flex flex-col shadow-md">
+<div class="h-7 px-space-sm bg-surface-container-low/95 backdrop-blur flex items-center justify-between z-10 font-data-mono-sm text-data-mono-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-on-surface font-semibold">CAM-04-CG3</span>
+<span class="text-outline-variant">·</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm truncate max-w-[140px]">Cargo Gate 3 - Logistics Bay</span>
+</div>
+<div class="flex items-center gap-space-md text-outline">
+<span class="bg-surface-container-highest px-1 rounded text-on-surface font-label-caps text-label-caps">IR NIGHT-VISION</span>
+<span class="text-on-surface font-semibold">4.7 FPS</span>
+<button class="text-outline hover:text-on-surface transition-colors" title="Maximize View" type="button">
+<span class="material-symbols-outlined text-[16px]">fullscreen</span>
+</button>
+</div>
+</div>
+<div class="relative flex-1 bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover filter contrast-125 brightness-90" data-alt="Monochromatic infrared thermal CCTV view of an industrial high-security cargo loading dock with heavy transport trailers, perimeter chainlink barbed fence, illuminated halogen yard lamps creating stark industrial silhouettes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU824r5-pqf8Jr9zIESCb1NxeFmjIrbpKj-8H7AcWjl4gqriGgBjLe39cnFiPGh3OUJFQwLsFmOFAALy9joPXpPTiAOeqA-pfW1aooiP0Av6cdA-8-2nZ3JYL_7kD0uzz2tgQ3c1H_odZHB1COLRwxmdI3Ef1vF3gnDwztrlVOgO4MsfMGHIyGIv5UyXx9ycMeZznWJASSJUKTgUiFiS7A63ZpUeOAoF1_6FXDhSEIbFJN9hoddjO-1w"/>
+<!-- Night-vision HUD Crosshair Overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-24 h-24 rounded-full border border-primary/20 flex items-center justify-center">
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="absolute bottom-2 left-2 font-data-mono-sm text-data-mono-sm bg-surface-container-lowest/80 text-on-surface-variant px-space-xs py-0.5 rounded pointer-events-none">
+              OPTICAL SENSOR: FLIR TAU2 · TEMP: 18.4°C · NO MOTION ALARMS
+            </div>
+</div>
+</div>
+</div>
+<!-- BOTTOM FILMSTRIP / TELEMETRY RUNNER -->
+<div class="h-8 mt-gutter bg-surface-container-low rounded px-space-md flex items-center justify-between text-outline text-data-mono-sm font-data-mono-sm shadow-sm">
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">view_carousel</span>
+<span class="text-on-surface font-semibold">STREAM STATUS MATRIX:</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-on-surface-variant">CAM-01: 5.1f / 84ms</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="text-error font-semibold">CAM-02: 4.8f / 92ms [EVT]</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-on-surface-variant">CAM-03: 5.0f / 79ms</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-on-surface-variant">CAM-04: 4.7f / 104ms</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md text-[10px]">
+<span class="text-outline-variant font-label-caps text-label-caps">ENCODER: H.265 HW-ACCEL</span>
+<span class="text-secondary font-bold font-data-mono-sm text-data-mono-sm">NETWORK OK (14.2 Mbps)</span>
+</div>
+</div>
+</section>
+<!-- RIGHT SECTION: INCIDENT QUEUE SIDEBAR (384px Fixed Width) -->
+<aside aria-label="Incident Queue Panel" class="w-96 h-full bg-surface-container-low flex flex-col shrink-0 shadow-xl">
+<!-- Queue Header Bar -->
+<div class="h-11 px-space-md bg-surface-container flex items-center justify-between shrink-0">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-error">emergency_home</span>
+<h2 class="font-title-md text-title-md text-on-surface">Incident Queue</h2>
+</div>
+<!-- Segmented Control Pills -->
+<div class="flex items-center bg-surface-container-lowest p-0.5 rounded font-body-sm text-body-sm" role="tablist">
+<button aria-selected="true" class="px-space-sm py-0.5 rounded bg-surface-container text-on-surface font-medium transition-colors shadow-sm" role="tab" type="button">Open (2)</button>
+<button aria-selected="false" class="px-space-sm py-0.5 rounded text-outline hover:text-on-surface transition-colors" role="tab" type="button">Confirmed (14)</button>
+<button aria-selected="false" class="px-space-sm py-0.5 rounded text-outline hover:text-on-surface transition-colors" role="tab" type="button">Dismissed (38)</button>
+</div>
+</div>
+<!-- Scrollable Incident Items Container -->
+<div class="flex-1 overflow-y-auto flex flex-col divide-y divide-surface-container-highest/20">
+<!-- ITEM 1: CRITICAL ACTIVE INCIDENT (Selected State) -->
+<article class="p-space-md bg-surface-container relative flex flex-col gap-space-xs shadow-inner" style="box-shadow: inset 4px 0 0 0 #ffb4ab;">
+<!-- Row 1: Header Badge + Title + Score -->
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 flex-1 min-w-0">
+<span class="bg-error/20 text-error font-data-mono-sm text-data-mono-sm font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                CRITICAL
+              </span>
+<h3 class="font-title-md text-title-md text-on-surface truncate">Traffic collision &amp; debris</h3>
+</div>
+<span class="font-data-mono-lg text-data-mono-lg text-error font-bold tracking-tight shrink-0">94/100</span>
+</div>
+<!-- Row 2: Location & Relative Time -->
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="truncate">Perimeter Rd · Gate 1 east, Gate 2 west</span>
+<span class="font-data-mono-sm text-data-mono-sm text-outline shrink-0">12s ago</span>
+</div>
+<!-- Expanded 2-Column Detail Area -->
+<div class="mt-space-xs grid grid-cols-[104px_1fr] gap-space-md p-space-xs bg-surface-container-lowest/80 rounded">
+<!-- Left: Keyframe Thumbnail Mockup -->
+<div class="relative w-[104px] h-[68px] rounded overflow-hidden bg-surface-container-lowest shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Tactical tight crop surveillance snapshot of two damaged sedans impacted on perimeter asphalt with vehicle fragments, high contrast night photography with red emergency bounding reticle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATwx97w2CZoVPvjlbSXOSlEVhisPNsli3KCScuNrcrzbhr5ICllhDAbVGjkFqErnGXZIIBeeh_tIaj54cq4qGL3D_LXrChI7rRpI-xzRJXeodE60JSvN8RjAICaT1j8QrGaXnqtTJP7Ep6MRamcQFj-6RzNas6uIfc256_muIIel0Z543KMzwfLNLA9YmM6GIen9LbZ_IO0q5Q2cxtFd_1ygmMWrrraoVLdupSi3oAcuv13gmtMJtq2Q"/>
+<div class="absolute inset-0 bg-error/15 ring-1 ring-inset ring-error/40 flex items-end p-0.5">
+<span class="bg-error text-on-error font-label-caps text-label-caps px-0.5 rounded font-bold">SNAPSHOT</span>
+</div>
+</div>
+<!-- Right: Top 3 Severity Contribution Reasons -->
+<div class="flex flex-col justify-between py-0.5 font-data-mono-sm text-data-mono-sm min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="text-on-surface-variant truncate">Multi-vehicle collision</span>
+<span class="text-error font-semibold shrink-0">+45</span>
+</div>
+<div class="flex items-center justify-between gap-1">
+<span class="text-on-surface-variant truncate">Arterial lane obstruction</span>
+<span class="text-tertiary font-semibold shrink-0">+30</span>
+</div>
+<div class="flex items-center justify-between gap-1">
+<span class="text-on-surface-variant truncate">Cross-verified (2 Cams)</span>
+<span class="text-primary font-semibold shrink-0">+19</span>
+</div>
+</div>
+</div>
+<!-- Action Button Bar -->
+<div class="mt-space-xs flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-xs">
+<button class="confirm-incident-btn bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md px-space-md py-1 rounded transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>Confirm</span>
+</button>
+<button class="dismiss-incident-btn bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm px-space-md py-1 rounded transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+<span>Dismiss</span>
+</button>
+</div>
+<a class="text-primary hover:text-surface-tint font-data-mono-sm text-data-mono-sm flex items-center gap-0.5 transition-colors" href="#" title="Deep Dive Forensic Dossier">
+<span>INC-003</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+</article>
+<!-- ITEM 2: HIGH SEVERITY INCIDENT -->
+<article class="p-space-md bg-surface-container-low hover:bg-surface-container transition-colors relative flex flex-col gap-space-xs cursor-pointer" style="box-shadow: inset 4px 0 0 0 #ffb95f;">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 flex-1 min-w-0">
+<span class="bg-tertiary-container/20 text-tertiary font-data-mono-sm text-data-mono-sm font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                HIGH
+              </span>
+<h3 class="font-title-md text-title-md text-on-surface truncate">Unattended baggage (&gt;3m stationary)</h3>
+</div>
+<span class="font-data-mono-lg text-data-mono-lg text-tertiary font-bold tracking-tight shrink-0">78/100</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="truncate">Concourse · Gate 1 east</span>
+<span class="font-data-mono-sm text-data-mono-sm text-outline shrink-0">2m ago</span>
+</div>
+<div class="flex items-center justify-between mt-1 text-data-mono-sm font-data-mono-sm text-outline">
+<span>OBJECT: LUGGAGE_HARDCASE</span>
+<span class="text-tertiary">CONFIDENCE: 94%</span>
+</div>
+</article>
+<!-- ITEM 3: MEDIUM SEVERITY (HANDLED/CONFIRMED) -->
+<article class="p-space-md bg-surface-container-low/60 hover:bg-surface-container transition-colors relative flex flex-col gap-space-xs opacity-75 cursor-pointer" style="box-shadow: inset 4px 0 0 0 rgba(255, 185, 95, 0.4);">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 flex-1 min-w-0">
+<span class="bg-surface-container-highest text-on-surface-variant font-data-mono-sm text-data-mono-sm font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                MEDIUM
+              </span>
+<h3 class="font-title-md text-title-md text-on-surface truncate">Crowd anomaly — sudden dispersal</h3>
+</div>
+<span class="font-data-mono-lg text-data-mono-lg text-on-surface-variant font-bold tracking-tight shrink-0">52/100</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="truncate">South Plaza · Plaza Cam 3</span>
+<span class="font-data-mono-sm text-data-mono-sm text-outline shrink-0">8m ago</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-secondary font-medium mt-0.5">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>Confirmed by operator (DISP_OP_04)</span>
+</div>
+</article>
+<!-- ITEM 4: LOW SEVERITY (HANDLED/DISMISSED) -->
+<article class="p-space-md bg-surface-container-low/40 hover:bg-surface-container transition-colors relative flex flex-col gap-space-xs opacity-50 cursor-pointer" style="box-shadow: inset 4px 0 0 0 rgba(139, 145, 158, 0.3);">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 flex-1 min-w-0">
+<span class="bg-surface-container text-outline font-data-mono-sm text-data-mono-sm font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                LOW
+              </span>
+<h3 class="font-title-md text-title-md text-on-surface-variant truncate">Loitering in restricted loading dock</h3>
+</div>
+<span class="font-data-mono-lg text-data-mono-lg text-outline font-bold tracking-tight shrink-0">34/100</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline">
+<span class="truncate">Logistics Bay · Cam 4</span>
+<span class="font-data-mono-sm text-data-mono-sm shrink-0">18m ago</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-outline font-medium mt-0.5">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+<span>Dismissed by operator (AUTHORIZED_STAFF)</span>
+</div>
+</article>
+</div>
+<!-- Footer Bar: Tactical Hotkey Assist -->
+<footer class="h-9 px-space-md bg-surface-container-lowest flex items-center justify-between text-outline text-data-mono-sm font-data-mono-sm shrink-0">
+<div class="flex items-center gap-space-sm">
+<span><kbd class="bg-surface-container-high text-on-surface px-1 py-0.5 rounded">J</kbd> <kbd class="bg-surface-container-high text-on-surface px-1 py-0.5 rounded">K</kbd> move</span>
+<span class="text-outline-variant">·</span>
+<span><kbd class="bg-surface-container-high text-on-surface px-1 py-0.5 rounded">C</kbd> confirm</span>
+<span class="text-outline-variant">·</span>
+<span><kbd class="bg-surface-container-high text-on-surface px-1 py-0.5 rounded">D</kbd> dismiss</span>
+</div>
+<div>
+<span><kbd class="bg-surface-container-high text-on-surface px-1 py-0.5 rounded">↵</kbd> details</span>
+</div>
+</footer>
+</aside>
+</div>
+</div>
+<script>
+  // Tactical Command Hotkeys & Interaction Logic
+  document.addEventListener('keydown', (e) => {
+    // Prevent overriding if user is typing in potential inputs
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key === 'c' || e.key === 'C') {
+      const confirmBtn = document.querySelector('.confirm-incident-btn');
+      if (confirmBtn) {
+        confirmBtn.classList.add('scale-95');
+        setTimeout(() => confirmBtn.classList.remove('scale-95'), 150);
+        // Visual feedback
+        const primaryArticle = confirmBtn.closest('article');
+        if (primaryArticle) {
+          primaryArticle.style.opacity = '0.6';
+          confirmBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">done_all</span><span>Dispatched</span>';
+        }
+      }
+    } else if (e.key === 'd' || e.key === 'D') {
+      const dismissBtn = document.querySelector('.dismiss-incident-btn');
+      if (dismissBtn) {
+        dismissBtn.classList.add('scale-95');
+        setTimeout(() => dismissBtn.classList.remove('scale-95'), 150);
+        const primaryArticle = dismissBtn.closest('article');
+        if (primaryArticle) {
+          primaryArticle.style.opacity = '0.35';
+        }
+      }
+    }
+  });
+
+  // Filter Buttons Toggle
+  const filterBtns = document.querySelectorAll('.stream-filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary');
+        b.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      btn.classList.add('bg-primary', 'text-on-primary');
+      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    });
+  });
+
+  // Expand Grid Toggle Behavior
+  const viewGridBtn = document.getElementById('viewGridBtn');
+  const stage = document.getElementById('videoGridStage');
+  if (viewGridBtn && stage) {
+    let singleFocus = false;
+    viewGridBtn.addEventListener('click', () => {
+      singleFocus = !singleFocus;
+      if (singleFocus) {
+        stage.classList.remove('grid-cols-2', 'grid-rows-2');
+        stage.classList.add('grid-cols-1');
+        // Hide other feeds for focus display
+        Array.from(stage.children).slice(1).forEach(el => el.classList.add('hidden'));
+        viewGridBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">grid_4x4</span><span class="font-label-caps text-label-caps uppercase">Grid [Esc]</span>';
+      } else {
+        stage.classList.add('grid-cols-2', 'grid-rows-2');
+        stage.classList.remove('grid-cols-1');
+        Array.from(stage.children).slice(1).forEach(el => el.classList.remove('hidden'));
+        viewGridBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">grid_view</span><span class="font-label-caps text-label-caps uppercase">Wall [Esc]</span>';
+      }
+    });
+  }
+</script></main></div></body></html>

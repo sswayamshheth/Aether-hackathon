@@ -14,7 +14,6 @@ from . import config
 from .schema import Track
 
 log = logging.getLogger("drishti.detector")
-_infer_lock = threading.Lock()
 
 
 def _resolve(name: str) -> tuple[str, str, str]:
@@ -47,7 +46,7 @@ class Detector:
 
     def detect(self, image: np.ndarray):
         """Returns an Ultralytics Boxes object (numpy) for the tracker."""
-        with _infer_lock:
+        with config.INFER_LOCK:
             r = self.model.predict(image, imgsz=config.DETECTOR_IMGSZ, conf=0.12, classes=self.classes,
                                    device=None if self.backend.startswith("OpenVINO") else self.dev,
                                    verbose=False)[0]

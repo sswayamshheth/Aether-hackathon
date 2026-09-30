@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed":"#6bff8f","surface-tint":"#a6c8ff","tertiary-fixed-dim":"#ffb95f","inverse-surface":"#dee2ed","on-primary-fixed":"#001c3b","surface-container-lowest":"#090e15","on-secondary-container":"#004119","surface-container-highest":"#30353d","surface":"#0f141b","surface-container":"#1b2027","background":"#0f141b","on-primary":"#003060","primary-fixed":"#d5e3ff","secondary-fixed-dim":"#4ae176","outline-variant":"#414752","tertiary-container":"#ca8100","on-error-container":"#ffdad6","primary":"#a6c8ff","on-secondary-fixed-variant":"#005321","surface-variant":"#30353d","on-primary-container":"#002a54","on-error":"#690005","error-container":"#93000a","on-background":"#dee2ed","on-primary-fixed-variant":"#004787","inverse-primary":"#005eb1","surface-bright":"#353941","on-tertiary-fixed":"#2a1700","surface-container-high":"#252a32","surface-dim":"#0f141b","surface-container-low":"#171c23","on-tertiary-container":"#3e2400","on-tertiary-fixed-variant":"#653e00","on-surface":"#dee2ed","tertiary-fixed":"#ffddb8","primary-fixed-dim":"#a6c8ff","on-surface-variant":"#c1c6d4","primary-container":"#4792f0","on-secondary":"#003915","outline":"#8b919e","secondary-container":"#00b954","on-tertiary":"#472a00","on-secondary-fixed":"#002109","secondary":"#4ae176","tertiary":"#ffb95f","inverse-on-surface":"#2c3138","error":"#ffb4ab"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"0.5rem","space-sm":"0.375rem","space-xs":"0.25rem","space-xl":"1rem","space-lg":"0.75rem","space-md":"0.5rem",margin:"0.75rem"},fontFamily:{"title-md":["Inter"],"body-sm":["Inter"],"headline-lg":["Inter"],"label-caps":["JetBrains Mono"],"headline-xl":["Inter"],"data-mono-lg":["JetBrains Mono"],"body-md":["Inter"],"headline-sm":["Inter"],"data-mono-md":["JetBrains Mono"],"data-mono-sm":["JetBrains Mono"]},fontSize:{"title-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"600"}],"body-sm":["0.75rem",{lineHeight:"1rem",letterSpacing:"0",fontWeight:"400"}],"headline-lg":["1.375rem",{lineHeight:"1.75rem",letterSpacing:"-0.015em",fontWeight:"600"}],"label-caps":["0.625rem",{lineHeight:"0.75rem",letterSpacing:"0.08em",fontWeight:"600"}],"headline-xl":["1.75rem",{lineHeight:"2.25rem",letterSpacing:"-0.02em",fontWeight:"600"}],"data-mono-lg":["1rem",{lineHeight:"1.25rem",letterSpacing:"-0.02em",fontWeight:"600"}],"body-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0",fontWeight:"400"}],"headline-sm":["1.125rem",{lineHeight:"1.5rem",letterSpacing:"-0.01em",fontWeight:"600"}],"data-mono-md":["0.8125rem",{lineHeight:"1rem",letterSpacing:"-0.01em",fontWeight:"500"}],"data-mono-sm":["0.6875rem",{lineHeight:"0.875rem",letterSpacing:"0.02em",fontWeight:"500"}]}}}}</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-14 bg-surface-container-low border-r border-outline-variant/40 flex flex-col items-center py-space-sm z-30 justify-between"><div class="flex flex-col items-center gap-space-md"><div class="w-9 h-9 rounded bg-surface-container border border-outline-variant/50 flex items-center justify-center p-0.5 shadow-sm"><img alt="Drishti Eye Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UrgZstrSu5FakepnhYz4fBF4_zGWxYb2o-ED8x7spC89iYLIwG-LvPIUapMeeIMBeeRatwMW4Un_nd8IT7QWpNxZoRmYylwqwcBi3_Z6diU6hZEAybNJMMOjNiVxdtnM3G_S95PPcJSHEHTCpNs76xTYhMUQuSTMkYwQ7Z6cyu47RIWELTLPHmdTO_EPXIcYqUcY2DjRV4XZPKMhKU2b9WDr4ulcTYRQkuM254yDGm2FtR4J5AJ1Dk-WxA"/></div><nav class="flex flex-col items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container border border-primary/40"><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="command-center" href="#" title="Command Center"><span class="material-symbols-outlined text-[20px]">grid_view</span></a><a aria-current="page" class="w-9 h-9 rounded flex items-center justify-center transition-colors group bg-primary-container text-on-primary-container border border-primary/40" data-path="cameras" href="#" title="Cameras"><span class="material-symbols-outlined text-[20px]">videocam</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="zone-editor" href="#" title="Zone Editor"><span class="material-symbols-outlined text-[20px]">draw</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="analytics" href="#" title="Analytics"><span class="material-symbols-outlined text-[20px]">bar_chart</span></a><a class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors group" data-path="ai-models" href="#" title="AI Models &amp; Benchmarks"><span class="material-symbols-outlined text-[20px]">hub</span></a></nav></div><div class="flex flex-col items-center gap-space-md"><button class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="System Settings" type="button"><span class="material-symbols-outlined text-[20px]">settings</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-1 ring-outline-variant/40"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></aside><div class="pl-14"><header class="fixed top-0 left-14 right-0 h-12 bg-surface-container-low border-b border-outline-variant/40 px-space-xl flex items-center justify-between z-20"><div class="flex items-center gap-space-xs font-body-sm"><span class="font-title-md text-title-md text-on-surface">Drishti</span><span class="text-outline-variant">/</span><span class="font-body-sm text-body-sm text-on-surface-variant">Tactical Matrix</span><span class="bg-surface-container font-label-caps text-label-caps text-on-surface-variant px-space-xs py-0.5 rounded border border-outline-variant/60 tracking-wider ml-space-xs">DEMO REPLAY</span></div><div class="flex items-center gap-space-md font-data-mono-sm text-data-mono-sm text-outline"><div class="flex items-center gap-space-xs"><span>CAMERAS</span><span class="text-on-surface font-semibold">4/6</span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-space-xs"><span>AVG FPS</span><span class="text-on-surface font-semibold">4.9</span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-space-xs bg-error-container/20 text-error px-space-xs py-0.5 rounded border border-error/30 animate-pulse font-semibold"><span>OPEN</span><span>2</span></div><span class="text-outline-variant">|</span><span class="text-outline-variant text-[10px]">OpenVINO (CPU)</span><span class="text-outline-variant">|</span><button class="text-outline hover:text-on-surface flex items-center transition-colors" title="Toggle Audio" type="button"><span class="material-symbols-outlined text-[16px]">volume_up</span></button><span class="text-outline-variant">|</span><div class="flex items-center gap-1.5 text-secondary"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse inline-block"></span><span class="font-semibold tracking-wide uppercase">Live</span></div></div></header><main class="w-full pt-12 min-h-screen bg-surface-container-lowest text-on-surface"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1500px] mx-auto p-space-xl flex flex-col gap-space-xl">
+<!-- Top Strategic Operations Ribbon -->
+<section class="bg-surface-container-low rounded-lg p-space-lg flex flex-wrap items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-xl min-w-0">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">videocam</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Surveillance Endpoints</h1>
+<span class="font-label-caps text-label-caps px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">RTSP/VMS MATRIX</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">6 registered nodes spanning 3 tactical monitoring zones</p>
+</div>
+</div>
+<div class="hidden xl:flex items-center gap-space-lg pl-space-md">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">INGEST HEALTH</span>
+<span class="font-data-mono-md text-data-mono-md text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 94.2% OPTIMAL
+            </span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">PIPELINE CORE</span>
+<span class="font-data-mono-md text-data-mono-md text-on-surface">GStreamer / OpenVINO</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline">ACTIVE STREAMS</span>
+<span class="font-data-mono-md text-data-mono-md text-on-surface">4 Online <span class="text-outline">/ 1 Degraded / 1 Offline</span></span>
+</div>
+</div>
+</div>
+<!-- Quick Telemetry Mini-Sparkline -->
+<div class="flex items-center gap-space-md">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-outline">AGGREGATE BANDWIDTH</span>
+<span class="font-data-mono-md text-data-mono-md text-primary">24.8 Mbps</span>
+</div>
+<div class="w-24 h-8 bg-surface-container rounded p-1 flex items-end justify-between gap-0.5">
+<span class="w-1 bg-primary/40 rounded-t h-[40%]"></span>
+<span class="w-1 bg-primary/40 rounded-t h-[55%]"></span>
+<span class="w-1 bg-primary/50 rounded-t h-[70%]"></span>
+<span class="w-1 bg-primary/60 rounded-t h-[65%]"></span>
+<span class="w-1 bg-primary/80 rounded-t h-[80%]"></span>
+<span class="w-1 bg-secondary rounded-t h-[92%] animate-pulse"></span>
+<span class="w-1 bg-secondary rounded-t h-[88%]"></span>
+</div>
+</div>
+</section>
+<!-- Main Tactical Workspace: 2-Column High-Density Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-space-xl items-start">
+<!-- Left: Camera Ingest Registry Table -->
+<section class="bg-surface-container-low rounded-lg overflow-hidden flex flex-col shadow-sm">
+<!-- Table Control Toolbar -->
+<div class="bg-surface-container px-space-lg py-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<h2 class="font-title-md text-title-md text-on-surface">Configured Cameras</h2>
+<div class="flex items-center gap-1.5 px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              4 OF 6 ONLINE
+            </div>
+</div>
+<div class="flex items-center gap-space-xs">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1.5 text-[16px] text-outline">search</span>
+<input class="h-7 w-48 xl:w-64 bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm pl-7 pr-2 rounded focus:outline-none focus:bg-surface-container-high transition-colors" id="cameraSearchInput" oninput="filterCameras(this.value)" placeholder="Filter node, zone, or RTSP..." type="text"/>
+</div>
+<button class="h-7 px-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded flex items-center gap-1 font-body-sm text-body-sm transition-colors active:scale-95" onclick="triggerRefreshPulse()" title="Bulk Refresh Ingest Health" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary transition-transform" id="refreshIcon">sync</span>
+<span class="hidden sm:inline font-data-mono-sm text-data-mono-sm">REFRESH</span>
+</button>
+</div>
+</div>
+<!-- High-Density Tactical Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-outline font-label-caps text-label-caps select-none">
+<th class="py-2.5 px-space-lg">Camera Node</th>
+<th class="py-2.5 px-space-md">Area Group</th>
+<th class="py-2.5 px-space-md">Detection Profile</th>
+<th class="py-2.5 px-space-md">Stream Endpoint</th>
+<th class="py-2.5 px-space-md text-right">FPS</th>
+<th class="py-2.5 px-space-md text-right">Latency</th>
+<th class="py-2.5 px-space-lg text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm" id="cameraTableBody">
+<!-- Row 1: Gate 1 East -->
+<tr class="camera-row bg-surface-container-low hover:bg-surface-container transition-colors group" data-area="Concourse" data-name="Gate 1 East">
+<td class="py-2 px-space-lg min-w-[160px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0 shadow-sm shadow-secondary/50"></span>
+<span class="font-title-md text-title-md text-on-surface">Gate 1 East</span>
+</div>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm">Concourse</span>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-label-caps text-label-caps font-semibold">ALL DETECTORS</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-data-mono-sm text-data-mono-sm text-outline group-hover:text-on-surface-variant transition-colors select-all">rtsp://edge-01.internal:8554/gate1_east</span>
+</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">5.1</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary">38 ms</td>
+<td class="py-2 px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-outline hover:text-on-surface" title="Inspect Feed" type="button">
+<span class="material-symbols-outlined text-[15px]">visibility</span>
+</button>
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-error-container/30 flex items-center justify-center text-outline hover:text-error transition-colors" onclick="deleteCameraRow(this)" title="Deregister Camera" type="button">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Perimeter North -->
+<tr class="camera-row bg-surface-container-low hover:bg-surface-container transition-colors group" data-area="Perimeter Rd" data-name="Perimeter North">
+<td class="py-2 px-space-lg min-w-[160px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0 shadow-sm shadow-secondary/50"></span>
+<span class="font-title-md text-title-md text-on-surface">Perimeter North</span>
+</div>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm">Perimeter Rd</span>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-caps text-label-caps font-semibold">ROAD ONLY</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-data-mono-sm text-data-mono-sm text-outline group-hover:text-on-surface-variant transition-colors select-all">rtsp://edge-01.internal:8554/perim_north</span>
+</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">4.8</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary">42 ms</td>
+<td class="py-2 px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-outline hover:text-on-surface" title="Inspect Feed" type="button">
+<span class="material-symbols-outlined text-[15px]">visibility</span>
+</button>
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-error-container/30 flex items-center justify-center text-outline hover:text-error transition-colors" onclick="deleteCameraRow(this)" title="Deregister Camera" type="button">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: South Plaza -->
+<tr class="camera-row bg-surface-container-low hover:bg-surface-container transition-colors group" data-area="Concourse" data-name="South Plaza">
+<td class="py-2 px-space-lg min-w-[160px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0 shadow-sm shadow-secondary/50"></span>
+<span class="font-title-md text-title-md text-on-surface">South Plaza</span>
+</div>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm">Concourse</span>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-label-caps text-label-caps font-semibold">PUBLIC SPACE</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-data-mono-sm text-data-mono-sm text-outline group-hover:text-on-surface-variant transition-colors select-all">rtsp://edge-02.internal:8554/south_plaza</span>
+</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">5.0</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary">35 ms</td>
+<td class="py-2 px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-outline hover:text-on-surface" title="Inspect Feed" type="button">
+<span class="material-symbols-outlined text-[15px]">visibility</span>
+</button>
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-error-container/30 flex items-center justify-center text-outline hover:text-error transition-colors" onclick="deleteCameraRow(this)" title="Deregister Camera" type="button">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Cargo Gate 3 -->
+<tr class="camera-row bg-surface-container-low hover:bg-surface-container transition-colors group" data-area="Logistics Bay" data-name="Cargo Gate 3">
+<td class="py-2 px-space-lg min-w-[160px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0 shadow-sm shadow-secondary/50"></span>
+<span class="font-title-md text-title-md text-on-surface">Cargo Gate 3</span>
+</div>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm">Logistics Bay</span>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-label-caps text-label-caps font-semibold">ALL DETECTORS</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-data-mono-sm text-data-mono-sm text-outline group-hover:text-on-surface-variant transition-colors select-all">rtsp://edge-02.internal:8554/cargo_gate3</span>
+</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">4.7</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary">49 ms</td>
+<td class="py-2 px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-outline hover:text-on-surface" title="Inspect Feed" type="button">
+<span class="material-symbols-outlined text-[15px]">visibility</span>
+</button>
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-error-container/30 flex items-center justify-center text-outline hover:text-error transition-colors" onclick="deleteCameraRow(this)" title="Deregister Camera" type="button">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: North Esplanade (Offline) -->
+<tr class="camera-row bg-surface-container-low hover:bg-surface-container transition-colors group" data-area="North Gate" data-name="North Esplanade">
+<td class="py-2 px-space-lg min-w-[200px]">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<span class="font-title-md text-title-md text-on-surface">North Esplanade</span>
+</div>
+<span class="font-data-mono-sm text-[10px] text-error pl-4">Connection timed out [RTSP 404]</span>
+</div>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm">North Gate</span>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-label-caps text-label-caps font-semibold">PUBLIC SPACE</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-data-mono-sm text-data-mono-sm text-outline group-hover:text-on-surface-variant transition-colors select-all">rtsp://edge-03.internal:8554/esplanade</span>
+</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-outline">0.0</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-outline">—</td>
+<td class="py-2 px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-outline hover:text-on-surface" title="Retry Handshake" type="button">
+<span class="material-symbols-outlined text-[15px]">refresh</span>
+</button>
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-error-container/30 flex items-center justify-center text-outline hover:text-error transition-colors" onclick="deleteCameraRow(this)" title="Deregister Camera" type="button">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: East Parking Deck (Degraded/Reconnecting) -->
+<tr class="camera-row bg-surface-container-low hover:bg-surface-container transition-colors group" data-area="Parking Annex" data-name="East Parking Deck">
+<td class="py-2 px-space-lg min-w-[200px]">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary shrink-0 animate-pulse"></span>
+<span class="font-title-md text-title-md text-on-surface">East Parking Deck</span>
+</div>
+<span class="font-data-mono-sm text-[10px] text-tertiary pl-4">Packet loss &gt; 28% [Reconnecting]</span>
+</div>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm">Parking Annex</span>
+</td>
+<td class="py-2 px-space-md whitespace-nowrap">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-caps text-label-caps font-semibold">ROAD ONLY</span>
+</td>
+<td class="py-2 px-space-md">
+<span class="font-data-mono-sm text-data-mono-sm text-outline group-hover:text-on-surface-variant transition-colors select-all">rtsp://edge-03.internal:8554/east_deck</span>
+</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-tertiary">1.2</td>
+<td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-tertiary">312 ms</td>
+<td class="py-2 px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-outline hover:text-on-surface" title="Diagnostics" type="button">
+<span class="material-symbols-outlined text-[15px]">troubleshoot</span>
+</button>
+<button class="w-6 h-6 rounded bg-surface-container hover:bg-error-container/30 flex items-center justify-center text-outline hover:text-error transition-colors" onclick="deleteCameraRow(this)" title="Deregister Camera" type="button">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Micro-Footer -->
+<div class="px-space-lg py-2 bg-surface-container-high text-outline font-data-mono-sm text-[11px] flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span>RTSP INGEST POOL: <strong class="text-on-surface">edge-cluster-alpha</strong></span>
+<span>CODEC: <strong class="text-on-surface">H.264 / H.265 (VA-API)</strong></span>
+</div>
+<span class="hidden md:inline">CORRELATION MATRIX ACTIVE</span>
+</div>
+</section>
+<!-- Right: Add Camera / Provisioning Dock -->
+<aside class="w-full bg-surface-container-low rounded-lg p-space-lg flex flex-col gap-space-lg shadow-sm">
+<!-- Dock Header & Segmented Pill Switch -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Add Camera</h2>
+<span class="font-label-caps text-label-caps text-outline">NEW PROVISION</span>
+</div>
+<!-- Segmented Pill Control -->
+<div class="grid grid-cols-2 p-1 bg-surface-container-lowest rounded">
+<button class="py-1 px-space-sm font-label-caps text-label-caps text-on-primary bg-primary rounded shadow-sm text-center transition-all" id="tabStream" onclick="switchInputMode('stream')" type="button">
+              STREAM URL
+            </button>
+<button class="py-1 px-space-sm font-label-caps text-label-caps text-outline hover:text-on-surface rounded text-center transition-all" id="tabFile" onclick="switchInputMode('file')" type="button">
+              VIDEO FILE
+            </button>
+</div>
+</div>
+<!-- Camera Provision Form -->
+<form class="flex flex-col gap-space-md" id="addCameraForm" onsubmit="event.preventDefault(); handleAddCamera();">
+<!-- Stream URL Field -->
+<div class="flex flex-col gap-1" id="endpointContainer">
+<label class="font-label-caps text-label-caps text-outline" for="endpointInput">STREAM ENDPOINT</label>
+<input class="h-8 w-full bg-surface-container-lowest text-on-surface font-data-mono-sm text-data-mono-sm px-space-sm rounded focus:outline-none focus:ring-1 focus:ring-primary transition-all placeholder:text-outline/60" id="endpointInput" placeholder="rtsp://localhost:8554/cam1" required="" type="text" value="rtsp://edge-04.internal:8554/gate2_west"/>
+<span class="font-data-mono-sm text-[10px] text-outline">Supports RTSP, HLS, or WebRTC</span>
+</div>
+<!-- Camera Display Name -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline" for="camNameInput">CAMERA NAME</label>
+<input class="h-8 w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-space-sm rounded focus:outline-none focus:ring-1 focus:ring-primary transition-all placeholder:text-outline/60" id="camNameInput" placeholder="Gate 2 West" required="" type="text" value="Gate 2 West"/>
+</div>
+<!-- Area / Zone Group -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline" for="areaInput">AREA / ZONE GROUP</label>
+<input class="h-8 w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-space-sm rounded focus:outline-none focus:ring-1 focus:ring-primary transition-all placeholder:text-outline/60" id="areaInput" placeholder="Concourse" required="" type="text" value="Concourse"/>
+<span class="font-body-sm text-[11px] text-outline leading-tight">Cameras sharing an area name merge multi-angle incidents</span>
+</div>
+<!-- Detection Profile Selector -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline" for="profileSelect">WHAT TO LOOK FOR</label>
+<div class="relative">
+<select class="h-8 w-full appearance-none bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-space-sm pr-8 rounded focus:outline-none focus:ring-1 focus:ring-primary transition-all cursor-pointer" id="profileSelect">
+<option value="ALL">Everything: all detectors</option>
+<option value="ROAD">Road only: accident, fire, person down, hazards</option>
+<option value="PUBLIC">Public space: all except accident</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-[18px] text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Connect CTA -->
+<button class="h-8 mt-space-xs bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md rounded flex items-center justify-center gap-space-xs transition-colors shadow-sm active:scale-98" id="connectBtn" type="submit">
+<span class="material-symbols-outlined text-[16px]">link</span>
+<span>Connect Stream</span>
+</button>
+</form>
+<!-- Drag-and-Drop Forensic Upload Box -->
+<div class="rounded p-space-lg bg-surface-container-lowest flex flex-col items-center justify-center text-center gap-space-xs transition-colors cursor-pointer group" id="dropZone" ondragleave="this.classList.remove('bg-surface-container')" ondragover="event.preventDefault(); this.classList.add('bg-surface-container')" ondrop="handleFileDrop(event)">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">Drop video here</span>
+<span class="font-data-mono-sm text-[11px] text-outline leading-tight">Drop recorded MP4/MKV for offline forensic replay (max 500MB)</span>
+<input accept="video/mp4,video/x-matroska" class="hidden" id="fileUploadInput" onchange="handleFileSelected(this)" type="file"/>
+</div>
+<!-- Architectural Context Card -->
+<div class="p-space-md rounded bg-surface-container text-on-surface-variant flex gap-space-sm items-start">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-[11px] leading-relaxed">
+            Cameras that share an area name are treated as views of the same place and automatically correlated in time-window analysis.
+          </p>
+</div>
+</aside>
+</div>
+</div>
+</div>
+<script>
+  function switchInputMode(mode) {
+    const btnStream = document.getElementById('tabStream');
+    const btnFile = document.getElementById('tabFile');
+    const epContainer = document.getElementById('endpointContainer');
+    const connectBtn = document.getElementById('connectBtn');
+
+    if (mode === 'stream') {
+      btnStream.className = 'py-1 px-space-sm font-label-caps text-label-caps text-on-primary bg-primary rounded shadow-sm text-center transition-all';
+      btnFile.className = 'py-1 px-space-sm font-label-caps text-label-caps text-outline hover:text-on-surface rounded text-center transition-all';
+      epContainer.classList.remove('hidden');
+      connectBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">link</span><span>Connect Stream</span>';
+    } else {
+      btnFile.className = 'py-1 px-space-sm font-label-caps text-label-caps text-on-primary bg-primary rounded shadow-sm text-center transition-all';
+      btnStream.className = 'py-1 px-space-sm font-label-caps text-label-caps text-outline hover:text-on-surface rounded text-center transition-all';
+      epContainer.classList.add('hidden');
+      connectBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">upload_file</span><span>Queue Forensic Video</span>';
+    }
+  }
+
+  function filterCameras(query) {
+    const cleanQuery = query.toLowerCase().trim();
+    const rows = document.querySelectorAll('.camera-row');
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      if (!cleanQuery || text.includes(cleanQuery)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  function triggerRefreshPulse() {
+    const icon = document.getElementById('refreshIcon');
+    icon.classList.add('rotate-180');
+    setTimeout(() => {
+      icon.classList.remove('rotate-180');
+    }, 400);
+  }
+
+  function deleteCameraRow(btn) {
+    const row = btn.closest('tr');
+    if (row) {
+      row.style.opacity = '0';
+      row.style.transform = 'translateX(10px)';
+      row.style.transition = 'all 0.2s ease-out';
+      setTimeout(() => row.remove(), 200);
+    }
+  }
+
+  function handleAddCamera() {
+    const name = document.getElementById('camNameInput').value.trim() || 'New Sensor Node';
+    const area = document.getElementById('areaInput').value.trim() || 'General';
+    const endpoint = document.getElementById('endpointInput').value.trim() || 'rtsp://edge-local:8554/feed';
+    const profile = document.getElementById('profileSelect').value;
+
+    let profileBadge = '<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-label-caps text-label-caps font-semibold">ALL DETECTORS</span>';
+    if (profile === 'ROAD') {
+      profileBadge = '<span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-caps text-label-caps font-semibold">ROAD ONLY</span>';
+    } else if (profile === 'PUBLIC') {
+      profileBadge = '<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-label-caps text-label-caps font-semibold">PUBLIC SPACE</span>';
+    }
+
+    const tbody = document.getElementById('cameraTableBody');
+    const tr = document.createElement('tr');
+    tr.className = 'camera-row bg-surface-container-low hover:bg-surface-container transition-colors group animate-fadeIn';
+    tr.setAttribute('data-name', name);
+    tr.setAttribute('data-area', area);
+    tr.innerHTML = `
+      <td class="py-2 px-space-lg min-w-[160px]">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-secondary shrink-0 shadow-sm shadow-secondary/50"></span>
+          <span class="font-title-md text-title-md text-on-surface">${escapeHtml(name)}</span>
+        </div>
+      </td>
+      <td class="py-2 px-space-md whitespace-nowrap">
+        <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-data-mono-sm text-data-mono-sm">${escapeHtml(area)}</span>
+      </td>
+      <td class="py-2 px-space-md whitespace-nowrap">${profileBadge}</td>
+      <td class="py-2 px-space-md">
+        <span class="font-data-mono-sm text-data-mono-sm text-outline group-hover:text-on-surface-variant transition-colors select-all">${escapeHtml(endpoint)}</span>
+      </td>
+      <td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-on-surface">5.0</td>
+      <td class="py-2 px-space-md text-right font-data-mono-md text-data-mono-md text-secondary">31 ms</td>
+      <td class="py-2 px-space-lg text-right">
+        <div class="flex items-center justify-end gap-1">
+          <button type="button" class="w-6 h-6 rounded bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-outline hover:text-on-surface" title="Inspect Feed">
+            <span class="material-symbols-outlined text-[15px]">visibility</span>
+          </button>
+          <button type="button" onclick="deleteCameraRow(this)" class="w-6 h-6 rounded bg-surface-container hover:bg-error-container/30 flex items-center justify-center text-outline hover:text-error transition-colors" title="Deregister Camera">
+            <span class="material-symbols-outlined text-[15px]">delete</span>
+          </button>
+        </div>
+      </td>
+    `;
+    tbody.prepend(tr);
+
+    // Reset simple form elements
+    document.getElementById('camNameInput').value = '';
+    document.getElementById('endpointInput').value = '';
+  }
+
+  function handleFileDrop(e) {
+    e.preventDefault();
+    const zone = document.getElementById('dropZone');
+    zone.classList.remove('bg-surface-container');
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      handleVideoUpload(file);
+    }
+  }
+
+  function handleFileSelected(input) {
+    if (input.files && input.files.length > 0) {
+      handleVideoUpload(input.files[0]);
+    }
+  }
+
+  function handleVideoUpload(file) {
+    const camName = document.getElementById('camNameInput');
+    if (!camName.value) {
+      camName.value = file.name.replace(/\.[^/.]+$/, "");
+    }
+    const zone = document.getElementById('dropZone');
+    zone.innerHTML = `
+      <div class="w-8 h-8 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+        <span class="material-symbols-outlined text-[20px]">check</span>
+      </div>
+      <span class="font-body-sm text-body-sm text-secondary font-semibold">${escapeHtml(file.name)}</span>
+      <span class="font-data-mono-sm text-[11px] text-outline">${(file.size / (1024 * 1024)).toFixed(1)} MB ready for ingestion</span>
+    `;
+  }
+
+  document.getElementById('dropZone').addEventListener('click', () => {
+    document.getElementById('fileUploadInput').click();
+  });
+
+  function escapeHtml(string) {
+    return String(string).replace(/[&<>"']/g, function(s) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s];
+    });
+  }
+</script></main></div></body></html>

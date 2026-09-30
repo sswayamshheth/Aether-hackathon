@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import threading
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -107,3 +108,6 @@ TELEGRAM_CHAT = os.environ.get("TELEGRAM_CHAT_ID", "")
 VISION_VERIFY_ENABLED = _flag("VISION_VERIFY_ENABLED")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 VISION_MODEL = os.environ.get("VISION_MODEL", "claude-opus-5-5")
+
+INFER_LOCK = threading.Lock()
+
