@@ -1,0 +1,70 @@
+{
+ "name": "baria_baggage",
+ "detector": "yolov8n.pt (COCO), as the repo uses",
+ "sample_fps": 5.0,
+ "clips": {
+  "baggage/aboda_video1.mp4": {
+   "events": [],
+   "frames": 365,
+   "frames_with_bag": 34
+  },
+  "baggage/aboda_video10.mp4": {
+   "events": [
+    {
+     "t": 62.26,
+     "event": "potential_abandoned_object",
+     "severity": "medium"
+    },
+    {
+     "t": 72.27,
+     "event": "potential_abandoned_object",
+     "severity": "medium"
+    }
+   ],
+   "frames": 377,
+   "frames_with_bag": 167
+  },
+  "baggage/aboda_video2.mp4": {
+   "events": [],
+   "frames": 470,
+   "frames_with_bag": 0
+  },
+  "baggage/aboda_video3.mp4": {
+   "events": [],
+   "frames": 435,
+   "frames_with_bag": 3
+  },
+  "baggage/aboda_video4.mp4": {
+   "events": [],
+   "frames": 195,
+   "frames_with_bag": 2
+  },
+  "baggage/aboda_video9.mp4": {
+   "events": [],
+   "frames": 415,
+   "frames_with_bag": 18
+  },
+  "normal/ucf_normal_006.mp4": {
+   "events": [],
+   "frames": 75,
+   "frames_with_bag": 0
+  },
+  "normal/ucf_normal_015.mp4": {
+   "events": [],
+   "frames": 80,
+   "frames_with_bag": 0
+  },
+  "normal/ucf_normal_018.mp4": {
+   "events": [],
+   "frames": 197,
+   "frames_with_bag": 0
+  },
+  "normal/ucf_normal_024.mp4": {
+   "events": [],
+   "frames": 180,
+   "frames_with_bag": 0
+  }
+ },
+ "pipeline_fps": 10.22,
+ "rss_mb": 481
+}

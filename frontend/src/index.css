@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --color-bg: #0a0d12;
+  --color-surface: #11161d;
+  --color-raised: #161c25;
+  --color-line: #1e2631;
+  --color-line-strong: #2a3442;
+  --color-fg: #e6eaf0;
+  --color-muted: #8b95a5;
+  --color-faint: #5d6878;
+  --color-accent: #3b82f6;
+  --color-accent-soft: #15233d;
+  --color-ok: #34d399;
+
+  --color-critical: #ef4444;
+  --color-high: #f97316;
+  --color-medium: #f59e0b;
+  --color-low: #64748b;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv11", "ss01";
+}
+
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+* { scrollbar-width: thin; scrollbar-color: #2a3442 transparent; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; border-radius: 4px; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.live-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+.skeleton {
+  background: linear-gradient(90deg, #11161d 0%, #19202a 50%, #11161d 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 4px;
+}
+@keyframes row-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.row-in { animation: row-in 180ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .live-dot, .skeleton, .row-in { animation: none; } }

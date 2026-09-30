@@ -1,0 +1,54 @@
+{
+ "cam1": {
+  "clip": "data/demo/clips/cam1.mp4",
+  "profile": "traffic",
+  "seconds": 15.5,
+  "frames_processed": 156,
+  "offline_fps": 10.56,
+  "incidents": [],
+  "suppressed": 0,
+  "raw_alarms": 0
+ },
+ "cam2": {
+  "clip": "data/demo/clips/cam2.mp4",
+  "profile": "traffic",
+  "seconds": 15.5,
+  "frames_processed": 156,
+  "offline_fps": 24.96,
+  "incidents": [],
+  "suppressed": 0,
+  "raw_alarms": 0
+ },
+ "cam3": {
+  "clip": "data/demo/clips/cam3.mp4",
+  "profile": "public",
+  "seconds": 72.97,
+  "frames_processed": 730,
+  "offline_fps": 18.78,
+  "incidents": [
+   {
+    "type": "baggage",
+    "subtype": "unattended",
+    "at_s": 67.9
+   }
+  ],
+  "suppressed": 0,
+  "raw_alarms": 1
+ },
+ "cam4": {
+  "clip": "data/demo/clips/cam4.mp4",
+  "profile": "public",
+  "seconds": 24.7,
+  "frames_processed": 248,
+  "offline_fps": 18.74,
+  "incidents": [
+   {
+    "type": "crowd",
+    "subtype": "sudden dispersal",
+    "at_s": 19.6
+   }
+  ],
+  "suppressed": 0,
+  "raw_alarms": 1
+ }
+}

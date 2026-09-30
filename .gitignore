@@ -1,0 +1,32 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# node
+node_modules/
+dist/
+
+# caches, tools, reference repos
+.cache/
+tools/
+_reference/*
+!_reference/patches/
+
+# data and weights
+data/
+models/*.pt
+models/*.onnx
+models/*_openvino_model/
+*.db
+*.sqlite3
+models/Ultralytics/
+models/kernel.errors.txt
+models/*.torchscript
+docs/results/bench_*.json.tmp

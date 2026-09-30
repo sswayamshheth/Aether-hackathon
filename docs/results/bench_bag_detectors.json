@@ -1,0 +1,129 @@
+{
+ "name": "bag_detectors",
+ "sample_fps": 2.0,
+ "note": "ABODA has no box labels; this counts sampled frames with at least one bag-class box",
+ "models": {
+  "theromanfour_korzo_yolov8s": {
+   "classes": {
+    "0": "luggage",
+    "1": "people"
+   },
+   "clips": {
+    "aboda_video1.mp4": {
+     "frames": 146,
+     "frames_with_bag": 146,
+     "mean_conf": 0.837
+    },
+    "aboda_video10.mp4": {
+     "frames": 151,
+     "frames_with_bag": 151,
+     "mean_conf": 0.532
+    },
+    "aboda_video2.mp4": {
+     "frames": 188,
+     "frames_with_bag": 101,
+     "mean_conf": 0.764
+    },
+    "aboda_video3.mp4": {
+     "frames": 174,
+     "frames_with_bag": 90,
+     "mean_conf": 0.668
+    },
+    "aboda_video4.mp4": {
+     "frames": 78,
+     "frames_with_bag": 30,
+     "mean_conf": 0.66
+    },
+    "aboda_video9.mp4": {
+     "frames": 166,
+     "frames_with_bag": 166,
+     "mean_conf": 0.6
+    }
+   },
+   "infer_fps": 4.36,
+   "rss_mb": 494
+  },
+  "coco_yolo11n": {
+   "classes": {
+    "24": "backpack",
+    "26": "handbag",
+    "28": "suitcase"
+   },
+   "clips": {
+    "aboda_video1.mp4": {
+     "frames": 146,
+     "frames_with_bag": 55,
+     "mean_conf": 0.37
+    },
+    "aboda_video10.mp4": {
+     "frames": 151,
+     "frames_with_bag": 72,
+     "mean_conf": 0.319
+    },
+    "aboda_video2.mp4": {
+     "frames": 188,
+     "frames_with_bag": 3,
+     "mean_conf": 0.385
+    },
+    "aboda_video3.mp4": {
+     "frames": 174,
+     "frames_with_bag": 7,
+     "mean_conf": 0.367
+    },
+    "aboda_video4.mp4": {
+     "frames": 78,
+     "frames_with_bag": 6,
+     "mean_conf": 0.316
+    },
+    "aboda_video9.mp4": {
+     "frames": 166,
+     "frames_with_bag": 105,
+     "mean_conf": 0.325
+    }
+   },
+   "infer_fps": 9.15,
+   "rss_mb": 512
+  },
+  "coco_yolo11s": {
+   "classes": {
+    "24": "backpack",
+    "26": "handbag",
+    "28": "suitcase"
+   },
+   "clips": {
+    "aboda_video1.mp4": {
+     "frames": 146,
+     "frames_with_bag": 51,
+     "mean_conf": 0.433
+    },
+    "aboda_video10.mp4": {
+     "frames": 151,
+     "frames_with_bag": 85,
+     "mean_conf": 0.482
+    },
+    "aboda_video2.mp4": {
+     "frames": 188,
+     "frames_with_bag": 19,
+     "mean_conf": 0.355
+    },
+    "aboda_video3.mp4": {
+     "frames": 174,
+     "frames_with_bag": 21,
+     "mean_conf": 0.374
+    },
+    "aboda_video4.mp4": {
+     "frames": 78,
+     "frames_with_bag": 9,
+     "mean_conf": 0.4
+    },
+    "aboda_video9.mp4": {
+     "frames": 166,
+     "frames_with_bag": 87,
+     "mean_conf": 0.354
+    }
+   },
+   "infer_fps": 4.61,
+   "rss_mb": 565
+  }
+ }
+}

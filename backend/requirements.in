@@ -1,0 +1,8 @@
+ultralytics==8.4.168
+openvino==2026.4.0
+fastapi
+uvicorn[standard]
+python-multipart
+lap
+pytest
+httpx

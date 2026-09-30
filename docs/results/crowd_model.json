@@ -1,0 +1,41 @@
+{
+ "model": "temporal CNN (2 x Conv1d, 24 channels) over a 1.6 s window of 8 per-frame features",
+ "features": [
+  "people",
+  "moving_frac",
+  "flow_mean",
+  "flow_p95",
+  "dir_entropy",
+  "speed_mean",
+  "speed_max",
+  "people_delta"
+ ],
+ "dataset": "UMN Unusual Crowd Activity (University of Minnesota)",
+ "sampling": "10 fps, caption rows masked",
+ "split": "by scene",
+ "train_scenes": [
+  0,
+  2,
+  3,
+  5,
+  6,
+  8,
+  10
+ ],
+ "test_scenes": [
+  1,
+  4,
+  7,
+  9
+ ],
+ "train_windows": 1495,
+ "test_windows": 908,
+ "test_abnormal_windows": 174,
+ "frame_auc_test": 0.9901,
+ "frame_auc_train": 1.0,
+ "baseline_auc_test_flow_mean_only": 0.5691,
+ "baseline_auc_test_speed_max_only": 0.6056,
+ "precision_at_0.5": 0.926,
+ "recall_at_0.5": 0.931,
+ "note": "UMN is staged (people told to run). Expect weaker numbers on real CCTV."
+}

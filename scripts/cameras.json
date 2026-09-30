@@ -1,0 +1,9 @@
+{
+  "note": "The four simulated cameras. Used by simulate_rtsp.ps1 (what to publish), by start.ps1 (what to seed) and by demo mode (what to replay). cam2 is a mirrored, cropped copy of cam1's clip standing in for a second viewpoint of the same junction.",
+  "cameras": [
+    {"id": "cam1", "name": "Junction North A", "area": "Junction North", "profile": "traffic", "clip": "data/demo/clips/cam1.mp4", "rtsp": "rtsp://localhost:8554/cam1"},
+    {"id": "cam2", "name": "Junction North B", "area": "Junction North", "profile": "traffic", "clip": "data/demo/clips/cam2.mp4", "rtsp": "rtsp://localhost:8554/cam2"},
+    {"id": "cam3", "name": "Concourse", "area": "Concourse", "profile": "public", "clip": "data/demo/clips/cam3.mp4", "rtsp": "rtsp://localhost:8554/cam3"},
+    {"id": "cam4", "name": "Entrance Hall", "area": "Entrance Hall", "profile": "public", "clip": "data/demo/clips/cam4.mp4", "rtsp": "rtsp://localhost:8554/cam4"}
+  ]
+}
