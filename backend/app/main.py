@@ -77,9 +77,13 @@ async def lifespan(app: FastAPI):
     alerts.configure(S.store)
     seed_mode = "file" if config.DEMO_MODE else os.environ.get("DRISHTI_SEED", "")
     if seed_mode in {"file", "rtsp"}:
-        # the four simulated cameras from scripts/cameras.json; cameras added in the UI are kept
+        # the simulated cameras from scripts/cameras.json; cameras added in the UI are kept
         seed = json.loads((config.ROOT / "scripts" / "cameras.json").read_text())
         for c in seed["cameras"][: int(os.environ.get("DRISHTI_SEED_COUNT", 6))]:
+            if not (config.ROOT / c["clip"]).exists():
+                continue  # demo clip not built yet (training/prepare_demo.py)
+            if config.DEMO_MODE and load_cache(c["id"]) is None:
+                continue  # without cached detections it would load every model live
             S.store.add_camera({"id": c["id"], "name": c["name"], "kind": seed_mode, "area": c["area"],
                                 "profile": c["profile"],
                                 "source": c["rtsp"] if seed_mode == "rtsp" else str(config.ROOT / c["clip"])})
