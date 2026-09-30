@@ -186,8 +186,9 @@ def test_ignore_zone_masks_a_detection():
 def test_camera_agreement_relaxes_the_gate():
     f, _ = make_filter(area_active=lambda cam, typ, ts: True)
     got = []
-    for i in range(3):
-        got += f.process(frame(i * 0.6, []), [cand(i * 0.6, conf=0.40)])  # under 0.45, over 0.35
+    conf = config.GATE["accident"] - 0.05  # under the gate alone, over it with agreement (-0.10)
+    for i in range(5):
+        got += f.process(frame(i * 0.6, []), [cand(i * 0.6, conf=conf)])
     assert got
 
 
