@@ -42,6 +42,12 @@ def main() -> None:
     src = ROOT / "_reference" / "saadkhan-anomaly" / "models" / "weapon_detector.pt"
     if not weapon.exists() and src.exists():
         shutil.copy(src, weapon)
+    if not weapon.exists():  # fresh clone: fetch the same file from GitHub at the pinned commit
+        import urllib.request
+
+        urllib.request.urlretrieve(
+            "https://raw.githubusercontent.com/saadkhan2003/CCTV_Video_Anomaly_Detection/"
+            "4ab4eb034989b1b6650cb91aad1906a20e08e968/models/weapon_detector.pt", weapon)
     print(f"{'ok ' if weapon.exists() else 'MISSING'} weapon.pt        from github.com/saadkhan2003/CCTV_Video_Anomaly_Detection "
           "(Apache-2.0), file models/weapon_detector.pt at commit 4ab4eb0349")
     if not (M / "yolo11n.pt").exists():
