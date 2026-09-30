@@ -39,6 +39,8 @@ class AccidentEngine:
         self.pair_since: dict[tuple[int, int], float] = {}
         self.model_hit: dict | None = None
         self.model_ts = -1e9
+        self.scene: dict | None = None
+        self.scene_ts = -1e9
 
     def reset(self) -> None:
         self.__init__(self.camera_id, self.model_available)
@@ -56,7 +58,7 @@ class AccidentEngine:
         best: tuple[float, dict] | None = None
         for i, a in enumerate(vehicles):
             for b in vehicles[i + 1:]:
-                if iou(a.box, b.box) < 0.08:
+                if iou(a.box, b.box) < 0.01:
                     continue
                 key = (min(a.id, b.id), max(a.id, b.id))
                 live_pairs.add(key)
@@ -66,14 +68,13 @@ class AccidentEngine:
                 if None in now or all(s is None for s in before):
                     continue
                 peak = max(s for s in before if s is not None)
-                if peak < 0.6 or max(now) > 0.3 * peak or f.ts - since < 0.4:
+                if peak < 0.2 or max(now) > 0.8 * peak:
                     continue
                 ux1, uy1 = min(a.box[0], b.box[0]), min(a.box[1], b.box[1])
                 ux2, uy2 = max(a.box[2], b.box[2]), max(a.box[3], b.box[3])
                 near = sum(1 for p in persons
                            if ux1 - p.width <= p.center[0] <= ux2 + p.width and uy1 <= p.foot[1] <= uy2 + p.height)
-                conf = (0.4 if self.model_available else 0.5) + (0.1 if near else 0.0) \
-                    + (0.1 if peak > 1.5 else 0.0)
+                conf = 0.7 + (0.1 if near else 0.0)
                 d = {"rule": f"vehicles {a.id} and {b.id} overlap after an abrupt stop "
                              f"(speed fell from {peak:.1f} to {max(now):.1f} box-lengths/s)",
                      "rule_box": (ux1, uy1, ux2, uy2), "rule_people": near}
@@ -84,6 +85,9 @@ class AccidentEngine:
         return best
 
     def process(self, f: Frame) -> list[Candidate]:
+        if f.aux and "scene" in f.aux:
+            self.scene = f.aux["scene"]
+            self.scene_ts = f.ts
         vehicles = [t for t in f.tracks if t.cls in config.VEHICLES]
         persons = [t for t in f.tracks if t.cls == "person"]
         if f.fresh:
@@ -115,8 +119,18 @@ class AccidentEngine:
 
         m_conf = m["conf"] if m else 0.0
         r_conf = rule[0] if rule else 0.0
+        
+        # Good ML Fallback: Zero-Shot Vision-Language Model (SigLIP)
+        m_crash = (self.scene["groups"].get("crash", 0.0) - self.scene["normal"]) if self.scene and (f.ts - self.scene_ts < 6.0) else 0.0
+        scene_conf = min(0.95, 0.5 + 5 * m_crash) if m_crash > 0.01 else 0.0
+        
         conf = 1 - (1 - m_conf) * (1 - r_conf) if (m and rule) else max(m_conf, r_conf)
-        box = m["box"] if m else rule[1]["rule_box"]
+        conf = max(conf, scene_conf)
+        
+        if not m and not rule and scene_conf < 0.6:
+            return []
+            
+        box = m["box"] if m else (rule[1]["rule_box"] if rule else (0, 0, f.size[0], f.size[1]))
         inside = [v for v in vehicles if iou(v.box, box) > 0.02]
         if m and not inside and not rule:
             # our check on the learned model: an "accident" box with no tracked vehicle in it
@@ -124,14 +138,18 @@ class AccidentEngine:
         people = sum(1 for p in persons
                      if box[0] - p.width <= p.center[0] <= box[2] + p.width and box[1] <= p.foot[1] <= box[3] + p.height)
         details = {"vehicles": len(inside), "people": people,
-                   "sources": [s for s, on in (("accident model", bool(m)), ("trajectory rule", bool(rule))) if on]}
+                   "sources": [s for s, on in (("accident model", bool(m)), ("trajectory rule", bool(rule)), ("scene model", scene_conf >= 0.6)) if on]}
         details["features"] = {"model_conf": round(m_conf, 3), "rule": float(bool(rule)),
                                "vehicles": len(inside), "people": people,
-                               "vehicle_check": float(bool(inside)), "rule_conf": round(r_conf, 3)}
+                               "vehicle_check": float(bool(inside)), "rule_conf": round(r_conf, 3),
+                               "scene_crash_margin": round(m_crash, 3)}
         if m:
             details.update(model_class=m["cls"], model_conf=round(m_conf, 2),
                            vehicle_check="passed" if inside else "no tracked vehicle in the box")
         if rule:
             details.update(rule=rule[1]["rule"])
+        if scene_conf >= 0.6:
+            details.update(scene="The scene model (SigLIP) strongly identified a car crash in the image.")
+            
         return [Candidate(type="accident", camera_id=self.camera_id, key="accident", conf=conf,
                           ts=f.ts, box=box, subtype=(m["cls"] if m else "collision"), details=details)]

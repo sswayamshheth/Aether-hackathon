@@ -88,11 +88,11 @@ CROWD_LIMIT = int(os.environ.get("DRISHTI_CROWD_LIMIT", 25))
 
 # ---- false-alarm filter: base confidence gate and persistence per incident type
 # (used as-is where no trained verifier exists; see app/intel/verifier.py)
-GATE = {"accident": 0.45, "crowd": 0.60, "baggage": 0.18, "fire": 0.35, "weapon": 0.45, "violence": 0.75,
-        "medical": 0.40, "hazard": 0.60, "security": 0.50}
-PERSIST_S = {"accident": 1.0, "crowd": 1.0, "baggage": 0.0, "fire": 2.0, "weapon": 1.0, "violence": 2.0,
-             "medical": 2.0, "hazard": 4.0, "security": 2.0}
-MIN_HITS = {"accident": 2, "crowd": 4, "baggage": 1, "fire": 2, "weapon": 2, "violence": 3, "medical": 2,
+GATE = {"accident": 0.60, "crowd": 0.70, "baggage": 0.40, "fire": 0.50, "weapon": 0.60, "violence": 0.80,
+        "medical": 0.80, "hazard": 0.65, "security": 0.60}
+PERSIST_S = {"accident": 1.5, "crowd": 1.5, "baggage": 1.0, "fire": 2.0, "weapon": 1.5, "violence": 2.0,
+             "medical": 3.0, "hazard": 3.0, "security": 2.0}
+MIN_HITS = {"accident": 2, "crowd": 4, "baggage": 2, "fire": 3, "weapon": 2, "violence": 4, "medical": 3,
             "hazard": 2, "security": 3}
 GROUP_GAP_S = 6.0
 MERGE_WINDOW_S = 30.0  # cross-camera merge, and how long an event may pause and still be the same one
