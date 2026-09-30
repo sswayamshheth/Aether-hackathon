@@ -165,6 +165,15 @@ class SceneAux(AuxModel):
             te = self.model.get_text_features(**tok)
             self.text = te / te.norm(dim=-1, keepdim=True)
         self.backend = f"PyTorch ({self.dev})"
+        # supervised accident classifier trained on these same image features
+        # (training/train_accident_clf.py); optional
+        self.acc_w = self.acc_b = None
+        clf = config.MODELS / "accident_clf.json"
+        if clf.exists():
+            import json
+
+            d = json.loads(clf.read_text())
+            self.acc_w, self.acc_b, self.acc_thr = np.array(d["coef"], dtype=np.float32), d["intercept"], d["threshold"]
         self.available = True
 
     def run(self, image: np.ndarray) -> dict:
@@ -177,10 +186,16 @@ class SceneAux(AuxModel):
             ie = ie / ie.norm(dim=-1, keepdim=True)
             logits = (ie @ self.text.T)[0] * self.model.logit_scale.exp() + self.model.logit_bias
             prob = self.torch.sigmoid(logits).float().cpu().numpy()
+            emb = ie[0].float().cpu().numpy()
         scores = dict(zip(self.prompts, prob.tolist()))
         normal = max(scores[p] for p in NORMAL_PROMPTS)
-        return {"groups": {g: round(max(scores[p] for p in ps), 5) for g, ps in SCENE_GROUPS.items()},
-                "normal": round(normal, 5)}
+        out = {"groups": {g: round(max(scores[p] for p in ps), 5) for g, ps in SCENE_GROUPS.items()},
+               "normal": round(normal, 5)}
+        if self.acc_w is not None:
+            z = float(emb @ self.acc_w + self.acc_b)
+            out["accident_p"] = round(1.0 / (1.0 + np.exp(-max(-30.0, min(30.0, z)))), 4)
+            out["accident_thr"] = self.acc_thr
+        return out
 
 
 _models: dict[str, AuxModel] | None = None

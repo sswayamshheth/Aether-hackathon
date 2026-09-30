@@ -124,10 +124,16 @@ class AccidentEngine:
         m_crash = (self.scene["groups"].get("crash", 0.0) - self.scene["normal"]) if self.scene and (f.ts - self.scene_ts < 6.0) else 0.0
         scene_conf = min(0.95, 0.5 + 5 * m_crash) if m_crash > 0.01 else 0.0
         
+        # Supervised accident classifier on the scene model's image features
+        # (training/train_accident_clf.py): trained on UCF-Crime accidents and our own videos
+        fresh_scene = self.scene if self.scene and (f.ts - self.scene_ts < 6.0) else None
+        clf_p = fresh_scene.get("accident_p", 0.0) if fresh_scene else 0.0
+        clf_hit = bool(fresh_scene) and clf_p >= fresh_scene.get("accident_thr", 1.0)
+
         conf = 1 - (1 - m_conf) * (1 - r_conf) if (m and rule) else max(m_conf, r_conf)
-        conf = max(conf, scene_conf)
-        
-        if not m and not rule and scene_conf < 0.6:
+        conf = max(conf, scene_conf, clf_p if clf_hit else 0.0)
+
+        if not m and not rule and scene_conf < 0.6 and not clf_hit:
             return []
             
         box = m["box"] if m else (rule[1]["rule_box"] if rule else (0, 0, f.size[0], f.size[1]))
@@ -138,11 +144,14 @@ class AccidentEngine:
         people = sum(1 for p in persons
                      if box[0] - p.width <= p.center[0] <= box[2] + p.width and box[1] <= p.foot[1] <= box[3] + p.height)
         details = {"vehicles": len(inside), "people": people,
-                   "sources": [s for s, on in (("accident model", bool(m)), ("trajectory rule", bool(rule)), ("scene model", scene_conf >= 0.6)) if on]}
+                   "sources": [s for s, on in (("accident model", bool(m)), ("trajectory rule", bool(rule)), ("scene model", scene_conf >= 0.6),
+                                                  ("accident classifier", clf_hit)) if on]}
         details["features"] = {"model_conf": round(m_conf, 3), "rule": float(bool(rule)),
                                "vehicles": len(inside), "people": people,
                                "vehicle_check": float(bool(inside)), "rule_conf": round(r_conf, 3),
-                               "scene_crash_margin": round(m_crash, 3)}
+                               "scene_crash_margin": round(m_crash, 3), "accident_clf_p": round(clf_p, 3)}
+        if clf_hit:
+            details.update(accident_clf_p=round(clf_p, 2))
         if m:
             details.update(model_class=m["cls"], model_conf=round(m_conf, 2),
                            vehicle_check="passed" if inside else "no tracked vehicle in the box")
