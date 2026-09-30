@@ -23,7 +23,7 @@ os.environ.setdefault("OPENCV_FFMPEG_CAPTURE_OPTIONS", "rtsp_transport;tcp")
 import cv2  # noqa: E402
 import numpy as np  # noqa: E402
 
-from . import config  # noqa: E402
+from . import config, verify  # noqa: E402
 from .db import Store  # noqa: E402
 from .detector import Tracker, get_accident_model, get_accident_service, get_detector  # noqa: E402
 from .engines.accident import AccidentEngine  # noqa: E402
@@ -183,8 +183,8 @@ class Pipeline:
         if not self.rt.live:
             return b""
         self.raw_latest = image
-        jpeg = self._annotate(image, ts)
-        self.ring.append((ts, jpeg))
+        jpeg, people = self._annotate(image, ts)
+        self.ring.append((ts, jpeg, people))
         while self.ring and ts - self.ring[0][0] > config.RING_SECONDS + 5:
             self.ring.popleft()
         self.latest = (self.n, jpeg)
@@ -192,7 +192,7 @@ class Pipeline:
         return jpeg
 
     # ------------------------------------------------------------------ drawing
-    def _annotate(self, image: np.ndarray, ts: float) -> bytes:
+    def _annotate(self, image: np.ndarray, ts: float) -> tuple[bytes, list]:
         h, w = image.shape[:2]
         s = config.STREAM_WIDTH / w
         img = cv2.resize(image, (config.STREAM_WIDTH, int(round(h * s))), interpolation=cv2.INTER_LINEAR)
@@ -206,7 +206,8 @@ class Pipeline:
         for typ, box, _, sub in self.active_boxes:
             self._box(img, box, s, RED, f"{typ.upper()} {sub}".strip(), 2)
         ok, buf = cv2.imencode(".jpg", img, [cv2.IMWRITE_JPEG_QUALITY, config.JPEG_QUALITY])
-        return buf.tobytes()
+        people = [tuple(v * s for v in t.box) for t in self.tracks if t.cls == "person"]
+        return buf.tobytes(), people
 
     @staticmethod
     def _box(img: np.ndarray, box, s: float, color, label: str, thick: int = 1) -> None:
@@ -228,7 +229,10 @@ class Pipeline:
         due = [d for d in self._clips_due if ts >= d[1]]
         self._clips_due = [d for d in self._clips_due if ts < d[1]]
         for iid, _ in due:
-            frames = [j for _, j in self.ring]
+            frames = [r[1] for r in self.ring]
+            if verify.enabled():  # three frames spread over the evidence window, heads blurred
+                picks = [self.ring[i] for i in sorted({0, len(self.ring) // 2, len(self.ring) - 1})]
+                verify.verify_async(self.rt.store, self.rt.broadcast, iid, [(r[1], r[2]) for r in picks])
             span = self.ring[-1][0] - self.ring[0][0] if len(self.ring) > 1 else 1.0
             fps = max(2.0, len(frames) / max(span, 0.5))
             threading.Thread(target=self._write_clip, args=(iid, frames, fps), daemon=True).start()
@@ -327,6 +331,7 @@ class Worker(threading.Thread):
                 cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
                 start, idx = time.time(), -1
                 self.pipeline.reset()
+                self.rt.incidents.camera_restarted(self.cam["id"])
                 continue
             self._tick(image, start + idx / src_fps, idx)
         cap.release()

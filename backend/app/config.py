@@ -67,10 +67,11 @@ CROWD_LIMIT = int(os.environ.get("DRISHTI_CROWD_LIMIT", 25))
 
 # ---- false-alarm filter: base confidence gate and persistence per incident type
 GATE = {"accident": 0.45, "crowd": 0.60, "baggage": 0.18}
-PERSIST_S = {"accident": 1.0, "crowd": 2.0, "baggage": 0.0}
+PERSIST_S = {"accident": 1.0, "crowd": 1.0, "baggage": 0.0}
 MIN_HITS = {"accident": 2, "crowd": 4, "baggage": 1}
 GROUP_GAP_S = 6.0
-MERGE_WINDOW_S = 30.0
+MERGE_WINDOW_S = 30.0  # cross-camera merge, and how long an event may pause and still be the same one
+REOPEN_WINDOW_S = 600.0  # an unhandled incident seen again on the same camera is updated, not duplicated
 DISMISS_STEP = 0.05
 CONFIRM_STEP = 0.02
 MAX_ADJ = 0.25

@@ -294,7 +294,7 @@ def analytics(minutes: int = 60) -> dict:
                 else "persistence")
 
     fps = S.store.q("SELECT ts, camera_id, fps, latency_ms FROM fps_log WHERE ts>=? ORDER BY ts", (since,))
-    fb = S.store.q("SELECT action, COUNT(*) n FROM feedback GROUP BY action")
+    fb = S.store.q("SELECT action, COUNT(DISTINCT incident_id) n FROM feedback GROUP BY action")
     return {"bucket_s": bucket, "series": series, "by_type": count(inc, "type"),
             "by_severity": count(inc, "severity"), "by_status": count(inc, "status"),
             "incidents": len(inc), "suppressed": len(sup),

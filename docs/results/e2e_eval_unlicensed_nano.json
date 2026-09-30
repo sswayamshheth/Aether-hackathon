@@ -1,0 +1,168 @@
+{
+ "generated": "2026-09-30 21:06",
+ "settings": {
+  "gate": {
+   "accident": 0.45,
+   "crowd": 0.6,
+   "baggage": 0.18
+  },
+  "persist_s": {
+   "accident": 1.0,
+   "crowd": 1.0,
+   "baggage": 0.0
+  },
+  "min_hits": {
+   "accident": 2,
+   "crowd": 4,
+   "baggage": 1
+  },
+  "bag_unattended_s": 10.0,
+  "target_fps": 10.0,
+  "detect_every": 2,
+  "accident_every_s": 1.0,
+  "accident_imgsz": 640,
+  "accident_weights": "accident_detection.pt"
+ },
+ "accident": {
+  "dataset": "UCF-Crime RoadAccidents, first 8 annotated test videos, first 40 s of each",
+  "clips": 8,
+  "detected": 1,
+  "early_alarms": 3,
+  "median_delay_s": 11.0
+ },
+ "normal": {
+  "dataset": "UCF-Crime Testing_Normal videos 006, 015, 018, 024, first 40 s of each",
+  "clips": 4,
+  "camera_seconds": 105.9,
+  "alarms_without_filter": 7,
+  "false_alarms_with_filter": 1,
+  "per_camera_hour_without_filter": 238.0,
+  "per_camera_hour_with_filter": 34.0
+ },
+ "all_footage": {
+  "camera_seconds": 314.1,
+  "alarm_groups_without_filter": 18,
+  "incidents_with_filter": 5
+ },
+ "rows": [
+  {
+   "task": "accident",
+   "clip": "RoadAccidents001_x264.mp4",
+   "onset_s": 7.0,
+   "detected": false,
+   "delay_s": null,
+   "early_alarms": 0,
+   "raw_alarms": 1,
+   "suppressed": 1
+  },
+  {
+   "task": "accident",
+   "clip": "RoadAccidents002_x264.mp4",
+   "onset_s": 8.0,
+   "detected": false,
+   "delay_s": null,
+   "early_alarms": 0,
+   "raw_alarms": 1,
+   "suppressed": 1
+  },
+  {
+   "task": "accident",
+   "clip": "RoadAccidents004_x264.mp4",
+   "onset_s": 4.7,
+   "detected": false,
+   "delay_s": null,
+   "early_alarms": 0,
+   "raw_alarms": 1,
+   "suppressed": 1
+  },
+  {
+   "task": "accident",
+   "clip": "RoadAccidents009_x264.mp4",
+   "onset_s": 7.0,
+   "detected": true,
+   "delay_s": 11.0,
+   "early_alarms": 0,
+   "raw_alarms": 2,
+   "suppressed": 0
+  },
+  {
+   "task": "accident",
+   "clip": "RoadAccidents010_x264.mp4",
+   "onset_s": 7.7,
+   "detected": false,
+   "delay_s": null,
+   "early_alarms": 0,
+   "raw_alarms": 1,
+   "suppressed": 1
+  },
+  {
+   "task": "accident",
+   "clip": "RoadAccidents011_x264.mp4",
+   "onset_s": 8.7,
+   "detected": false,
+   "delay_s": null,
+   "early_alarms": 1,
+   "raw_alarms": 2,
+   "suppressed": 0
+  },
+  {
+   "task": "accident",
+   "clip": "RoadAccidents012_x264.mp4",
+   "onset_s": 8.3,
+   "detected": false,
+   "delay_s": null,
+   "early_alarms": 1,
+   "raw_alarms": 1,
+   "suppressed": 0
+  },
+  {
+   "task": "accident",
+   "clip": "RoadAccidents016_x264.mp4",
+   "onset_s": 17.7,
+   "detected": false,
+   "delay_s": null,
+   "early_alarms": 1,
+   "raw_alarms": 2,
+   "suppressed": 0
+  },
+  {
+   "task": "normal",
+   "clip": "ucf_normal_006.mp4",
+   "false_alarms_with_filter": 0,
+   "alarms_without_filter": 1,
+   "suppressed": 1,
+   "incident_types": [],
+   "proc_fps": 21.06
+  },
+  {
+   "task": "normal",
+   "clip": "ucf_normal_015.mp4",
+   "false_alarms_with_filter": 0,
+   "alarms_without_filter": 1,
+   "suppressed": 1,
+   "incident_types": [],
+   "proc_fps": 22.44
+  },
+  {
+   "task": "normal",
+   "clip": "ucf_normal_018.mp4",
+   "false_alarms_with_filter": 0,
+   "alarms_without_filter": 2,
+   "suppressed": 2,
+   "incident_types": [],
+   "proc_fps": 22.16
+  },
+  {
+   "task": "normal",
+   "clip": "ucf_normal_024.mp4",
+   "false_alarms_with_filter": 1,
+   "alarms_without_filter": 3,
+   "suppressed": 2,
+   "incident_types": [
+    "crowd"
+   ],
+   "proc_fps": 21.47
+  }
+ ],
+ "runtime_s": 140
+}

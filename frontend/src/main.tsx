@@ -36,6 +36,7 @@ createRoot(document.getElementById('root')!).render(
         <Toaster
           theme="dark"
           position="bottom-right"
+          offset={{ bottom: 48, right: 16 }}
           toastOptions={{
             style: { background: '#161c25', border: '1px solid #2a3442', color: '#e6eaf0', fontSize: 13, borderRadius: 8 },
           }}

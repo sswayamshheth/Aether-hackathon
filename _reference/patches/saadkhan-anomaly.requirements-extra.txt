@@ -1,0 +1,1 @@
+imageio==2.37.0  # missing from the repo's requirements.txt; added so yolo_detector.py imports

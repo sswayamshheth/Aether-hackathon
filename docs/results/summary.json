@@ -1,0 +1,749 @@
+{
+ "generated": "2026-09-30 21:29",
+ "machine": "Intel i5-1230U, 16 GB RAM, no GPU, Windows 11",
+ "sections": [
+  {
+   "title": "Hybrid plan",
+   "meta": "what we take, from where, and what we build",
+   "columns": [
+    {
+     "key": "task",
+     "label": "Task"
+    },
+    {
+     "key": "take",
+     "label": "We take"
+    },
+    {
+     "key": "why",
+     "label": "Why (measured above)"
+    },
+    {
+     "key": "build",
+     "label": "We build"
+    }
+   ],
+   "rows": [
+    {
+     "task": "Detection + tracking",
+     "take": "Ultralytics YOLO11n (COCO) exported to OpenVINO, Ultralytics ByteTrack",
+     "why": "OpenVINO roughly doubles nano FPS on this CPU; AGPL-3.0 licence is clear",
+     "build": "Per-camera workers, shared model, detect-every-N, bags handled outside the tracker"
+    },
+    {
+     "task": "Accident",
+     "take": "Enos-123 YOLO11x accident weights (MIT), run on a side thread about once a second",
+     "why": "Only accident weights with a licence. The unlicensed nano found more clips but also raised more false alarms",
+     "build": "Vehicle-presence check on every model hit, trajectory rule as second opinion and fallback, persistence"
+    },
+    {
+     "task": "Crowd",
+     "take": "Nothing from the benched repos beyond the idea of counting people",
+     "why": "Count rules flagged calm crowds and missed every dispersal on UMN",
+     "build": "Temporal CNN on motion and occupancy features, trained on UMN, plus an overcrowding limit"
+    },
+    {
+     "task": "Baggage",
+     "take": "COCO bag classes from the shared detector; owner-proximity idea from the baggage repos",
+     "why": "The logic in the benched repo is sound but starved by weak bag detection; the better bag weights have no licence",
+     "build": "Position-based bag memory, owner assignment, owner-away timer, tracker-ID handover"
+    },
+    {
+     "task": "Incident layer",
+     "take": "Nothing",
+     "why": "No benched repo merges cameras or explains severity",
+     "build": "False-alarm filter, severity with reasons, cross-camera merge, operator feedback, evidence clips"
+    }
+   ],
+   "note": "Unlicensed repos were benched and read, but no file or weight from them ships in this project."
+  },
+  {
+   "title": "Our crowd model (temporal CNN)",
+   "meta": "UMN Unusual Crowd Activity (University of Minnesota)",
+   "columns": [
+    {
+     "key": "metric",
+     "label": "Metric"
+    },
+    {
+     "key": "value",
+     "label": "Value",
+     "align": "right"
+    },
+    {
+     "key": "detail",
+     "label": "Detail"
+    }
+   ],
+   "rows": [
+    {
+     "metric": "Frame-level AUC, held-out scenes",
+     "value": 0.9901,
+     "detail": "scenes [1, 4, 7, 9], 908 windows, 174 abnormal"
+    },
+    {
+     "metric": "Frame-level AUC, training scenes",
+     "value": 1.0,
+     "detail": "scenes [0, 2, 3, 5, 6, 8, 10], 1495 windows"
+    },
+    {
+     "metric": "Precision at 0.5, held-out",
+     "value": 0.926,
+     "detail": ""
+    },
+    {
+     "metric": "Recall at 0.5, held-out",
+     "value": 0.931,
+     "detail": ""
+    },
+    {
+     "metric": "Baseline AUC: flow magnitude alone",
+     "value": 0.5691,
+     "detail": "same held-out windows"
+    },
+    {
+     "metric": "Baseline AUC: fastest person alone",
+     "value": 0.6056,
+     "detail": "same held-out windows"
+    }
+   ],
+   "note": "temporal CNN (2 x Conv1d, 24 channels) over a 1.6 s window of 8 per-frame features. Split by scene. UMN is staged (people told to run). Expect weaker numbers on real CCTV."
+  },
+  {
+   "title": "Inference speed on this machine",
+   "meta": "480x360 frame",
+   "columns": [
+    {
+     "key": "model",
+     "label": "Model"
+    },
+    {
+     "key": "imgsz",
+     "label": "Input size",
+     "align": "right"
+    },
+    {
+     "key": "pytorch_fps",
+     "label": "PyTorch FPS",
+     "align": "right"
+    },
+    {
+     "key": "openvino_fps",
+     "label": "OpenVINO FPS",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "model": "yolo11n COCO",
+     "imgsz": 480,
+     "pytorch_fps": 7.4,
+     "openvino_fps": 13.9
+    },
+    {
+     "model": "accident detector",
+     "imgsz": 640,
+     "pytorch_fps": 0.7,
+     "openvino_fps": 0.2
+    }
+   ],
+   "note": "Single-image inference, measured while other jobs were running. The accident model runs in PyTorch on its own thread: its OpenVINO export was slower here."
+  },
+  {
+   "title": "End to end: whole pipeline on the bench set",
+   "meta": "generated 2026-09-30 21:03",
+   "columns": [
+    {
+     "key": "task",
+     "label": "Task"
+    },
+    {
+     "key": "data",
+     "label": "Footage"
+    },
+    {
+     "key": "detected",
+     "label": "Detected",
+     "align": "right"
+    },
+    {
+     "key": "delay",
+     "label": "Median delay (s)",
+     "align": "right"
+    },
+    {
+     "key": "early",
+     "label": "Alarms before onset",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "task": "Accident",
+     "data": "UCF-Crime RoadAccidents, first 8 annotated test videos, first 40 s of each",
+     "detected": "1 / 8",
+     "delay": 1.3,
+     "early": 4
+    },
+    {
+     "task": "Crowd anomaly, all scenes",
+     "data": "UMN, 11 scenes (4 held out from training)",
+     "detected": "10 / 11",
+     "delay": 1.1,
+     "early": 0
+    },
+    {
+     "task": "Crowd anomaly, held-out scenes only",
+     "data": "UMN scenes 1, 4, 7, 9",
+     "detected": "4 / 4",
+     "delay": null,
+     "early": null
+    },
+    {
+     "task": "Unattended baggage",
+     "data": "ABODA videos 1, 2, 3, 4, 9, 10",
+     "detected": "3 / 6",
+     "delay": null,
+     "early": null
+    }
+   ],
+   "note": "Same settings as the live system. Accident window: 1 s before onset to 10 s after the annotated end. ABODA has no onset labels, so baggage has no delay figure."
+  },
+  {
+   "title": "False alarms, with and without our filter",
+   "meta": "UCF-Crime Testing_Normal videos 006, 015, 018, 024, first 40 s of each",
+   "columns": [
+    {
+     "key": "scope",
+     "label": "Footage"
+    },
+    {
+     "key": "secs",
+     "label": "Camera-seconds",
+     "align": "right"
+    },
+    {
+     "key": "without",
+     "label": "Alarms without filter",
+     "align": "right"
+    },
+    {
+     "key": "with",
+     "label": "Alarms with filter",
+     "align": "right"
+    },
+    {
+     "key": "rate_without",
+     "label": "Per camera-hour, without",
+     "align": "right"
+    },
+    {
+     "key": "rate_with",
+     "label": "Per camera-hour, with",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "scope": "Normal clips (4)",
+     "secs": 105.9,
+     "without": 4,
+     "with": 1,
+     "rate_without": 136.0,
+     "rate_with": 34.0
+    },
+    {
+     "scope": "All bench footage (incident clips included)",
+     "secs": null,
+     "without": 32,
+     "with": 21,
+     "rate_without": null,
+     "rate_with": null
+    }
+   ],
+   "note": "Without filter = every candidate group an engine produced. With filter = incidents raised after persistence, confidence gate and zone checks (groups that passed = total minus suppressed). The normal set is under 3 minutes of footage, so the per-hour rates are rough. Crowd persistence was lowered from 2 s to 1 s after a first run of this evaluation showed it suppressing real dispersals, so the crowd figures here are not from untouched settings."
+  },
+  {
+   "title": "Demo clips",
+   "meta": "what the pipeline raised when the demo cache was built",
+   "columns": [
+    {
+     "key": "cam",
+     "label": "Camera"
+    },
+    {
+     "key": "clip",
+     "label": "Clip"
+    },
+    {
+     "key": "seconds",
+     "label": "Length (s)",
+     "align": "right"
+    },
+    {
+     "key": "incidents",
+     "label": "Incidents raised"
+    },
+    {
+     "key": "suppressed",
+     "label": "Suppressed",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "cam": "cam1",
+     "clip": "cam1.mp4",
+     "seconds": 17.5,
+     "incidents": "accident (accident) at 9.0 s",
+     "suppressed": 0
+    },
+    {
+     "cam": "cam2",
+     "clip": "cam2.mp4",
+     "seconds": 17.5,
+     "incidents": "accident (accident) at 10.0 s",
+     "suppressed": 0
+    },
+    {
+     "cam": "cam3",
+     "clip": "cam3.mp4",
+     "seconds": 82.88,
+     "incidents": "baggage (unattended) at 51.5 s",
+     "suppressed": 0
+    },
+    {
+     "cam": "cam4",
+     "clip": "cam4.mp4",
+     "seconds": 24.7,
+     "incidents": "crowd (sudden dispersal) at 18.6 s",
+     "suppressed": 0
+    }
+   ],
+   "note": "Demo mode replays these cached detections; incidents are rebuilt live from them."
+  },
+  {
+   "title": "Accident detectors, per-frame weights only",
+   "meta": "UCF-Crime RoadAccidents: 8 clips, plus 4 normal clips",
+   "columns": [
+    {
+     "key": "model",
+     "label": "Weights"
+    },
+    {
+     "key": "licence",
+     "label": "Licence"
+    },
+    {
+     "key": "sampled",
+     "label": "Sampled at"
+    },
+    {
+     "key": "detected",
+     "label": "Detected",
+     "align": "right"
+    },
+    {
+     "key": "delay",
+     "label": "Median delay (s)",
+     "align": "right"
+    },
+    {
+     "key": "early",
+     "label": "Alarms before onset",
+     "align": "right"
+    },
+    {
+     "key": "fa",
+     "label": "False alarms on normal clips"
+    },
+    {
+     "key": "fps",
+     "label": "FPS",
+     "align": "right"
+    },
+    {
+     "key": "ram",
+     "label": "RAM (MB)",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "model": "srniloy/accident-detection, YOLO11n",
+     "licence": "none (no licence file)",
+     "sampled": "2 fps",
+     "detected": "5 / 8",
+     "delay": 1.0,
+     "early": 7,
+     "fa": "11 on 2 of 4 clips",
+     "fps": 10.03,
+     "ram": 407
+    },
+    {
+     "model": "Enos-123 traffic-accident-detection, YOLO11x @640",
+     "licence": "MIT (Hugging Face card)",
+     "sampled": "1 fps",
+     "detected": "2 / 8",
+     "delay": 2.3,
+     "early": 3,
+     "fa": "0 on 0 of 4 clips",
+     "fps": 0.76,
+     "ram": 907
+    },
+    {
+     "model": "Enos-123 traffic-accident-detection, YOLO11x @320",
+     "licence": "MIT (Hugging Face card)",
+     "sampled": "1 fps",
+     "detected": "1 / 8",
+     "delay": 2.0,
+     "early": 4,
+     "fa": "0 on 0 of 4 clips",
+     "fps": 1.66,
+     "ram": 882
+    }
+   ],
+   "note": "One alarm rule for every model: accident-class confidence of 0.5 or more on 2 consecutive samples. Detected means an alarm started between 1 s before the annotated onset and 3 s after the annotated end. An alarm that started earlier counts as an alarm before onset, not as a detection. First 40 s of each clip. FPS was measured while other jobs were running on the machine."
+  },
+  {
+   "title": "Trajectory rules (neyvur/traffic-video-analysis)",
+   "meta": "4 accident clips + 1 normal road clip, every frame, 467 MB",
+   "columns": [
+    {
+     "key": "clip",
+     "label": "Clip"
+    },
+    {
+     "key": "onset",
+     "label": "Annotated onset (s)",
+     "align": "right"
+    },
+    {
+     "key": "accident_at",
+     "label": "Accident events at"
+    },
+    {
+     "key": "other",
+     "label": "Other event types raised"
+    },
+    {
+     "key": "fps",
+     "label": "FPS",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "clip": "RoadAccidents001_x264.mp4",
+     "onset": 7.0,
+     "accident_at": "none",
+     "other": "none",
+     "fps": 6.6
+    },
+    {
+     "clip": "RoadAccidents002_x264.mp4",
+     "onset": 8.0,
+     "accident_at": "4.9 s, 5.4 s",
+     "other": "illegal_u_turn, near_miss",
+     "fps": 5.8
+    },
+    {
+     "clip": "RoadAccidents004_x264.mp4",
+     "onset": 4.7,
+     "accident_at": "11.4 s",
+     "other": "near_miss, wrong_way",
+     "fps": 3.7
+    },
+    {
+     "clip": "RoadAccidents009_x264.mp4",
+     "onset": 7.0,
+     "accident_at": "none",
+     "other": "stopped_vehicle",
+     "fps": 4.7
+    },
+    {
+     "clip": "ucf_normal_006.mp4",
+     "onset": null,
+     "accident_at": "none",
+     "other": "illegal_u_turn, near_miss, stopped_vehicle",
+     "fps": 3.8
+    }
+   ],
+   "note": "The repo's own YOLOv8n COCO weights, tracker and rules, run unchanged with default settings and no zone file. Onset is n/a for the normal clip, where any event is a false alarm."
+  },
+  {
+   "title": "Bag detectors",
+   "meta": "ABODA videos 1, 2, 3, 4, 9, 10 sampled at 2 fps",
+   "columns": [
+    {
+     "key": "model",
+     "label": "Weights"
+    },
+    {
+     "key": "licence",
+     "label": "Licence"
+    },
+    {
+     "key": "frames",
+     "label": "Frames with a bag box",
+     "align": "right"
+    },
+    {
+     "key": "share",
+     "label": "Share",
+     "align": "right"
+    },
+    {
+     "key": "per_clip",
+     "label": "Per clip"
+    },
+    {
+     "key": "fps",
+     "label": "FPS",
+     "align": "right"
+    },
+    {
+     "key": "ram",
+     "label": "RAM (MB)",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "model": "TheRomanFour korzo_model.pt (custom YOLOv8s: luggage, people)",
+     "licence": "none (no licence file)",
+     "frames": "684 / 903",
+     "share": "76%",
+     "per_clip": "v1: 146/146, v10: 151/151, v2: 101/188, v3: 90/174, v4: 30/78, v9: 166/166",
+     "fps": 4.36,
+     "ram": 494
+    },
+    {
+     "model": "Ultralytics YOLO11n, COCO bag classes",
+     "licence": "AGPL-3.0",
+     "frames": "248 / 903",
+     "share": "27%",
+     "per_clip": "v1: 55/146, v10: 72/151, v2: 3/188, v3: 7/174, v4: 6/78, v9: 105/166",
+     "fps": 9.15,
+     "ram": 512
+    },
+    {
+     "model": "Ultralytics YOLO11s, COCO bag classes",
+     "licence": "AGPL-3.0",
+     "frames": "272 / 903",
+     "share": "30%",
+     "per_clip": "v1: 51/146, v10: 85/151, v2: 19/188, v3: 21/174, v4: 9/78, v9: 87/166",
+     "fps": 4.61,
+     "ram": 565
+    }
+   ],
+   "note": "ABODA has no box labels, so this is the share of sampled frames with at least one bag-class box at confidence 0.25 or more. It shows how often a detector sees a bag at all; it cannot show wrong boxes."
+  },
+  {
+   "title": "Abandoned-object logic (BariaHarshh/CCTV-Surveillance-System)",
+   "meta": "flagged 1 of 6 ABODA clips, 0 events on 4 normal clips, 10.22 fps, 481 MB",
+   "columns": [
+    {
+     "key": "clip",
+     "label": "Clip"
+    },
+    {
+     "key": "kind",
+     "label": "Kind"
+    },
+    {
+     "key": "events",
+     "label": "Events",
+     "align": "right"
+    },
+    {
+     "key": "first",
+     "label": "First event (s)",
+     "align": "right"
+    },
+    {
+     "key": "bag",
+     "label": "Frames with a tracked bag",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "clip": "aboda_video1.mp4",
+     "kind": "abandoned bag",
+     "events": 0,
+     "first": null,
+     "bag": "34 / 365"
+    },
+    {
+     "clip": "aboda_video10.mp4",
+     "kind": "abandoned bag",
+     "events": 2,
+     "first": 62.26,
+     "bag": "167 / 377"
+    },
+    {
+     "clip": "aboda_video2.mp4",
+     "kind": "abandoned bag",
+     "events": 0,
+     "first": null,
+     "bag": "0 / 470"
+    },
+    {
+     "clip": "aboda_video3.mp4",
+     "kind": "abandoned bag",
+     "events": 0,
+     "first": null,
+     "bag": "3 / 435"
+    },
+    {
+     "clip": "aboda_video4.mp4",
+     "kind": "abandoned bag",
+     "events": 0,
+     "first": null,
+     "bag": "2 / 195"
+    },
+    {
+     "clip": "aboda_video9.mp4",
+     "kind": "abandoned bag",
+     "events": 0,
+     "first": null,
+     "bag": "18 / 415"
+    },
+    {
+     "clip": "ucf_normal_006.mp4",
+     "kind": "normal",
+     "events": 0,
+     "first": null,
+     "bag": "0 / 75"
+    },
+    {
+     "clip": "ucf_normal_015.mp4",
+     "kind": "normal",
+     "events": 0,
+     "first": null,
+     "bag": "0 / 80"
+    },
+    {
+     "clip": "ucf_normal_018.mp4",
+     "kind": "normal",
+     "events": 0,
+     "first": null,
+     "bag": "0 / 197"
+    },
+    {
+     "clip": "ucf_normal_024.mp4",
+     "kind": "normal",
+     "events": 0,
+     "first": null,
+     "bag": "0 / 180"
+    }
+   ],
+   "note": "The repo's AbandonedObjectProcessor with default settings, fed by YOLOv8n + ByteTrack as the repo does. Its logic is sound; it rarely fires because the COCO detector rarely sees the bag."
+  },
+  {
+   "title": "Crowd rule (BariaHarshh/CCTV-Surveillance-System)",
+   "meta": "UMN, all 11 scenes, 5 fps",
+   "columns": [
+    {
+     "key": "rule",
+     "label": "Rule"
+    },
+    {
+     "key": "abn",
+     "label": "Abnormal frames flagged",
+     "align": "right"
+    },
+    {
+     "key": "nor",
+     "label": "Normal frames flagged",
+     "align": "right"
+    },
+    {
+     "key": "ram",
+     "label": "RAM (MB)",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "rule": "person count > 10 sustained 3 s (repo defaults)",
+     "abn": "0 / 188",
+     "nor": "132 / 1102",
+     "ram": 403
+    }
+   ],
+   "note": "A head-count threshold measures how full a scene is, not whether people are fleeing. On UMN it flags calm crowds and misses every dispersal, which is why we trained a temporal model."
+  },
+  {
+   "title": "Anomaly rules (saadkhan2003/CCTV_Video_Anomaly_Detection)",
+   "meta": "UMN at 5 fps, 7.61 fps, 859 MB",
+   "columns": [
+    {
+     "key": "flag",
+     "label": "Flag raised by the repo"
+    },
+    {
+     "key": "abn",
+     "label": "Abnormal frames",
+     "align": "right"
+    },
+    {
+     "key": "nor",
+     "label": "Normal frames",
+     "align": "right"
+    },
+    {
+     "key": "normal_clips",
+     "label": "Frames on 4 normal clips",
+     "align": "right"
+    }
+   ],
+   "rows": [
+    {
+     "flag": "is_anomaly",
+     "abn": "126 / 188",
+     "nor": "1076 / 1102",
+     "normal_clips": 452
+    },
+    {
+     "flag": "ACTIVITY_DETECTED",
+     "abn": "0 / 188",
+     "nor": "0 / 1102",
+     "normal_clips": 1
+    },
+    {
+     "flag": "CROWD_GATHERING",
+     "abn": "37 / 188",
+     "nor": "1047 / 1102",
+     "normal_clips": 153
+    },
+    {
+     "flag": "LOITERING",
+     "abn": "13 / 188",
+     "nor": "165 / 1102",
+     "normal_clips": 128
+    },
+    {
+     "flag": "POTENTIAL_CONFLICT",
+     "abn": "123 / 188",
+     "nor": "1076 / 1102",
+     "normal_clips": 367
+    },
+    {
+     "flag": "TRAFFIC_CONGESTION",
+     "abn": "0 / 188",
+     "nor": "0 / 1102",
+     "normal_clips": 75
+    },
+    {
+     "flag": "WEAPON_DETECTED",
+     "abn": "7 / 188",
+     "nor": "47 / 1102",
+     "normal_clips": 12
+    }
+   ],
+   "note": "YOLO11s through OpenVINO with the repo's default thresholds (a crowd is 5 or more people). It flags nearly every frame, calm or not, so it cannot separate a dispersal from a normal crowd. Needed one fix to run: imageio is imported but missing from its requirements.txt."
+  }
+ ]
+}

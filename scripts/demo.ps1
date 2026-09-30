@@ -1,6 +1,6 @@
-# Demo mode: replays the demo clips with cached detections. No RTSP, no model inference,
+# Demo mode: replays the demo clips with cached detections. No RTSP, no YOLO inference,
 # no network. Incidents are rebuilt live from the cached detections, so the queue fills in
-# sync with the video and the demo cannot stutter on a busy CPU.
+# sync with the video and the demo does not depend on model speed.
 #   powershell -ExecutionPolicy Bypass -File scripts\demo.ps1
 param([switch]$NoBrowser)
 $ErrorActionPreference = 'Stop'

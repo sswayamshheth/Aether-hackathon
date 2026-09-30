@@ -21,6 +21,7 @@ log = logging.getLogger("drishti.crowd")
 FEATURES = ["people", "moving_frac", "flow_mean", "flow_p95", "dir_entropy",
             "speed_mean", "speed_max", "people_delta"]
 WINDOW = 16
+MIN_CROWD = 6  # a crowd anomaly needs a crowd: fewer people than this never raise one
 FLOW_SIZE = (160, 120)
 
 
@@ -133,6 +134,7 @@ class CrowdEngine:
         self.p_smooth = 0.0
         self.last_prob = 0.0
         self.persons: list = []
+        self.recent_n: deque = deque(maxlen=50)  # people counts over the last ~5 s
 
     def reset(self) -> None:
         self.__init__(self.camera_id)
@@ -144,6 +146,8 @@ class CrowdEngine:
         x = self.feat.step(f.image, f.ts, persons)
         out: list[Candidate] = []
         n = len(persons)
+        self.recent_n.append(n)
+        crowd_size = max(self.recent_n)  # people run out of frame, so use the recent peak
         if x is not None:
             self.window.append(x)
             model = get_crowd_model()
@@ -161,13 +165,13 @@ class CrowdEngine:
             self.last_prob = self.p_smooth
             if self.p_smooth < 0.5:
                 self.baseline.append(float(x[2]))
-            if self.p_smooth >= 0.5 and n >= 3:
+            if self.p_smooth >= 0.5 and crowd_size >= MIN_CROWD:
                 base = float(np.mean(self.baseline)) if self.baseline else 0.0
                 ratio = float(x[2]) / base if base > 1e-6 else None
                 out.append(Candidate(
                     type="crowd", camera_id=self.camera_id, key="panic", conf=self.p_smooth,
                     ts=f.ts, box=_union(persons), subtype="sudden dispersal",
-                    details={"people": max(self.feat.counts, default=n), "source": source,
+                    details={"people": crowd_size, "source": source,
                              "motion_ratio": round(ratio, 1) if ratio else None,
                              "speed_max": round(float(x[6]), 2)}))
         limit = config.CROWD_LIMIT

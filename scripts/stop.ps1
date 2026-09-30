@@ -9,7 +9,7 @@ foreach ($name in 'rtsp_pids.txt', 'backend_pid.txt') {
         $id = [int]$line
         $proc = Get-Process -Id $id -ErrorAction SilentlyContinue
         if ($proc -and $proc.Path -and $proc.Path.ToLower().StartsWith($root.ToLower())) {
-            & taskkill /PID $id /T /F | Out-Null
+            & taskkill /PID $id /T /F 2>$null | Out-Null
             Write-Host "stopped $($proc.ProcessName) ($id)"
         }
     }

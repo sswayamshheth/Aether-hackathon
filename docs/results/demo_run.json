@@ -2,34 +2,46 @@
  "cam1": {
   "clip": "data/demo/clips/cam1.mp4",
   "profile": "traffic",
-  "seconds": 15.5,
-  "frames_processed": 156,
-  "offline_fps": 10.56,
-  "incidents": [],
+  "seconds": 17.5,
+  "frames_processed": 176,
+  "offline_fps": 5.69,
+  "incidents": [
+   {
+    "type": "accident",
+    "subtype": "accident",
+    "at_s": 9.0
+   }
+  ],
   "suppressed": 0,
-  "raw_alarms": 0
+  "raw_alarms": 1
  },
  "cam2": {
   "clip": "data/demo/clips/cam2.mp4",
   "profile": "traffic",
-  "seconds": 15.5,
-  "frames_processed": 156,
-  "offline_fps": 24.96,
-  "incidents": [],
+  "seconds": 17.5,
+  "frames_processed": 176,
+  "offline_fps": 7.42,
+  "incidents": [
+   {
+    "type": "accident",
+    "subtype": "accident",
+    "at_s": 10.0
+   }
+  ],
   "suppressed": 0,
-  "raw_alarms": 0
+  "raw_alarms": 1
  },
  "cam3": {
   "clip": "data/demo/clips/cam3.mp4",
   "profile": "public",
-  "seconds": 72.97,
-  "frames_processed": 730,
-  "offline_fps": 18.78,
+  "seconds": 82.88,
+  "frames_processed": 829,
+  "offline_fps": 33.68,
   "incidents": [
    {
     "type": "baggage",
     "subtype": "unattended",
-    "at_s": 67.9
+    "at_s": 51.5
    }
   ],
   "suppressed": 0,
@@ -40,12 +52,12 @@
   "profile": "public",
   "seconds": 24.7,
   "frames_processed": 248,
-  "offline_fps": 18.74,
+  "offline_fps": 32.67,
   "incidents": [
    {
     "type": "crowd",
     "subtype": "sudden dispersal",
-    "at_s": 19.6
+    "at_s": 18.6
    }
   ],
   "suppressed": 0,

@@ -30,8 +30,8 @@ from app.offline import run_clip  # noqa: E402
 BENCH = ROOT / "data" / "bench"
 CLIPS = config.DEMO / "clips"
 CACHE = config.DEMO / "cache"
-ACCIDENT_CLIP = os.environ.get("DEMO_ACCIDENT_CLIP", "RoadAccidents012_x264.mp4")
-BAGGAGE_CLIP = os.environ.get("DEMO_BAGGAGE_CLIP", "aboda_video1.mp4")
+ACCIDENT_CLIP = os.environ.get("DEMO_ACCIDENT_CLIP", "RoadAccidents010_x264.mp4")
+BAGGAGE_CLIP = os.environ.get("DEMO_BAGGAGE_CLIP", "aboda_video9.mp4")
 UMN_SCENE = 4
 
 

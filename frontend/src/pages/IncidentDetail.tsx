@@ -190,9 +190,26 @@ export function IncidentDetail() {
 
           <Panel>
             <PanelHeader title="Vision verification" />
-            <p className="px-3 py-3 text-[12px] leading-relaxed text-muted">
-              {inc.verification ? JSON.stringify(inc.verification) : 'Off. Set VISION_VERIFY_ENABLED and an API key in .env to have keyframes checked by a vision model.'}
-            </p>
+            {!inc.verification ? (
+              <p className="px-3 py-3 text-[12px] leading-relaxed text-muted">Off. Set VISION_VERIFY_ENABLED=1 and ANTHROPIC_API_KEY in .env to have three head-blurred frames checked by a vision model.</p>
+            ) : inc.verification.status !== 'done' ? (
+              <p className="px-3 py-3 text-[12px] leading-relaxed text-muted">No verdict: {String(inc.verification.error ?? 'unavailable')}. The incident stands on the detector's evidence alone.</p>
+            ) : (
+              <dl className="divide-y divide-line px-3">
+                {([
+                  ['Verdict', inc.verification.confirmed ? 'Confirmed' : 'Not confirmed'],
+                  ['Sees', String(inc.verification.description)],
+                  ['Because', String(inc.verification.reason)],
+                  ['Its severity (1-5)', String(inc.verification.severity)],
+                  ['Model', String(inc.verification.model)],
+                ] as const).map(([k, v]) => (
+                  <div key={k} className="flex items-start justify-between gap-4 py-2 text-[12px]">
+                    <dt className="shrink-0 text-muted">{k}</dt>
+                    <dd className="text-right text-fg">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
           </Panel>
         </div>
       </div>

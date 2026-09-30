@@ -242,6 +242,30 @@ def test_outside_merge_window_is_a_new_incident():
     assert m.ingest(cand(10.0 + config.MERGE_WINDOW_S + 5, cam="c2"))["id"] != first
 
 
+def test_unhandled_incident_seen_again_is_updated_not_duplicated():
+    m, _ = manager()
+    first = m.ingest(cand(10.0, cam="c1"))
+    again = m.ingest(cand(10.0 + config.MERGE_WINDOW_S + 40, cam="c1"))
+    assert again["id"] == first["id"]
+    inc = m.store.incident(first["id"])
+    assert any("Seen again" in t["text"] for t in inc["timeline"])
+    assert not any("not cleared" in r["text"] for r in inc["reasons"])  # duration restarted
+
+
+def test_confirmed_incident_seen_again_later_is_a_new_incident():
+    m, _ = manager()
+    first = m.ingest(cand(10.0, cam="c1"))["id"]
+    m.feedback(first, "confirm")
+    assert m.ingest(cand(10.0 + config.MERGE_WINDOW_S + 40, cam="c1"))["id"] != first
+
+
+def test_same_bag_with_a_new_key_is_the_same_incident():
+    m, _ = manager()
+    a = m.ingest(Candidate("baggage", "c3", "bag1", 0.5, 10.0, (100, 100, 140, 140)))
+    b = m.ingest(Candidate("baggage", "c3", "bag7", 0.5, 12.0, (104, 102, 144, 142)))
+    assert a["id"] == b["id"]
+
+
 def test_dismiss_raises_gate_and_is_logged():
     m, _ = manager()
     iid = m.ingest(cand(10.0, cam="c1"))["id"]
@@ -256,6 +280,6 @@ def test_dismiss_raises_gate_and_is_logged():
 
 def test_two_bags_on_one_camera_are_two_incidents():
     m, _ = manager()
-    a = m.ingest(cand(10.0, 0.5, typ="baggage", cam="c3", key="bag1"))
-    b = m.ingest(cand(11.0, 0.5, typ="baggage", cam="c3", key="bag2"))
+    a = m.ingest(cand(10.0, 0.5, typ="baggage", cam="c3", key="bag1", box=(100, 100, 140, 140)))
+    b = m.ingest(cand(11.0, 0.5, typ="baggage", cam="c3", key="bag2", box=(400, 300, 440, 340)))
     assert a["id"] != b["id"]

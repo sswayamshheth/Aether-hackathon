@@ -1,0 +1,19 @@
+{
+  "settings_version": "0.0.8",
+  "datasets_dir": "E:\\SSS\\study\\btech\\datasets",
+  "weights_dir": "E:\\SSS\\study\\btech\\aether-hackathon\\weights",
+  "runs_dir": "E:\\SSS\\study\\btech\\aether-hackathon\\runs",
+  "uuid": "0d729c8f891bca9e766dfc01006407c3f77d41785af9e9e713e5e67d94bc0298",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "mlflow": true,
+  "raytune": true,
+  "tensorboard": false,
+  "wandb": false,
+  "vscode_msg": true,
+  "openvino_msg": true
+}
