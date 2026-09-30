@@ -9,7 +9,9 @@ foreach ($name in 'rtsp_pids.txt', 'backend_pid.txt') {
         $id = [int]$line
         $proc = Get-Process -Id $id -ErrorAction SilentlyContinue
         if ($proc -and $proc.Path -and $proc.Path.ToLower().StartsWith($root.ToLower())) {
-            & taskkill /PID $id /T /F 2>$null | Out-Null
+            # through cmd so taskkill's stderr (a child that already exited) cannot become a
+            # terminating error when the caller runs with $ErrorActionPreference = 'Stop'
+            & cmd /c "taskkill /PID $id /T /F >nul 2>&1"
             Write-Host "stopped $($proc.ProcessName) ($id)"
         }
     }
