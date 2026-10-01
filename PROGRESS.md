@@ -40,13 +40,18 @@ then DECISIONS.md and STATUS.md.
 | 8 | README, CREDITS, WHAT_WE_BUILT | DONE | |
 | 8 | PITCH_NOTES, STATUS | DONE | |
 
-## Overnight run 2026-10-01 (branch overnight/2026-10-01) - see OVERNIGHT_LOG.md
+## Overnight run 2026-10-01 (branch overnight/2026-10-01) - see OVERNIGHT_REPORT.md
 
 | Step | Task | Status | Notes |
 |---|---|---|---|
-| 0 | Tests + smoke test, branch, models\stable | DONE | 44 tests pass; smoke test pass |
-| 1 | Finish pending: extraction, accident classifier, verifiers, dataset labels | DOING | |
-| 2 | Synthetic scenario suite | TODO | |
-| 3 | Evaluate + ERRORS.md | TODO | |
-| 4 | Refinement loop | TODO | |
-| 5 | Reports + git | TODO | |
+| 0 | Tests + smoke test, branch, models/stable | DONE | 44 tests pass at start; smoke test pass |
+| 1 | Pending: extraction, label unification, accident classifier | DONE | extraction 48/48; data/labels/*.csv; classifier kept as candidate |
+| 1 | Pending: train_verifiers | CUT | extraction finished 06:44, no time to train and gate it |
+| 1 | Pending: Kaggle fine-tunes | CUT | no Kaggle token (SIGNUP_NEEDED.md) |
+| 2 | Synthetic suite, method A (650 scenarios) | DONE | tests/scenarios, training/synth |
+| 2 | Method B pixel variants (3 real demo clips x 12 conditions) | DONE | docs/results/synthetic_pixel_*.json |
+| 2 | Method C composited baggage | CUT | time |
+| 3 | Baseline evaluation + ERRORS.md | DONE | synthetic baseline + real frozen test / demo_eval |
+| 4 | Refinement iterations | DONE | 3 iterations (logic); none promoted |
+| 4 | Semi-/unsupervised phase | CUT | not reached by 06:00 |
+| 5 | Reports, docs, git | DOING | |

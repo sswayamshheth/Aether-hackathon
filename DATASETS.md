@@ -25,7 +25,7 @@ unless stated otherwise. No dataset terms were accepted through a browser in thi
 |---|---|---|---|---|---|---|
 | MED (Motion Emotion Dataset) | Dropbox link in github.com/hosseinm/med (`med_get.sh`) | research use (AVSS 2016 paper); no licence file | 276 MB | 31 videos | per-frame behaviour label: panic, fight, congestion, obstacle, neutral (`dataset_frames_abnormal_labeling.m`) | downloaded (`data/raw/med`) |
 | UMN Unusual Crowd Activity | mha.cs.umn.edu | research use | 25 MB | 11 scenes | per-frame abnormal flag (read from the burnt-in caption) | downloaded earlier (`data/bench/crowd`) |
-| UCSD Ped2 | official site svcl.ucsd.edu (Kaggle copy not needed) | research use | 740 MB archive (Ped1+Ped2) | Ped2: 16 train, 12 test | per-frame anomaly flags for the test clips (non-pedestrian entities: bikes, carts) | downloaded, extracting Ped2 (`data/raw/ucsd`) |
+| UCSD Ped2 | official site svcl.ucsd.edu (Kaggle copy not needed) | research use | 740 MB archive (Ped1+Ped2) | Ped2: 16 train, 12 test | per-frame anomaly flags for the test clips (non-pedestrian entities: bikes, carts) | downloaded and Ped2 extracted (`data/raw/ucsd`) |
 
 ## Baggage
 
@@ -35,3 +35,16 @@ unless stated otherwise. No dataset terms were accepted through a browser in thi
 | AVSS 2007 (i-LIDS left baggage), via the UAM AOD survey | www-vpu.eps.uam.es/publications/AODsurvey/ (AbandonedObjectDetection-CODE.zip) | research use | 975 MB zip, 3 videos used | 3 (easy, medium, hard) | ViPER XML: PutObject and AbandonedObject frame spans + boxes | downloaded (`data/raw/uam_aod/datasets/AVSS2007`) |
 | PETS 2006 | www.cvg.reading.ac.uk/PETS2006/ | research use | - | - | - | **blocked: site did not respond (http and https)** |
 | Roboflow `drone-analysis/abandoned-bags-2afuo` and the luggage sets in TheRomanFour/AbandonedLuggageDetection | Roboflow Universe | per dataset | - | - | YOLO boxes | **blocked: needs a Roboflow API key or a signed-in browser download. See SIGNUP_NEEDED.md** |
+
+## Status update, overnight 2026-10-01
+
+- TADBench: downloaded (4.5 GB) and unzipped to `data/raw/tadbench/TAD-benchmark` (372 train + 32 test videos);
+  291 of its accident clips are timed by the NVIDIA AI City 2026 Track 3 labels.
+- UCSD Ped2: extracted; 12 test clips with anomaly frame spans.
+- MED: 31 videos; behaviour spans parsed from `dataset_frames_abnormal_labeling.m`.
+- AVSS 2007: easy / medium / hard with PutObject and AbandonedObject frame spans; used as the untouched baggage
+  frozen test.
+- Unified labels: `data/labels/accident_events.csv` (519 events and normal rows: UCF-Crime, TADBench, team videos),
+  `crowd_events.csv` (64: MED, UCSD Ped2, UMN), `baggage_events.csv` (12: AVSS 2007, ABODA), split by video.
+  Built by `training/unify_labels.py`. Not yet used for training: there was no GPU time (no Kaggle token, see
+  SIGNUP_NEEDED.md) and the night went to the evaluation harness.

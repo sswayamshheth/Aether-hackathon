@@ -1,0 +1,219 @@
+{
+ "generated": "2026-10-01 07:06",
+ "method": "B: pixel-level variants of real clips (synthetic)",
+ "aux_models": [
+  "accident"
+ ],
+ "per_family": {
+  "accident": {
+   "runs": 12,
+   "passed": 5,
+   "detected": 5
+  }
+ },
+ "rows": [
+  {
+   "id": "demo_accident_ucf010__reference",
+   "clip": "demo_accident_ucf010",
+   "condition": "reference",
+   "family": "accident",
+   "passed": true,
+   "detected": true,
+   "delay_s": 2.33,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [
+    {
+     "type": "accident",
+     "subtype": "accident",
+     "ts": 10.0,
+     "severity": "Critical"
+    }
+   ],
+   "seconds": 17.5,
+   "secs": 121.0
+  },
+  {
+   "id": "demo_accident_ucf010__night",
+   "clip": "demo_accident_ucf010",
+   "condition": "night",
+   "family": "accident",
+   "passed": false,
+   "detected": false,
+   "delay_s": null,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [],
+   "seconds": 17.5,
+   "secs": 107.5
+  },
+  {
+   "id": "demo_accident_ucf010__rain",
+   "clip": "demo_accident_ucf010",
+   "condition": "rain",
+   "family": "accident",
+   "passed": false,
+   "detected": false,
+   "delay_s": null,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [],
+   "seconds": 17.5,
+   "secs": 101.9
+  },
+  {
+   "id": "demo_accident_ucf010__fog",
+   "clip": "demo_accident_ucf010",
+   "condition": "fog",
+   "family": "accident",
+   "passed": true,
+   "detected": true,
+   "delay_s": 2.93,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [
+    {
+     "type": "accident",
+     "subtype": "accident",
+     "ts": 10.6,
+     "severity": "Critical"
+    }
+   ],
+   "seconds": 17.5,
+   "secs": 101.2
+  },
+  {
+   "id": "demo_accident_ucf010__jpeg_q10",
+   "clip": "demo_accident_ucf010",
+   "condition": "jpeg_q10",
+   "family": "accident",
+   "passed": false,
+   "detected": false,
+   "delay_s": null,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [],
+   "seconds": 17.5,
+   "secs": 110.9
+  },
+  {
+   "id": "demo_accident_ucf010__low_res",
+   "clip": "demo_accident_ucf010",
+   "condition": "low_res",
+   "family": "accident",
+   "passed": false,
+   "detected": false,
+   "delay_s": null,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [],
+   "seconds": 17.5,
+   "secs": 107.0
+  },
+  {
+   "id": "demo_accident_ucf010__motion_blur",
+   "clip": "demo_accident_ucf010",
+   "condition": "motion_blur",
+   "family": "accident",
+   "passed": false,
+   "detected": false,
+   "delay_s": null,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [],
+   "seconds": 17.5,
+   "secs": 109.6
+  },
+  {
+   "id": "demo_accident_ucf010__shake",
+   "clip": "demo_accident_ucf010",
+   "condition": "shake",
+   "family": "accident",
+   "passed": false,
+   "detected": false,
+   "delay_s": null,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [],
+   "seconds": 17.5,
+   "secs": 105.8
+  },
+  {
+   "id": "demo_accident_ucf010__noise",
+   "clip": "demo_accident_ucf010",
+   "condition": "noise",
+   "family": "accident",
+   "passed": false,
+   "detected": false,
+   "delay_s": null,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [],
+   "seconds": 17.5,
+   "secs": 114.4
+  },
+  {
+   "id": "demo_accident_ucf010__infrared",
+   "clip": "demo_accident_ucf010",
+   "condition": "infrared",
+   "family": "accident",
+   "passed": true,
+   "detected": true,
+   "delay_s": 3.33,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [
+    {
+     "type": "accident",
+     "subtype": "accident",
+     "ts": 11.0,
+     "severity": "High"
+    }
+   ],
+   "seconds": 17.5,
+   "secs": 107.2
+  },
+  {
+   "id": "demo_accident_ucf010__dropped_frames",
+   "clip": "demo_accident_ucf010",
+   "condition": "dropped_frames",
+   "family": "accident",
+   "passed": true,
+   "detected": true,
+   "delay_s": 2.33,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [
+    {
+     "type": "accident",
+     "subtype": "accident",
+     "ts": 10.0,
+     "severity": "Critical"
+    }
+   ],
+   "seconds": 17.5,
+   "secs": 93.2
+  },
+  {
+   "id": "demo_accident_ucf010__occlusion_mask",
+   "clip": "demo_accident_ucf010",
+   "condition": "occlusion_mask",
+   "family": "accident",
+   "passed": true,
+   "detected": true,
+   "delay_s": 2.93,
+   "early": 0,
+   "false_alarms_other_families": 0,
+   "incidents": [
+    {
+     "type": "accident",
+     "subtype": "accident",
+     "ts": 10.6,
+     "severity": "Critical"
+    }
+   ],
+   "seconds": 17.5,
+   "secs": 97.0
+  }
+ ]
+}

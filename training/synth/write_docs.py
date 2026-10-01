@@ -43,7 +43,9 @@ def main() -> None:
     suite = Path(sys.argv[1]) if len(sys.argv) > 1 else RES / "synthetic_suite_baseline.json"
     pixel = Path(sys.argv[2]) if len(sys.argv) > 2 else RES / "synthetic_pixel.json"
     rows = {r["id"]: r for r in json.loads(suite.read_text())["rows"]} if suite.exists() else {}
-    prow = {r["id"]: r for r in json.loads(pixel.read_text())["rows"]} if pixel.exists() else {}
+    prow = {}
+    for f in ([pixel] if pixel.exists() else sorted(RES.glob("synthetic_pixel_*.json"))):
+        prow.update({r["id"]: r for r in json.loads(f.read_text())["rows"]})
     cases: dict[tuple, list] = defaultdict(list)
     for p in sorted(SCEN.rglob("*.yaml")):
         s = yaml.safe_load(p.read_text(encoding="utf-8"))
