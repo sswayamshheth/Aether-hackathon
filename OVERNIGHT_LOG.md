@@ -84,3 +84,6 @@ The gate needs equal or better recall on the frozen test; abrupt loses one accid
 stays the default. `DRISHTI_ACCIDENT_RULE=abrupt` remains available (it removes every validation false alarm and
 halves frozen-test false alarms). Synthetic gains (traps 21 -> 9 false alarms) did not carry over to recall on real
 footage, which is exactly what the guardrail is for.
+
+## 07:17 done
+Tests 48 pass, smoke test pass on the branch and on merged main. main merged (clean) and pushed with the branch. Nothing promoted; stable defaults unchanged. Report: OVERNIGHT_REPORT.md.
