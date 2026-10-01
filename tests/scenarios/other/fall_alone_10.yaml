@@ -1,0 +1,24 @@
+id: fall_alone_10
+category: other
+case: fall_alone
+method: A (trajectory-level)
+description: a person falls and lies still
+generator:
+  kind: fall_alone
+  params: {}
+seed: 42613
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: far
+  angle: 75
+  occlusion: none
+  fps: 5
+  shake: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: medical
+  window_s:
+  - -1
+  - 16

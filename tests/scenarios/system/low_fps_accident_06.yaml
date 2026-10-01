@@ -1,0 +1,25 @@
+id: low_fps_accident_06
+category: system
+case: low_fps_accident
+method: A (trajectory-level)
+description: camera delivers 3 fps
+generator:
+  kind: rear_end
+  params: {}
+seed: 5633900
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 3
+  id_switch: true
+  cam_fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

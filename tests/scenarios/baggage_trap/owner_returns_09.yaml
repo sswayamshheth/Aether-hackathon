@@ -1,0 +1,22 @@
+id: owner_returns_09
+category: baggage_trap
+case: owner_returns
+method: A (trajectory-level)
+description: owner comes back within 4-7 s
+generator:
+  kind: owner_returns
+  params: {}
+seed: 2342265
+conditions:
+  light: day
+  weather: rain
+  density: low
+  distance: mid
+  angle: 15
+  occlusion: partial
+  fps: 3
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - baggage

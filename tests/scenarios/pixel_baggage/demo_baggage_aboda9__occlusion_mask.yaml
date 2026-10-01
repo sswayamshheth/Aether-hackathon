@@ -1,0 +1,10 @@
+id: demo_baggage_aboda9__occlusion_mask
+category: pixel_baggage
+method: B (pixel-level variant of a real clip)
+description: real clip demo_baggage_aboda9 with condition 'occlusion_mask' applied
+  to every frame
+source_clip: data\demo\clips\cam3.mp4
+condition: occlusion_mask
+expected:
+  event: baggage
+  window_s: any time

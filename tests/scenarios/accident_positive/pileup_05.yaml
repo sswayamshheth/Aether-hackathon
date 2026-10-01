@@ -1,0 +1,23 @@
+id: pileup_05
+category: accident_positive
+case: pileup
+method: A (trajectory-level)
+description: three or four cars chain-collide behind a stopping car
+generator:
+  kind: pileup
+  params: {}
+seed: 3768557
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

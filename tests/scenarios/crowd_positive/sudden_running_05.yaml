@@ -1,0 +1,23 @@
+id: sudden_running_05
+category: crowd_positive
+case: sudden_running
+method: A (trajectory-level)
+description: a walking group all break into a run
+generator:
+  kind: sudden_running
+  params: {}
+seed: 4800537
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 6

@@ -1,0 +1,22 @@
+id: festival_procession_06
+category: crowd_trap
+case: festival_procession
+method: A (trajectory-level)
+description: a slow, dancing procession
+generator:
+  kind: festival_procession
+  params: {}
+seed: 5634919
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid_above:
+    crowd: Low

@@ -1,0 +1,25 @@
+id: restricted_zone_06
+category: baggage_positive
+case: restricted_zone
+method: A (trajectory-level)
+description: bag left inside a restricted zone
+generator:
+  kind: bag_restricted_zone
+  params: {}
+seed: 2736913
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30
+  min_severity: High

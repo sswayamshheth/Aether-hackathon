@@ -1,0 +1,23 @@
+id: vehicle_hits_pedestrian_05
+category: accident_positive
+case: vehicle_hits_pedestrian
+method: A (trajectory-level)
+description: a car hits a crossing pedestrian, who ends up lying on the road
+generator:
+  kind: hits_pedestrian
+  params: {}
+seed: 527899
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

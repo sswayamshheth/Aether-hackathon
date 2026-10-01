@@ -1,0 +1,24 @@
+id: panic_dispersal_07
+category: crowd_positive
+case: panic_dispersal
+method: A (trajectory-level)
+description: a milling crowd suddenly runs outward
+generator:
+  kind: panic_dispersal
+  params: {}
+seed: 1726559
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 6

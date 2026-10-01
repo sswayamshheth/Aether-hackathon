@@ -1,0 +1,22 @@
+id: handed_to_other_08
+category: baggage_trap
+case: handed_to_other
+method: A (trajectory-level)
+description: bag handed to another person who carries it away
+generator:
+  kind: handover
+  params: {}
+seed: 7321336
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - baggage

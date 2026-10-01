@@ -1,0 +1,24 @@
+id: hit_and_run_08
+category: accident_positive
+case: hit_and_run
+method: A (trajectory-level)
+description: a car rear-ends another, pauses, swerves out and flees
+generator:
+  kind: hit_and_run
+  params: {}
+seed: 7212485
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

@@ -14,6 +14,35 @@ The weak spot is accident detection: **1 of 8** bench accidents detected end to 
 is strong on its (staged) dataset, **10 of 11**; baggage is **3 of 6**. Do not quote an
 accuracy figure in the pitch. BENCH.md has every number with its clip count.
 
+## Data and training (overnight 2026-10-01) - read OVERNIGHT_REPORT.md first
+
+- **Downloaded:** TADBench (4.5 GB, 404 videos), MED (31), UCSD Ped2, AVSS 2007 (3, with UAM ground truth), the
+  NVIDIA AI City 2026 traffic-anomaly labels. **Blocked:** TAD and SO-TAD (over the 5 GB cap), HTV, the Roboflow
+  luggage sets and the CVPR ACCIDENT benchmark (need your login or API key), PETS 2006 (site down). Details in
+  DATASETS.md and SIGNUP_NEEDED.md.
+- **Labels unified:** `data/labels/{accident,crowd,baggage}_events.csv`, split by video (`training/unify_labels.py`).
+- **Models improved:** none promoted. The accident classifier (SigLIP + logistic regression) was retrained with the
+  frozen test held out and caught 1 of 7 frozen-test accidents; it stays in `models/candidates/`. No YOLO fine-tune
+  ran: no Kaggle token, no GPU on this laptop.
+- **Logic candidates** (behind switches, stable defaults unchanged): `DRISHTI_ACCIDENT_RULE=abrupt`,
+  `DRISHTI_LOITER_CONF=0.65` with `DRISHTI_LOITER_WINDOW_S=30`, `DRISHTI_CROWD_FLOW_MAX=0.8`. Why none passed the
+  promotion gate: OVERNIGHT_LOG.md.
+- **Retrain / re-evaluate:**
+
+```powershell
+cd E:\sss\study\btech\aether-hackathon
+backend\.venv\Scripts\python training\extract_features.py           # model outputs for the UCF clips (slow on CPU)
+backend\.venv\Scripts\python training\real_eval.py --build-tracks   # detector caches for UMN / ABODA / AVSS
+backend\.venv\Scripts\python training\real_eval.py --split test      # frozen test: never tune on it
+backend\.venv\Scripts\python training\real_eval.py --split val,demo  # validation + demo_eval
+$env:ACC_CLF_CACHED_ONLY='1'; backend\.venv\Scripts\python training\train_accident_clf.py
+backend\.venv\Scripts\python training\unify_labels.py
+backend\.venv\Scripts\python training\synth\make_scenarios.py
+backend\.venv\Scripts\python training\synth\run_suite.py --workers 2
+```
+
+- Tests: 48 pass (`backend\tests\test_overnight.py` covers the new switches).
+
 ## Run it
 
 ```powershell

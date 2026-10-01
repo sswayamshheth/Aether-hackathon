@@ -1,0 +1,24 @@
+id: single_vehicle_divider_09
+category: accident_positive
+case: single_vehicle_divider
+method: A (trajectory-level)
+description: a single car stops dead against an undetected divider or pole
+generator:
+  kind: single_vehicle_divider
+  params: {}
+seed: 12949529
+conditions:
+  light: day
+  weather: rain
+  density: low
+  distance: mid
+  angle: 15
+  occlusion: partial
+  fps: 3
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

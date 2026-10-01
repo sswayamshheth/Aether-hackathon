@@ -1,0 +1,22 @@
+id: ambulance_stop_04
+category: accident_trap
+case: ambulance_stop
+method: A (trajectory-level)
+description: an ambulance or police vehicle brakes and stops beside a stopped car
+  on purpose
+generator:
+  kind: ambulance_stop
+  params: {}
+seed: 9535952
+conditions:
+  light: day
+  weather: fog
+  density: low
+  distance: far
+  angle: 90
+  occlusion: none
+  fps: 5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

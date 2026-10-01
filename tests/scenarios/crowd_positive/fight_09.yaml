@@ -1,0 +1,26 @@
+id: fight_09
+category: crowd_positive
+case: fight
+method: A (trajectory-level)
+description: four to six people brawling among bystanders
+generator:
+  kind: fight
+  params: {}
+seed: 12950704
+conditions:
+  light: day
+  weather: rain
+  density: low
+  distance: mid
+  angle: 15
+  occlusion: partial
+  fps: 3
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event:
+  - crowd
+  - violence
+  window_s:
+  - -1
+  - 8

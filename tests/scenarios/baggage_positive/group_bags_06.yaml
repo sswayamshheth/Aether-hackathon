@@ -1,0 +1,25 @@
+id: group_bags_06
+category: baggage_positive
+case: group_bags
+method: A (trajectory-level)
+description: three people leave three bags together
+generator:
+  kind: group_bags
+  params: {}
+seed: 6907017
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30
+  count: 3

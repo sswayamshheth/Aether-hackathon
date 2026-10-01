@@ -1,0 +1,11 @@
+id: demo_crowd_umn4__night
+category: pixel_crowd
+method: B (pixel-level variant of a real clip)
+description: real clip demo_crowd_umn4 with condition 'night' applied to every frame
+source_clip: data\demo\clips\cam4.mp4
+condition: night
+expected:
+  event: crowd
+  window_s:
+  - 16.8
+  - 27.766666666666666

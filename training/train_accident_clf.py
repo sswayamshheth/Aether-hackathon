@@ -43,6 +43,12 @@ WINDOW_S = 10.0  # an accident is labelled from onset to onset + 10 s
 # our own videos: accident onset in seconds, as given by the team (0:04, 0:05, 0:22)
 LABELS = {"1.mp4": 4.0, "2.mp4": 5.0, "3.mp4": 22.0}
 HOLDOUT = {"Fighting033_x264.mp4", "Arson010_x264.mp4"}  # demo clips, never trained on
+sys.path.insert(0, str(ROOT / "training"))
+from real_eval import ucf_clips  # noqa: E402
+
+# the real-evaluation frozen test (DECISIONS.md #20) is never trained on either; it is scored once at the end
+FROZEN = {c["name"] for c in ucf_clips() if c["split"] == "test"}
+OUT_DIR = config.MODELS / "candidates"  # promoted to models/ only through the promotion gate
 
 
 def clip_list() -> list[dict]:
@@ -80,6 +86,11 @@ def embed_all(clips: list[dict]) -> None:
     from app.aux_models import device
 
     todo = [c for c in clips if not (EMB / f"{Path(c['clip']).stem}.npz").exists()]
+    # accident clips and our own videos first, then normal clips (hard negatives), then the rest
+    rank = {"CustomAccident": 0, "RoadAccidents": 1, "Normal": 2}
+    todo.sort(key=lambda c: rank.get(c["class"], 3))
+    if os.environ.get("ACC_CLF_CACHED_ONLY") == "1":
+        todo = []  # train on the clips embedded so far
     if not todo:
         return
     dev = device()
@@ -136,6 +147,9 @@ def main() -> None:
 
     clips = clip_list()
     embed_all(clips)
+    clips = [c for c in clips if (EMB / f"{Path(c['clip']).stem}.npz").exists()]
+    frozen = [c for c in clips if c["clip"] in FROZEN]
+    clips = [c for c in clips if c["clip"] not in FROZEN]
     X, y, groups, meta = [], [], [], []
     for c in clips:
         d = np.load(EMB / f"{Path(c['clip']).stem}.npz")
@@ -198,6 +212,11 @@ def main() -> None:
     other_fa = sum(events(c, *clip_probs(c), thr).get("false_alarms", 0) for c in clips
                    if c["class"] not in {"RoadAccidents", "CustomAccident", "Normal"})
     final = fit(X, y)
+    ft = []
+    for c in frozen:
+        d = np.load(EMB / f"{Path(c['clip']).stem}.npz")
+        ft.append({"clip": c["clip"], "class": c["class"], **events(c, d["t"], final.predict_proba(d["e"])[:, 1], thr)})
+    fa_ = [r for r in ft if r["class"] == "RoadAccidents"]
     res = {
         "model": "logistic regression on SigLIP image embeddings (768-d), frames at 1 fps",
         "labels": {"window_s": WINDOW_S, "custom_onsets_s": LABELS},
@@ -209,10 +228,17 @@ def main() -> None:
         "normal_clips": {"clips": len(nor), "clips_with_false_alarm": sum(1 for r in nor if r["false_alarms"]),
                          "false_alarms": sum(r["false_alarms"] for r in nor)},
         "other_class_false_alarms": other_fa,
+        "frozen_test": {"note": "real_eval frozen-test clips that have embeddings; never trained on or tuned on",
+                        "accident_clips": len(fa_), "caught": sum(r["caught"] for r in fa_),
+                        "early_alarms": sum(r["early"] for r in fa_),
+                        "negative_clips": len(ft) - len(fa_),
+                        "false_alarms": sum(r.get("false_alarms", 0) for r in ft if r["class"] != "RoadAccidents"),
+                        "per_clip": ft},
         "per_clip": per_clip,
     }
     (config.RESULTS / "accident_clf.json").write_text(json.dumps(res, indent=1))
-    (config.MODELS / "accident_clf.json").write_text(json.dumps(
+    OUT_DIR.mkdir(exist_ok=True)
+    (OUT_DIR / "accident_clf.json").write_text(json.dumps(
         {"coef": final.coef_[0].round(6).tolist(), "intercept": round(float(final.intercept_[0]), 6),
          "threshold": thr, "embedding": "google/siglip-base-patch16-224 image features, L2-normalised"}))
     print(json.dumps({k: v for k, v in res.items() if k != "per_clip"}, indent=1))

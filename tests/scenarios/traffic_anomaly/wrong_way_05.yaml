@@ -1,0 +1,24 @@
+id: wrong_way_05
+category: traffic_anomaly
+case: wrong_way
+method: A (trajectory-level)
+description: one car drives against the lane's flow
+generator:
+  kind: wrong_way
+  params: {}
+seed: 14706654
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: security
+  subtype: wrong-way
+  window_s:
+  - -1
+  - 5

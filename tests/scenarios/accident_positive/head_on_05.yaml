@@ -1,0 +1,23 @@
+id: head_on_05
+category: accident_positive
+case: head_on
+method: A (trajectory-level)
+description: two cars meet head-on in one lane
+generator:
+  kind: head_on
+  params: {}
+seed: 10510617
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

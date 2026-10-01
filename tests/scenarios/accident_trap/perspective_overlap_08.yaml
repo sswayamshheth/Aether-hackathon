@@ -1,0 +1,23 @@
+id: perspective_overlap_08
+category: accident_trap
+case: perspective_overlap
+method: A (trajectory-level)
+description: two cars in adjacent lanes overlap in the image and brake together at
+  a signal
+generator:
+  kind: perspective_overlap
+  params: {}
+seed: 6339559
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

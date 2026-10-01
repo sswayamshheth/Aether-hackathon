@@ -1,0 +1,24 @@
+id: intrusion_05
+category: other
+case: intrusion
+method: A (trajectory-level)
+description: a person walks onto a railway track zone
+generator:
+  kind: intrusion
+  params: {}
+seed: 4068184
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: security
+  subtype: intrusion
+  window_s:
+  - -1
+  - 5

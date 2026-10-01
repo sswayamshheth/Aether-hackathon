@@ -1,0 +1,22 @@
+id: lane_merge_07
+category: accident_trap
+case: lane_merge
+method: A (trajectory-level)
+description: a car merges and the other yields
+generator:
+  kind: lane_merge
+  params: {}
+seed: 3593490
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

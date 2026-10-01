@@ -1,0 +1,24 @@
+id: overcrowding_06
+category: crowd_positive
+case: overcrowding
+method: A (trajectory-level)
+description: 28-36 people in view, above the limit
+generator:
+  kind: overcrowding
+  params: {}
+seed: 5079609
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 15

@@ -1,0 +1,22 @@
+id: running_from_rain_07
+category: crowd_trap
+case: running_from_rain
+method: A (trajectory-level)
+description: people run to a shelter when it starts to rain
+generator:
+  kind: rain_run
+  params: {}
+seed: 6258344
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid_above:
+    crowd: Low

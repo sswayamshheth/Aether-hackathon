@@ -1,0 +1,22 @@
+id: orderly_queue_08
+category: crowd_trap
+case: orderly_queue
+method: A (trajectory-level)
+description: an orderly queue shuffling forward
+generator:
+  kind: orderly_queue
+  params: {}
+seed: 9627598
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid_above:
+    crowd: Low

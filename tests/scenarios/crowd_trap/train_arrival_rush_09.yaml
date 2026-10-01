@@ -1,0 +1,23 @@
+id: train_arrival_rush_09
+category: crowd_trap
+case: train_arrival_rush
+method: A (trajectory-level)
+description: a Mumbai local empties onto the platform and everyone walks briskly one
+  way
+generator:
+  kind: train_rush
+  params: {}
+seed: 13074746
+conditions:
+  light: day
+  weather: rain
+  density: low
+  distance: mid
+  angle: 15
+  occlusion: partial
+  fps: 3
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid_above:
+    crowd: Low

@@ -1,0 +1,23 @@
+id: two_wheeler_skid_03
+category: accident_positive
+case: two_wheeler_skid
+method: A (trajectory-level)
+description: a motorcycle skids and falls; rider lying next to it; no second vehicle
+generator:
+  kind: two_wheeler_skid
+  params: {}
+seed: 3717427
+conditions:
+  light: day
+  weather: rain
+  density: high
+  distance: near
+  angle: 60
+  occlusion: partial
+  fps: 5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

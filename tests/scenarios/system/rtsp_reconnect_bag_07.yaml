@@ -1,0 +1,28 @@
+id: rtsp_reconnect_bag_07
+category: system
+case: rtsp_reconnect_bag
+method: A (trajectory-level)
+description: the stream drops for 4-8 s while a bag is being left; pipeline resets
+  on reconnect
+generator:
+  kind: bag_dropped
+  params: {}
+seed: 15010172
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+  stream_gap_rel:
+  - 3.0
+  - 8.0
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 45

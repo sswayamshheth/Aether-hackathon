@@ -1,0 +1,21 @@
+id: red_light_queue_05
+category: accident_trap
+case: red_light_queue
+method: A (trajectory-level)
+description: cars brake and queue at a red light
+generator:
+  kind: red_light_queue
+  params: {}
+seed: 1833246
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

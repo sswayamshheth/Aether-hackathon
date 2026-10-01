@@ -1,0 +1,24 @@
+id: under_seat_07
+category: baggage_positive
+case: under_seat
+method: A (trajectory-level)
+description: a backpack under a seat, seldom detected
+generator:
+  kind: bag_under_seat
+  params: {}
+seed: 15847852
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30

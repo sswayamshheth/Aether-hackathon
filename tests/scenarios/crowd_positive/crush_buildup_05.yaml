@@ -1,0 +1,23 @@
+id: crush_buildup_05
+category: crowd_positive
+case: crush_buildup
+method: A (trajectory-level)
+description: people keep arriving until the area holds 34-42
+generator:
+  kind: crush_buildup
+  params: {}
+seed: 15413647
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 12

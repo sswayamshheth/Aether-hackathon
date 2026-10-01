@@ -1,0 +1,12 @@
+id: demo_accident_ucf010__infrared
+category: pixel_accident
+method: B (pixel-level variant of a real clip)
+description: real clip demo_accident_ucf010 with condition 'infrared' applied to every
+  frame
+source_clip: data\demo\clips\cam1.mp4
+condition: infrared
+expected:
+  event: accident
+  window_s:
+  - 7.666666666666667
+  - 19.0

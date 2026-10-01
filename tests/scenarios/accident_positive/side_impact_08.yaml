@@ -1,0 +1,24 @@
+id: side_impact_08
+category: accident_positive
+case: side_impact
+method: A (trajectory-level)
+description: T-bone at a junction; both stop
+generator:
+  kind: side_impact
+  params: {}
+seed: 10411216
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

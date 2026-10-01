@@ -1,0 +1,24 @@
+id: rollover_06
+category: accident_positive
+case: rollover
+method: A (trajectory-level)
+description: a single car rolls over (box shape flips) and stops
+generator:
+  kind: rollover
+  params: {}
+seed: 4934266
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

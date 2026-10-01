@@ -1,0 +1,10 @@
+id: demo_baggage_aboda9__jpeg_q10
+category: pixel_baggage
+method: B (pixel-level variant of a real clip)
+description: real clip demo_baggage_aboda9 with condition 'jpeg_q10' applied to every
+  frame
+source_clip: data\demo\clips\cam3.mp4
+condition: jpeg_q10
+expected:
+  event: baggage
+  window_s: any time

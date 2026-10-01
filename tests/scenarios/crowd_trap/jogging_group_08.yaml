@@ -1,0 +1,22 @@
+id: jogging_group_08
+category: crowd_trap
+case: jogging_group
+method: A (trajectory-level)
+description: a jogging group passes
+generator:
+  kind: jogging
+  params: {}
+seed: 3441802
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid_above:
+    crowd: Low

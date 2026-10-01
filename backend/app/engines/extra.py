@@ -280,11 +280,14 @@ class SecurityEngine:
                     out.append(self._c(f, f"ped{t.id}", 0.6, t, "pedestrian on road",
                                        {"zone": z["name"], "zone_kind": "lane", "people": 1}))
                 if present >= config.LOITER_S:
-                    xs = [p[1] for p in hist]
-                    ys = [p[2] for p in hist]
+                    # spread over the recent window only when configured: the full history
+                    # includes walking into view, which would rule out every loiterer who arrived
+                    recent = [p for p in hist if f.ts - p[0] <= config.LOITER_WINDOW_S] if config.LOITER_WINDOW_S else hist
+                    xs = [p[1] for p in recent]
+                    ys = [p[2] for p in recent]
                     spread = math.hypot(max(xs) - min(xs), max(ys) - min(ys)) / max(t.height, 1)
                     if spread < 3.0:
-                        out.append(self._c(f, f"loiter{t.id}", 0.55, t, "loitering",
+                        out.append(self._c(f, f"loiter{t.id}", config.LOITER_CONF, t, "loitering",
                                            {"present_s": round(present), "people": 1}))
             elif t.cls in config.VEHICLES:
                 z = inside(t, "lane")

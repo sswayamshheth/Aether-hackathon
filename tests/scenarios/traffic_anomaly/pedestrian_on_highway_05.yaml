@@ -1,0 +1,24 @@
+id: pedestrian_on_highway_05
+category: traffic_anomaly
+case: pedestrian_on_highway
+method: A (trajectory-level)
+description: a person walks onto the carriageway
+generator:
+  kind: pedestrian_highway
+  params: {}
+seed: 7724267
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: security
+  subtype: pedestrian
+  window_s:
+  - -1
+  - 8

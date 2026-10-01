@@ -1,0 +1,24 @@
+id: low_fps_bag_04
+category: system
+case: low_fps_bag
+method: A (trajectory-level)
+description: camera delivers 2 fps
+generator:
+  kind: bag_dropped
+  params: {}
+seed: 1115427
+conditions:
+  light: day
+  weather: fog
+  density: low
+  distance: far
+  angle: 90
+  occlusion: none
+  fps: 2
+  cam_fps: 2
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30
