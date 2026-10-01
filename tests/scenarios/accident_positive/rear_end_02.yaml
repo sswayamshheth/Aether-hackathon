@@ -1,0 +1,23 @@
+id: rear_end_02
+category: accident_positive
+case: rear_end
+method: A (trajectory-level)
+description: a moving car runs into the back of a slower car; both stop
+generator:
+  kind: rear_end
+  params: {}
+seed: 16332497
+conditions:
+  light: night
+  weather: clear
+  density: med
+  distance: mid
+  angle: 30
+  occlusion: none
+  fps: 5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6

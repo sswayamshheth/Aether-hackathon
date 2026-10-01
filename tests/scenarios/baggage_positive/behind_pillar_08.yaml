@@ -1,0 +1,24 @@
+id: behind_pillar_08
+category: baggage_positive
+case: behind_pillar
+method: A (trajectory-level)
+description: bag partly hidden by a pillar (long gaps)
+generator:
+  kind: bag_behind_pillar
+  params: {}
+seed: 9936614
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30

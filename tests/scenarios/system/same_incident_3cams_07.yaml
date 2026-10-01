@@ -1,0 +1,27 @@
+id: same_incident_3cams_07
+category: system
+case: same_incident_3cams
+method: A (trajectory-level)
+description: 'one crash seen by three cameras: one merged incident'
+generator:
+  kind: multi_cam_same
+  params:
+    cameras: 3
+seed: 636725
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6
+  count: 1
+  min_cameras: 2

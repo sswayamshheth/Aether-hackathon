@@ -1,0 +1,27 @@
+id: same_incident_2cams_08
+category: system
+case: same_incident_2cams
+method: A (trajectory-level)
+description: 'one crash seen by two cameras: one merged incident'
+generator:
+  kind: multi_cam_same
+  params:
+    cameras: 2
+seed: 1878586
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6
+  count: 1
+  min_cameras: 2

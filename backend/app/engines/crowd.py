@@ -178,7 +178,14 @@ class CrowdEngine:
                              "motion_ratio": round(ratio, 1) if ratio else None,
                              "speed_max": round(float(x[6]), 2)}))
         limit = config.CROWD_LIMIT
-        if f.fresh and n >= limit:
+        flowing = False
+        if config.CROWD_FLOW_MAX > 0 and f.fresh and n >= limit:
+            sp = []
+            for dq in self.feat.pos.values():
+                if len(dq) >= 2 and dq[-1][0] - dq[0][0] > 0.2:
+                    sp.append(math.hypot(dq[-1][1] - dq[0][1], dq[-1][2] - dq[0][2]) / dq[-1][3] / (dq[-1][0] - dq[0][0]))
+            flowing = len(sp) >= 0.5 * n and float(np.median(sp)) > config.CROWD_FLOW_MAX
+        if f.fresh and n >= limit and not flowing:
             out.append(Candidate(
                 type="crowd", camera_id=self.camera_id, key="overcrowding",
                 conf=min(0.95, 0.65 + 0.02 * (n - limit)), ts=f.ts, box=_union(persons),

@@ -1,0 +1,1230 @@
+{
+ "generated": "2026-10-01 05:38",
+ "note": "REAL footage, cached detections replayed",
+ "splits": "see training/real_eval.py docstring",
+ "summary": {
+  "test": {
+   "accident": {
+    "clips": 7,
+    "detected": 3,
+    "recall": 0.429,
+    "precision": 0.5,
+    "f1": 0.462,
+    "early_alarms": 1,
+    "false_alarms": 2,
+    "negative_camera_hours": 0.341,
+    "fa_per_camera_hour": 5.9,
+    "median_delay_s": 1.0
+   },
+   "crowd": {
+    "clips": 4,
+    "detected": 3,
+    "recall": 0.75,
+    "precision": 0.375,
+    "f1": 0.5,
+    "early_alarms": 0,
+    "false_alarms": 5,
+    "negative_camera_hours": 0.365,
+    "fa_per_camera_hour": 13.7,
+    "median_delay_s": 1.5
+   },
+   "baggage": {
+    "clips": 3,
+    "detected": 2,
+    "recall": 0.667,
+    "precision": 1.0,
+    "f1": 0.8,
+    "early_alarms": 0,
+    "false_alarms": 0,
+    "negative_camera_hours": 0.314,
+    "fa_per_camera_hour": 0.0,
+    "median_delay_s": 22.89
+   }
+  }
+ },
+ "skipped": [],
+ "runtime_s": 1499,
+ "rows": [
+  {
+   "name": "Arson010_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 17.5,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 6
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Arson018_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 28.0,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 3.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 8
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Burglary018_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 28.4,
+    "incidents": [
+     {
+      "type": "hazard",
+      "subtype": "vandalism",
+      "ts": 13.0,
+      "severity": "High"
+     },
+     {
+      "type": "medical",
+      "subtype": "fall",
+      "ts": 23.0,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "hazard",
+     "medical"
+    ]
+   }
+  },
+  {
+   "name": "Explosion008_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 39.7,
+    "incidents": [],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "Explosion013_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 41.5,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 72.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "hazard",
+      "subtype": "vandalism",
+      "ts": 99.0,
+      "severity": "High"
+     },
+     {
+      "type": "weapon",
+      "subtype": "pistol",
+      "ts": 106.5,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 9
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "hazard",
+     "violence",
+     "weapon"
+    ]
+   }
+  },
+  {
+   "name": "Explosion020_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 43.0,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 3.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 5.2,
+      "severity": "Critical"
+     },
+     {
+      "type": "weapon",
+      "subtype": "pistol",
+      "ts": 23.5,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 8
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 1,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence",
+     "weapon"
+    ]
+   }
+  },
+  {
+   "name": "Explosion025_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 16.8,
+    "incidents": [],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "Fighting033_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 32.8,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 7.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "weapon",
+      "subtype": "pistol",
+      "ts": 16.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "hazard",
+      "subtype": "vandalism",
+      "ts": 26.0,
+      "severity": "High"
+     },
+     {
+      "type": "medical",
+      "subtype": "fall",
+      "ts": 33.0,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "hazard",
+     "medical",
+     "violence",
+     "weapon"
+    ]
+   }
+  },
+  {
+   "name": "Normal_Videos_010_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 35.0,
+    "incidents": [],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "Normal_Videos_018_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 39.3,
+    "incidents": [
+     {
+      "type": "medical",
+      "subtype": "fall",
+      "ts": 3.0,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 3
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "medical"
+    ]
+   }
+  },
+  {
+   "name": "Normal_Videos_025_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 20.0,
+    "incidents": [],
+    "raw_alarms": 3
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "Normal_Videos_034_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 43.9,
+    "incidents": [
+     {
+      "type": "accident",
+      "subtype": "collision",
+      "ts": 5.4,
+      "severity": "Critical"
+     },
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 20.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 6
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 1,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Normal_Videos_048_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 21.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 3
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Normal_Videos_056_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "Normal_Videos_067_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 35.5,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "fight",
+      "ts": 4.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Normal_Videos_129_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 15.5,
+    "incidents": [],
+    "raw_alarms": 2
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "RoadAccidents004_x264.mp4",
+   "split": "test",
+   "family": "accident",
+   "result": {
+    "seconds": 12.9,
+    "incidents": [],
+    "raw_alarms": 4
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "RoadAccidents011_x264.mp4",
+   "split": "test",
+   "family": "accident",
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "accident",
+      "subtype": "accident",
+      "ts": 2.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "weapon",
+      "subtype": "pistol",
+      "ts": 20.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 8
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 1,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "weapon"
+    ]
+   }
+  },
+  {
+   "name": "RoadAccidents017_x264.mp4",
+   "split": "test",
+   "family": "accident",
+   "result": {
+    "seconds": 8.0,
+    "incidents": [
+     {
+      "type": "accident",
+      "subtype": "collision",
+      "ts": 6.2,
+      "severity": "Critical"
+     },
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 7.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 4
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": 4.2,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "RoadAccidents021_x264.mp4",
+   "split": "test",
+   "family": "accident",
+   "result": {
+    "seconds": 5.1,
+    "incidents": [
+     {
+      "type": "accident",
+      "subtype": "accident",
+      "ts": 2.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": 1.0,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "RoadAccidents122_x264.mp4",
+   "split": "test",
+   "family": "accident",
+   "result": {
+    "seconds": 21.5,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 3.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "accident",
+      "subtype": "collision",
+      "ts": 9.6,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 4
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": -0.4,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "RoadAccidents125_x264.mp4",
+   "split": "test",
+   "family": "accident",
+   "result": {
+    "seconds": 45.0,
+    "incidents": [],
+    "raw_alarms": 7
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "RoadAccidents131_x264.mp4",
+   "split": "test",
+   "family": "accident",
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "fire",
+      "subtype": "explosion",
+      "ts": 13.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "violence",
+      "subtype": "fight",
+      "ts": 15.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "hazard",
+      "subtype": "flood",
+      "ts": 22.0,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 7
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "fire",
+     "hazard",
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Robbery102_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 39.8,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 24.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "hazard",
+      "subtype": "vandalism",
+      "ts": 31.0,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 7
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "hazard",
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Shooting007_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 24.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "hazard",
+      "subtype": "vandalism",
+      "ts": 44.0,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 8
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "hazard",
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Shooting011_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 47.7,
+      "severity": "High"
+     },
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 54.3,
+      "severity": "Critical"
+     },
+     {
+      "type": "hazard",
+      "subtype": "vandalism",
+      "ts": 68.3,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 12
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 1,
+     "baggage": 0
+    },
+    "other_types": [
+     "hazard",
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Shooting018_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "Shooting022_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "violence",
+      "subtype": "fight",
+      "ts": 83.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 91.7,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 17
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 1,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "Stealing058_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 45.0,
+    "incidents": [
+     {
+      "type": "weapon",
+      "subtype": "pistol",
+      "ts": 7.5,
+      "severity": "Critical"
+     },
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 9.0,
+      "severity": "Critical"
+     },
+     {
+      "type": "accident",
+      "subtype": "collision",
+      "ts": 34.6,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 9
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 1,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "violence",
+     "weapon"
+    ]
+   }
+  },
+  {
+   "name": "Vandalism017_x264.mp4",
+   "split": "test",
+   "family": null,
+   "result": {
+    "seconds": 33.6,
+    "incidents": [
+     {
+      "type": "hazard",
+      "subtype": "vandalism",
+      "ts": 4.0,
+      "severity": "High"
+     },
+     {
+      "type": "violence",
+      "subtype": "robbery",
+      "ts": 13.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 5
+   },
+   "judge": {
+    "positive": false,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": [
+     "hazard",
+     "violence"
+    ]
+   }
+  },
+  {
+   "name": "umn_scene1",
+   "split": "test",
+   "family": "crowd",
+   "result": {
+    "seconds": 27.4,
+    "incidents": [
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 45.8,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": 1.47,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "umn_scene4",
+   "split": "test",
+   "family": "crowd",
+   "result": {
+    "seconds": 24.7,
+    "incidents": [
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 108.8,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": 1.5,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "umn_scene7",
+   "split": "test",
+   "family": "crowd",
+   "result": {
+    "seconds": 22.2,
+    "incidents": [
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 182.6,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": 1.87,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "umn_scene9",
+   "split": "test",
+   "family": "crowd",
+   "result": {
+    "seconds": 22.5,
+    "incidents": [],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "avss2007_easy",
+   "split": "test",
+   "family": "baggage",
+   "result": {
+    "seconds": 79.1,
+    "incidents": [
+     {
+      "type": "baggage",
+      "subtype": "unattended",
+      "ts": 108.31,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": 28.31,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "avss2007_medium",
+   "split": "test",
+   "family": "baggage",
+   "result": {
+    "seconds": 80.0,
+    "incidents": [
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 33.73,
+      "severity": "Critical"
+     },
+     {
+      "type": "baggage",
+      "subtype": "unattended",
+      "ts": 73.87,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 7
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": 17.47,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 1
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "avss2007_hard",
+   "split": "test",
+   "family": "baggage",
+   "result": {
+    "seconds": 119.1,
+    "incidents": [
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 42.08,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 7
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 1
+    },
+    "other_types": []
+   }
+  }
+ ]
+}

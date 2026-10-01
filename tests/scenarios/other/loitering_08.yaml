@@ -1,0 +1,25 @@
+id: loitering_08
+category: other
+case: loitering
+method: A (trajectory-level)
+description: one person stays near a gate for 80 s
+generator:
+  kind: loitering
+  params: {}
+seed: 5040194
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: security
+  subtype: loiter
+  window_s:
+  - -6
+  - 10

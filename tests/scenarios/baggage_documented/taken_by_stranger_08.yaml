@@ -1,0 +1,26 @@
+id: taken_by_stranger_08
+category: baggage_documented
+case: taken_by_stranger
+method: A (trajectory-level)
+description: bag left, a stranger takes it 18-25 s later
+generator:
+  kind: bag_taken_by_stranger
+  params: {}
+seed: 6467796
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30
+  note: no 'bag removed' event exists; expected behaviour is the unattended alarm
+    only

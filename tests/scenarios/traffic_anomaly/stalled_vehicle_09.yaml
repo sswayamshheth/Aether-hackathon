@@ -1,0 +1,25 @@
+id: stalled_vehicle_09
+category: traffic_anomaly
+case: stalled_vehicle
+method: A (trajectory-level)
+description: a car stops in a live lane for 40 s
+generator:
+  kind: stalled
+  params: {}
+seed: 3613413
+conditions:
+  light: day
+  weather: rain
+  density: low
+  distance: mid
+  angle: 15
+  occlusion: partial
+  fps: 3
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: security
+  subtype: stalled
+  window_s:
+  - 25
+  - 42

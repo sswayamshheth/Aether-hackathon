@@ -1,0 +1,12 @@
+id: demo_crowd_umn4__jpeg_q10
+category: pixel_crowd
+method: B (pixel-level variant of a real clip)
+description: real clip demo_crowd_umn4 with condition 'jpeg_q10' applied to every
+  frame
+source_clip: data\demo\clips\cam4.mp4
+condition: jpeg_q10
+expected:
+  event: crowd
+  window_s:
+  - 16.8
+  - 27.766666666666666

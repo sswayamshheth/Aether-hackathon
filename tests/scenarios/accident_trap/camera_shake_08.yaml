@@ -1,0 +1,23 @@
+id: camera_shake_08
+category: accident_trap
+case: camera_shake
+method: A (trajectory-level)
+description: queued cars, camera shaking in the wind
+generator:
+  kind: camera_shake
+  params: {}
+seed: 8128322
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+  shake: 13
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

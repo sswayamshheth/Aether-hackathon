@@ -1,0 +1,22 @@
+id: crowd_crossing_08
+category: accident_trap
+case: crowd_crossing
+method: A (trajectory-level)
+description: people cross in front of cars stopped at a signal
+generator:
+  kind: crowd_crossing
+  params: {}
+seed: 4491723
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

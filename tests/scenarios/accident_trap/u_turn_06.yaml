@@ -1,0 +1,22 @@
+id: u_turn_06
+category: accident_trap
+case: u_turn
+method: A (trajectory-level)
+description: a car slows and U-turns beside a waiting car
+generator:
+  kind: u_turn
+  params: {}
+seed: 320108
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

@@ -1,0 +1,24 @@
+id: exit_blocked_06
+category: crowd_positive
+case: exit_blocked
+method: A (trajectory-level)
+description: a dense crowd stands in the exit zone
+generator:
+  kind: exit_blocked
+  params: {}
+seed: 5896614
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 15

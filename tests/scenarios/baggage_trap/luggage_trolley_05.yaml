@@ -1,0 +1,21 @@
+id: luggage_trolley_05
+category: baggage_trap
+case: luggage_trolley
+method: A (trajectory-level)
+description: trolley with suitcases stops 8 s at a kiosk
+generator:
+  kind: luggage_trolley
+  params: {}
+seed: 12450336
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - baggage

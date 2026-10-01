@@ -1,0 +1,24 @@
+id: owner_leaves_view_08
+category: baggage_positive
+case: owner_leaves_view
+method: A (trajectory-level)
+description: owner leaves the camera view
+generator:
+  kind: bag_owner_leaves_view
+  params: {}
+seed: 7062505
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30

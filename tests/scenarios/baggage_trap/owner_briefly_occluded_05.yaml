@@ -1,0 +1,21 @@
+id: owner_briefly_occluded_05
+category: baggage_trap
+case: owner_briefly_occluded
+method: A (trajectory-level)
+description: owner stays by the bag but is repeatedly hidden for 2-5 s
+generator:
+  kind: owner_occluded
+  params: {}
+seed: 991750
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - baggage

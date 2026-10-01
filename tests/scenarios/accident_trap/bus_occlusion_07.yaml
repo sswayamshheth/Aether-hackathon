@@ -1,0 +1,22 @@
+id: bus_occlusion_07
+category: accident_trap
+case: bus_occlusion
+method: A (trajectory-level)
+description: a bus hides cars and stops at a bus stop
+generator:
+  kind: bus_occlusion
+  params: {}
+seed: 4828354
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

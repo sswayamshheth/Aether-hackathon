@@ -1,0 +1,22 @@
+id: stop_and_go_08
+category: accident_trap
+case: stop_and_go
+method: A (trajectory-level)
+description: queued cars creeping in stop-and-go traffic
+generator:
+  kind: stop_and_go
+  params: {}
+seed: 11066198
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

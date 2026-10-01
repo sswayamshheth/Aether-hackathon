@@ -1,0 +1,23 @@
+id: dense_crowd_05
+category: baggage_positive
+case: dense_crowd
+method: A (trajectory-level)
+description: bag left while a crowd keeps walking past it
+generator:
+  kind: bag_dense_crowd
+  params: {}
+seed: 181964
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30

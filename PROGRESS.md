@@ -39,3 +39,14 @@ then DECISIONS.md and STATUS.md.
 | 7 | End-to-end eval, with and without filter | DONE | accident 1/8, crowd 10/11, baggage 3/6; see BENCH.md |
 | 8 | README, CREDITS, WHAT_WE_BUILT | DONE | |
 | 8 | PITCH_NOTES, STATUS | DONE | |
+
+## Overnight run 2026-10-01 (branch overnight/2026-10-01) - see OVERNIGHT_LOG.md
+
+| Step | Task | Status | Notes |
+|---|---|---|---|
+| 0 | Tests + smoke test, branch, models\stable | DONE | 44 tests pass; smoke test pass |
+| 1 | Finish pending: extraction, accident classifier, verifiers, dataset labels | DOING | |
+| 2 | Synthetic scenario suite | TODO | |
+| 3 | Evaluate + ERRORS.md | TODO | |
+| 4 | Refinement loop | TODO | |
+| 5 | Reports + git | TODO | |

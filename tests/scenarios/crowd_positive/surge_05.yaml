@@ -1,0 +1,23 @@
+id: surge_05
+category: crowd_positive
+case: surge
+method: A (trajectory-level)
+description: everyone rushes to one point
+generator:
+  kind: surge
+  params: {}
+seed: 12070253
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 6

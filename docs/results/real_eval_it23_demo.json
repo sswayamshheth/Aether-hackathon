@@ -1,0 +1,147 @@
+{
+ "generated": "2026-10-01 06:37",
+ "note": "REAL footage, cached detections replayed",
+ "splits": "see training/real_eval.py docstring",
+ "summary": {
+  "demo": {
+   "accident": {
+    "clips": 2,
+    "detected": 1,
+    "recall": 0.5,
+    "precision": 1.0,
+    "f1": 0.667,
+    "early_alarms": 0,
+    "false_alarms": 0,
+    "negative_camera_hours": 0.03,
+    "fa_per_camera_hour": 0.0,
+    "median_delay_s": null
+   },
+   "crowd": {
+    "clips": 1,
+    "detected": 1,
+    "recall": 1.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "early_alarms": 0,
+    "false_alarms": 0,
+    "negative_camera_hours": 0.033,
+    "fa_per_camera_hour": 0.0,
+    "median_delay_s": null
+   },
+   "baggage": {
+    "clips": 1,
+    "detected": 0,
+    "recall": 0.0,
+    "precision": null,
+    "f1": 0.0,
+    "early_alarms": 0,
+    "false_alarms": 0,
+    "negative_camera_hours": 0.017,
+    "fa_per_camera_hour": 0.0,
+    "median_delay_s": null
+   }
+  }
+ },
+ "skipped": [],
+ "runtime_s": 71,
+ "rows": [
+  {
+   "name": "demo_cam1",
+   "split": "demo",
+   "family": "accident",
+   "result": {
+    "seconds": 17.5,
+    "incidents": [
+     {
+      "type": "accident",
+      "subtype": "accident",
+      "ts": 10.0,
+      "severity": "Critical"
+     }
+    ],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "demo_cam2",
+   "split": "demo",
+   "family": "accident",
+   "result": {
+    "seconds": 17.5,
+    "incidents": [],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "crowd": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "demo_cam3",
+   "split": "demo",
+   "family": "baggage",
+   "result": {
+    "seconds": 82.9,
+    "incidents": [],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": false,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "crowd": 0
+    },
+    "other_types": []
+   }
+  },
+  {
+   "name": "demo_cam4",
+   "split": "demo",
+   "family": "crowd",
+   "result": {
+    "seconds": 24.7,
+    "incidents": [
+     {
+      "type": "crowd",
+      "subtype": "sudden dispersal",
+      "ts": 19.1,
+      "severity": "High"
+     }
+    ],
+    "raw_alarms": 1
+   },
+   "judge": {
+    "positive": true,
+    "detected": true,
+    "delay_s": null,
+    "early": 0,
+    "fa": {
+     "accident": 0,
+     "baggage": 0
+    },
+    "other_types": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+id: dropped_owner_walks_away_06
+category: baggage_positive
+case: dropped_owner_walks_away
+method: A (trajectory-level)
+description: owner puts a suitcase down and walks off
+generator:
+  kind: bag_dropped
+  params: {}
+seed: 15517624
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30

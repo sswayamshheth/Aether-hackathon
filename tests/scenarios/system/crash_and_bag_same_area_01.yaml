@@ -1,0 +1,32 @@
+id: crash_and_bag_same_area_01
+category: system
+case: crash_and_bag_same_area
+method: A (trajectory-level)
+description: 'a crash on cam1 and a bag on cam2 in the same area: two incidents of
+  different types'
+generator:
+  kind: two_separate
+  params:
+    second: baggage
+    same_area: true
+seed: 513736
+conditions:
+  light: day
+  weather: clear
+  density: low
+  distance: mid
+  angle: 0
+  occlusion: none
+  fps: 5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6
+  also:
+    event: baggage
+    window_s:
+    - 7
+    - 30
+    ref: t_event2

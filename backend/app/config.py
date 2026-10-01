@@ -73,6 +73,12 @@ ENABLED_AUX = set(os.environ.get("DRISHTI_AUX", "accident,fire,weapon,fall,viole
 COLLAPSE_S = float(os.environ.get("DRISHTI_COLLAPSE_S", 10))  # lying still this long = collapse
 LOITER_S = float(os.environ.get("DRISHTI_LOITER_S", 60))
 STALLED_S = float(os.environ.get("DRISHTI_STALLED_S", 30))
+# trajectory accident rule: "v1" = the stable rule (speed 0.8-3 s ago vs the last 0.8 s);
+# "abrupt" = impact-stop test (still near full speed 0.6-1.2 s before stopping), plus a
+# single-vehicle hard-stop check. See OVERNIGHT_LOG.md iteration 1.
+ACCIDENT_RULE = os.environ.get("DRISHTI_ACCIDENT_RULE", "v1")
+ABRUPT_KEEP = float(os.environ.get("DRISHTI_ABRUPT_KEEP", 0.8))  # share of peak speed kept until 0.6 s before the stop
+SOLO_MIN_SPEED = float(os.environ.get("DRISHTI_SOLO_MIN_SPEED", 1.0))  # box-lengths/s before a single-vehicle hard stop
 HAZARD_MARGIN = float(os.environ.get("DRISHTI_HAZARD_MARGIN", 0.3))  # scene-model margin over "normal"
 VIOLENCE_INDEX = 1  # which output of the violence classifier means "violent"; checked in BENCH.md
 
@@ -85,6 +91,11 @@ BAGS = {"backpack", "handbag", "suitcase"}
 BAG_UNATTENDED_S = float(os.environ.get("DRISHTI_BAG_UNATTENDED_S", 10))
 BAG_ABANDONED_S = float(os.environ.get("DRISHTI_BAG_ABANDONED_S", 30))
 CROWD_LIMIT = int(os.environ.get("DRISHTI_CROWD_LIMIT", 25))
+# overcrowding only counts a crowd that is packed, not one flowing through: median person speed
+# (body-heights/s) must be below this. 0 = off (stable behaviour). OVERNIGHT_LOG.md iteration 3.
+CROWD_FLOW_MAX = float(os.environ.get("DRISHTI_CROWD_FLOW_MAX", 0))
+LOITER_WINDOW_S = float(os.environ.get("DRISHTI_LOITER_WINDOW_S", 0))  # 0 = whole history (stable)
+LOITER_CONF = float(os.environ.get("DRISHTI_LOITER_CONF", 0.55))  # stable 0.55 sits below the security gate (0.60)
 
 # ---- false-alarm filter: base confidence gate and persistence per incident type
 # (used as-is where no trained verifier exists; see app/intel/verifier.py)

@@ -1,0 +1,21 @@
+id: parking_05
+category: accident_trap
+case: parking
+method: A (trajectory-level)
+description: slow parking manoeuvre next to a parked car
+generator:
+  kind: parking
+  params: {}
+seed: 144802
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - accident

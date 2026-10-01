@@ -1,0 +1,23 @@
+id: mob_gathering_03
+category: crowd_positive
+case: mob_gathering
+method: A (trajectory-level)
+description: people converge from all sides into a mob of 28-36
+generator:
+  kind: mob_gathering
+  params: {}
+seed: 4483237
+conditions:
+  light: day
+  weather: rain
+  density: high
+  distance: near
+  angle: 60
+  occlusion: partial
+  fps: 5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 15

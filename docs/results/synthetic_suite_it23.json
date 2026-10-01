@@ -1,0 +1,1427 @@
+{
+ "generated": "2026-10-01 05:59",
+ "method": "A: trajectory-level, models silent (synthetic)",
+ "settings": {
+  "gate": {
+   "accident": 0.6,
+   "crowd": 0.7,
+   "baggage": 0.4,
+   "fire": 0.5,
+   "weapon": 0.6,
+   "violence": 0.8,
+   "medical": 0.8,
+   "hazard": 0.65,
+   "security": 0.6
+  },
+  "persist_s": {
+   "accident": 1.5,
+   "crowd": 1.5,
+   "baggage": 1.0,
+   "fire": 2.0,
+   "weapon": 1.5,
+   "violence": 2.0,
+   "medical": 3.0,
+   "hazard": 3.0,
+   "security": 2.0
+  },
+  "min_hits": {
+   "accident": 2,
+   "crowd": 4,
+   "baggage": 2,
+   "fire": 3,
+   "weapon": 2,
+   "violence": 4,
+   "medical": 3,
+   "hazard": 2,
+   "security": 3
+  },
+  "bag_unattended_s": 10.0,
+  "crowd_limit": 25
+ },
+ "metrics": {
+  "crowd": {
+   "scenarios": 30,
+   "pass_rate": 0.767,
+   "precision": 0.882,
+   "recall": 0.75,
+   "f1": 0.811,
+   "mean_delay_s": 3.16,
+   "false_alarms_on_traps": 2,
+   "false_alarms_per_camera_hour": 20.6
+  },
+  "other": {
+   "scenarios": 10,
+   "pass_rate": 0.5,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.667,
+   "mean_delay_s": 1.27,
+   "false_alarms_on_traps": 0,
+   "false_alarms_per_camera_hour": null
+  },
+  "all": {
+   "scenarios": 40,
+   "pass_rate": 0.7
+  }
+ },
+ "runtime_s": 395.9,
+ "rows": [
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": -0.77,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "crush_buildup_01",
+   "category": "crowd_positive",
+   "case": "crush_buildup",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 55,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 31.2,
+     "severity": "Critical",
+     "score": 95.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 40.29
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 5.57,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "crush_buildup_02",
+   "category": "crowd_positive",
+   "case": "crush_buildup",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 55,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 39.4,
+     "severity": "Critical",
+     "score": 92.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 16.74
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.6,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "crush_buildup_03",
+   "category": "crowd_positive",
+   "case": "crush_buildup",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 55,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 34.0,
+     "severity": "Critical",
+     "score": 96.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 40.34
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 2.58,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "crush_buildup_04",
+   "category": "crowd_positive",
+   "case": "crush_buildup",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 55,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 25.8,
+     "severity": "Critical",
+     "score": 95.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 36.02
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no crowd in [31.1, 44.1]s, late at 44.4s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "crush_buildup_05",
+   "category": "crowd_positive",
+   "case": "crush_buildup",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 55,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 44.4,
+     "severity": "Critical",
+     "score": 80.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 22.33
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.1,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "exit_blocked_01",
+   "category": "crowd_positive",
+   "case": "exit_blocked",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 1.6,
+     "severity": "Critical",
+     "score": 91.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 3.91
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no crowd in [-0.5, 15.5]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "exit_blocked_02",
+   "category": "crowd_positive",
+   "case": "exit_blocked",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 1,
+   "secs": 18.26
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.1,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "exit_blocked_03",
+   "category": "crowd_positive",
+   "case": "exit_blocked",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 1.6,
+     "severity": "Critical",
+     "score": 92.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 22.61
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no crowd in [-0.5, 15.5]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "exit_blocked_04",
+   "category": "crowd_positive",
+   "case": "exit_blocked",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 4,
+   "secs": 10.78
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 4.3,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "exit_blocked_05",
+   "category": "crowd_positive",
+   "case": "exit_blocked",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 4.8,
+     "severity": "Critical",
+     "score": 90.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 22.27
+  },
+  {
+   "positive": false,
+   "passed": false,
+   "why": [
+    "crowd alarm at Critical severity (overcrowding) at 4.6s"
+   ],
+   "delay_s": null,
+   "false_alarms": 1,
+   "detected_type": null,
+   "severity": null,
+   "id": "festival_procession_01",
+   "category": "crowd_trap",
+   "case": "festival_procession",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 40,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 4.6,
+     "severity": "Critical",
+     "score": 87.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 6.23
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "festival_procession_02",
+   "category": "crowd_trap",
+   "case": "festival_procession",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 40,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 1,
+   "secs": 5.27
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "festival_procession_03",
+   "category": "crowd_trap",
+   "case": "festival_procession",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 40,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 1,
+   "secs": 5.55
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "festival_procession_04",
+   "category": "crowd_trap",
+   "case": "festival_procession",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 40,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 3,
+   "secs": 24.39
+  },
+  {
+   "positive": false,
+   "passed": false,
+   "why": [
+    "crowd alarm at Critical severity (overcrowding) at 16.5s"
+   ],
+   "delay_s": null,
+   "false_alarms": 1,
+   "detected_type": null,
+   "severity": null,
+   "id": "festival_procession_05",
+   "category": "crowd_trap",
+   "case": "festival_procession",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 40,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 16.5,
+     "severity": "Critical",
+     "score": 89.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 5.91
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.47,
+   "false_alarms": 0,
+   "detected_type": "security",
+   "severity": "Medium",
+   "id": "intrusion_01",
+   "category": "other",
+   "case": "intrusion",
+   "family": "other",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 26.332419260152598,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "security",
+     "subtype": "intrusion",
+     "camera": "cam1",
+     "ts": 12.8,
+     "severity": "Medium",
+     "score": 57.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 3.73
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 0.73,
+   "false_alarms": 0,
+   "detected_type": "security",
+   "severity": "Medium",
+   "id": "intrusion_02",
+   "category": "other",
+   "case": "intrusion",
+   "family": "other",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 26.66552755380229,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "security",
+     "subtype": "intrusion",
+     "camera": "cam1",
+     "ts": 12.4,
+     "severity": "Medium",
+     "score": 57.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 3.82
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 0.79,
+   "false_alarms": 0,
+   "detected_type": "security",
+   "severity": "Medium",
+   "id": "intrusion_03",
+   "category": "other",
+   "case": "intrusion",
+   "family": "other",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 23.61145977239212,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "security",
+     "subtype": "intrusion",
+     "camera": "cam1",
+     "ts": 9.4,
+     "severity": "Medium",
+     "score": 57.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 3.33
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.1,
+   "false_alarms": 0,
+   "detected_type": "security",
+   "severity": "Medium",
+   "id": "intrusion_04",
+   "category": "other",
+   "case": "intrusion",
+   "family": "other",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 23.295786562505327,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "security",
+     "subtype": "intrusion",
+     "camera": "cam1",
+     "ts": 9.4,
+     "severity": "Medium",
+     "score": 57.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 3.35
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 2.25,
+   "false_alarms": 0,
+   "detected_type": "security",
+   "severity": "Medium",
+   "id": "intrusion_05",
+   "category": "other",
+   "case": "intrusion",
+   "family": "other",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 24.448688333863668,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "security",
+     "subtype": "intrusion",
+     "camera": "cam1",
+     "ts": 11.7,
+     "severity": "Medium",
+     "score": 57.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 5.74
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no security in [58.0, 74.0]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "loitering_01",
+   "category": "other",
+   "case": "loitering",
+   "family": "other",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 80,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 52.92
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no security in [58.0, 74.0]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "loitering_02",
+   "category": "other",
+   "case": "loitering",
+   "family": "other",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 80,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 9.48
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no security in [58.0, 74.0]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "loitering_03",
+   "category": "other",
+   "case": "loitering",
+   "family": "other",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 80,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 37.84
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no security in [58.0, 74.0]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "loitering_04",
+   "category": "other",
+   "case": "loitering",
+   "family": "other",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 80,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 51.77
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no security in [58.0, 74.0]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "loitering_05",
+   "category": "other",
+   "case": "loitering",
+   "family": "other",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 80,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 38.13
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 6.59,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "mob_gathering_01",
+   "category": "crowd_positive",
+   "case": "mob_gathering",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 38.40953465980755,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 15.0,
+     "severity": "Critical",
+     "score": 91.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 10.63
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 7.32,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "mob_gathering_02",
+   "category": "crowd_positive",
+   "case": "mob_gathering",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 41.279660080647076,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 18.6,
+     "severity": "Critical",
+     "score": 88.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 6.26
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 6.36,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "mob_gathering_03",
+   "category": "crowd_positive",
+   "case": "mob_gathering",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 38.6391185596219,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 15.0,
+     "severity": "Critical",
+     "score": 93.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 9.87
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 7.11,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "mob_gathering_04",
+   "category": "crowd_positive",
+   "case": "mob_gathering",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 40.89245132058643,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 18.0,
+     "severity": "Critical",
+     "score": 90.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 6.24
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no crowd in [11.0, 27.0]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "mob_gathering_05",
+   "category": "crowd_positive",
+   "case": "mob_gathering",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 41.99058335030388,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 1,
+   "secs": 6.33
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.1,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "overcrowding_01",
+   "category": "crowd_positive",
+   "case": "overcrowding",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 1.6,
+     "severity": "Critical",
+     "score": 93.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 4.71
+  },
+  {
+   "positive": true,
+   "passed": false,
+   "why": [
+    "no crowd in [-0.5, 15.5]s"
+   ],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "overcrowding_02",
+   "category": "crowd_positive",
+   "case": "overcrowding",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 1,
+   "secs": 4.67
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.1,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "overcrowding_03",
+   "category": "crowd_positive",
+   "case": "overcrowding",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 1.6,
+     "severity": "Critical",
+     "score": 91.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 4.7
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.1,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "overcrowding_04",
+   "category": "crowd_positive",
+   "case": "overcrowding",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 1.6,
+     "severity": "Critical",
+     "score": 92.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 4.7
+  },
+  {
+   "positive": true,
+   "passed": true,
+   "why": [],
+   "delay_s": 1.3,
+   "false_alarms": 0,
+   "detected_type": "crowd",
+   "severity": "Critical",
+   "id": "overcrowding_05",
+   "category": "crowd_positive",
+   "case": "overcrowding",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 30,
+   "cameras": 1,
+   "incidents": [
+    {
+     "id": 1,
+     "type": "crowd",
+     "subtype": "overcrowding",
+     "camera": "cam1",
+     "ts": 1.8,
+     "severity": "Critical",
+     "score": 90.0,
+     "cameras": 1
+    }
+   ],
+   "suppressed": 0,
+   "secs": 12.3
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "train_arrival_rush_01",
+   "category": "crowd_trap",
+   "case": "train_arrival_rush",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "clear",
+    "density": "low",
+    "distance": "mid",
+    "angle": 0,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 29.903770730403398,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 6.42
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "train_arrival_rush_02",
+   "category": "crowd_trap",
+   "case": "train_arrival_rush",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "clear",
+    "density": "med",
+    "distance": "mid",
+    "angle": 30,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 30.463774210480338,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 20.45
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "train_arrival_rush_03",
+   "category": "crowd_trap",
+   "case": "train_arrival_rush",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "rain",
+    "density": "high",
+    "distance": "near",
+    "angle": 60,
+    "occlusion": "partial",
+    "fps": 5
+   },
+   "duration_s": 29.89896194933912,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 13.01
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "train_arrival_rush_04",
+   "category": "crowd_trap",
+   "case": "train_arrival_rush",
+   "family": "crowd",
+   "conditions": {
+    "light": "day",
+    "weather": "fog",
+    "density": "low",
+    "distance": "far",
+    "angle": 90,
+    "occlusion": "none",
+    "fps": 5
+   },
+   "duration_s": 28.608926307851544,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 1,
+   "secs": 18.55
+  },
+  {
+   "positive": false,
+   "passed": true,
+   "why": [],
+   "delay_s": null,
+   "false_alarms": 0,
+   "detected_type": null,
+   "severity": null,
+   "id": "train_arrival_rush_05",
+   "category": "crowd_trap",
+   "case": "train_arrival_rush",
+   "family": "crowd",
+   "conditions": {
+    "light": "night",
+    "weather": "rain",
+    "density": "med",
+    "distance": "near",
+    "angle": 0,
+    "occlusion": "partial",
+    "fps": 3
+   },
+   "duration_s": 31.233263439110626,
+   "cameras": 1,
+   "incidents": [],
+   "suppressed": 0,
+   "secs": 4.64
+  }
+ ]
+}

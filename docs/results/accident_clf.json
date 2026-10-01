@@ -1,0 +1,424 @@
+{
+ "model": "logistic regression on SigLIP image embeddings (768-d), frames at 1 fps",
+ "labels": {
+  "window_s": 10.0,
+  "custom_onsets_s": {
+   "1.mp4": 4.0,
+   "2.mp4": 5.0,
+   "3.mp4": 22.0
+  }
+ },
+ "frames": 2357,
+ "accident_frames": 98,
+ "clips": 72,
+ "frame_auc_out_of_fold": 0.928,
+ "threshold": 0.9,
+ "ucf_accidents": {
+  "clips": 16,
+  "caught": 0,
+  "early_alarms": 0
+ },
+ "own_videos_leave_one_out": [
+  {
+   "clip": "custom_1.mp4",
+   "class": "CustomAccident",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "custom_2.mp4",
+   "class": "CustomAccident",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "custom_3.mp4",
+   "class": "CustomAccident",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  }
+ ],
+ "normal_clips": {
+  "clips": 17,
+  "clips_with_false_alarm": 0,
+  "false_alarms": 0
+ },
+ "other_class_false_alarms": 0,
+ "frozen_test": {
+  "note": "real_eval frozen-test clips that have embeddings; never trained on or tuned on",
+  "accident_clips": 7,
+  "caught": 1,
+  "early_alarms": 0,
+  "negative_clips": 19,
+  "false_alarms": 0,
+  "per_clip": [
+   {
+    "clip": "Arson018_x264.mp4",
+    "class": "Arson",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Burglary018_x264.mp4",
+    "class": "Burglary",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Explosion008_x264.mp4",
+    "class": "Explosion",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Explosion013_x264.mp4",
+    "class": "Explosion",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Explosion020_x264.mp4",
+    "class": "Explosion",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Explosion025_x264.mp4",
+    "class": "Explosion",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_010_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_018_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_025_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_034_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_048_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_056_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_067_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Normal_Videos_129_x264.mp4",
+    "class": "Normal",
+    "false_alarms": 0
+   },
+   {
+    "clip": "RoadAccidents004_x264.mp4",
+    "class": "RoadAccidents",
+    "caught": false,
+    "delay_s": null,
+    "early": 0
+   },
+   {
+    "clip": "RoadAccidents011_x264.mp4",
+    "class": "RoadAccidents",
+    "caught": false,
+    "delay_s": null,
+    "early": 0
+   },
+   {
+    "clip": "RoadAccidents017_x264.mp4",
+    "class": "RoadAccidents",
+    "caught": false,
+    "delay_s": null,
+    "early": 0
+   },
+   {
+    "clip": "RoadAccidents021_x264.mp4",
+    "class": "RoadAccidents",
+    "caught": false,
+    "delay_s": null,
+    "early": 0
+   },
+   {
+    "clip": "RoadAccidents122_x264.mp4",
+    "class": "RoadAccidents",
+    "caught": false,
+    "delay_s": null,
+    "early": 0
+   },
+   {
+    "clip": "RoadAccidents125_x264.mp4",
+    "class": "RoadAccidents",
+    "caught": true,
+    "delay_s": 1.0,
+    "early": 0
+   },
+   {
+    "clip": "RoadAccidents131_x264.mp4",
+    "class": "RoadAccidents",
+    "caught": false,
+    "delay_s": null,
+    "early": 0
+   },
+   {
+    "clip": "Robbery102_x264.mp4",
+    "class": "Robbery",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Shooting007_x264.mp4",
+    "class": "Shooting",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Shooting011_x264.mp4",
+    "class": "Shooting",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Shooting018_x264.mp4",
+    "class": "Shooting",
+    "false_alarms": 0
+   },
+   {
+    "clip": "Shooting022_x264.mp4",
+    "class": "Shooting",
+    "false_alarms": 0
+   }
+  ]
+ },
+ "per_clip": [
+  {
+   "clip": "Normal_Videos_003_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_006_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_014_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_015_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_019_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_024_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_027_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_033_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_041_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_042_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_050_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_051_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_059_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_063_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_070_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_100_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "Normal_Videos_150_x264.mp4",
+   "class": "Normal",
+   "false_alarms": 0
+  },
+  {
+   "clip": "RoadAccidents001_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents002_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents009_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents010_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents012_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents016_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents019_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents020_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents022_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents121_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents123_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents124_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents127_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents128_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents132_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "RoadAccidents133_x264.mp4",
+   "class": "RoadAccidents",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "custom_1.mp4",
+   "class": "CustomAccident",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "custom_2.mp4",
+   "class": "CustomAccident",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  },
+  {
+   "clip": "custom_3.mp4",
+   "class": "CustomAccident",
+   "caught": false,
+   "delay_s": null,
+   "early": 0
+  }
+ ]
+}

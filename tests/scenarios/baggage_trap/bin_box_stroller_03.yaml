@@ -1,0 +1,21 @@
+id: bin_box_stroller_03
+category: baggage_trap
+case: bin_box_stroller
+method: A (trajectory-level)
+description: a bin, box or stroller detected as a bag at low confidence, no owner
+generator:
+  kind: bin_box_stroller
+  params: {}
+seed: 2961222
+conditions:
+  light: day
+  weather: rain
+  density: high
+  distance: near
+  angle: 60
+  occlusion: partial
+  fps: 5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - baggage

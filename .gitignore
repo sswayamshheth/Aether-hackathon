@@ -38,3 +38,7 @@ models/**/.cache/
 Ultralytics/
 # small models trained here are committed so a fresh clone has them
 !models/crowd_tcn.pt
+
+# overnight: stable model snapshot (weights, not for git)
+models/stable/
+models/candidates/*.pt

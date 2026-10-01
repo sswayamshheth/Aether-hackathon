@@ -1,0 +1,23 @@
+id: left_on_bench_05
+category: baggage_positive
+case: left_on_bench
+method: A (trajectory-level)
+description: owner sits, leaves the bag on the bench
+generator:
+  kind: bag_bench
+  params: {}
+seed: 10404506
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: baggage
+  window_s:
+  - 7
+  - 30

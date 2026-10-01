@@ -1,0 +1,23 @@
+id: counter_flow_03
+category: crowd_positive
+case: counter_flow
+method: A (trajectory-level)
+description: a group runs against the flow of a walking stream
+generator:
+  kind: counter_flow
+  params: {}
+seed: 11236208
+conditions:
+  light: day
+  weather: rain
+  density: high
+  distance: near
+  angle: 60
+  occlusion: partial
+  fps: 5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: crowd
+  window_s:
+  - -1
+  - 6

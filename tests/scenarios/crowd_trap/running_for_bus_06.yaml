@@ -1,0 +1,22 @@
+id: running_for_bus_06
+category: crowd_trap
+case: running_for_bus
+method: A (trajectory-level)
+description: three to five people run for a bus
+generator:
+  kind: bus_run
+  params: {}
+seed: 7475115
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid_above:
+    crowd: Low

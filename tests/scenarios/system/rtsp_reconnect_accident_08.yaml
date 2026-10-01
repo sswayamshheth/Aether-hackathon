@@ -1,0 +1,28 @@
+id: rtsp_reconnect_accident_08
+category: system
+case: rtsp_reconnect_accident
+method: A (trajectory-level)
+description: the stream drops for 4-8 s just after a crash; must not raise a duplicate
+generator:
+  kind: rear_end
+  params: {}
+seed: 14980043
+conditions:
+  light: night
+  weather: fog
+  density: low
+  distance: mid
+  angle: 60
+  occlusion: none
+  fps: 5
+  miss: 0.1
+  stream_gap_rel:
+  - 2.5
+  - 8.5
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6
+  count: 1

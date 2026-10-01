@@ -1,0 +1,22 @@
+id: sitting_with_bag_07
+category: baggage_trap
+case: sitting_with_bag
+method: A (trajectory-level)
+description: person sits beside their bag
+generator:
+  kind: sitting_with_bag
+  params: {}
+seed: 6661141
+conditions:
+  light: day
+  weather: clear
+  density: med
+  distance: near
+  angle: 45
+  occlusion: none
+  fps: 10
+  jitter: 0.04
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  forbid:
+  - baggage

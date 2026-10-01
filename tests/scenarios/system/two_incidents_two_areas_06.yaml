@@ -1,0 +1,25 @@
+id: two_incidents_two_areas_06
+category: system
+case: two_incidents_two_areas
+method: A (trajectory-level)
+description: 'two crashes at the same time in different areas: two incidents'
+generator:
+  kind: two_separate
+  params: {}
+seed: 14586006
+conditions:
+  light: day
+  weather: clear
+  density: high
+  distance: far
+  angle: 30
+  occlusion: partial
+  fps: 5
+  id_switch: true
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: accident
+  window_s:
+  - -1
+  - 6
+  count: 2

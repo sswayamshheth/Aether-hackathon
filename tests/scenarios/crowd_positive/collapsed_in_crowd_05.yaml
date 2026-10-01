@@ -1,0 +1,23 @@
+id: collapsed_in_crowd_05
+category: crowd_positive
+case: collapsed_in_crowd
+method: A (trajectory-level)
+description: one person collapses and lies still inside a moving crowd
+generator:
+  kind: collapsed_in_crowd
+  params: {}
+seed: 13537750
+conditions:
+  light: night
+  weather: rain
+  density: med
+  distance: near
+  angle: 0
+  occlusion: partial
+  fps: 3
+models: silent (auxiliary models answer on their live cadence with nothing detected)
+expected:
+  event: medical
+  window_s:
+  - -1
+  - 16
