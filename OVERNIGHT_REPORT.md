@@ -135,7 +135,11 @@ backend\.venv\Scripts\python training\real_eval.py --split test     # real froze
 
 ## 7. Git
 
-GIT_PLACEHOLDER
+All work was done on `overnight/2026-10-01`. At 07:15: fetched (no new commits from your friend on origin/main),
+pulled main with `--ff-only`, merged the branch with a merge commit (no conflicts), re-ran the tests (48 pass) and
+the smoke test on main (live mode, 1 camera online, dashboard 200). Then pushed `main` and
+`overnight/2026-10-01` to github.com/sswayamshheth/Aether-hackathon. No force-push, no history rewritten. Model
+weights and `data/` stay out of git; their hashes are in `models/MANIFEST.md`.
 
 Also on the branch: a commit from 03:50 ("Phase A: dataset inventory and blocked downloads") made by the previous
 session's last step after it was closed. It only adds DATASETS.md and SIGNUP_NEEDED.md.
